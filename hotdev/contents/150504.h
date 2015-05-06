@@ -1,0 +1,60 @@
+1. 마이크로 소프트 홀로렌즈, 가장 진보한 형태의 VR + AR 기기
+#VR #AR #wearable 
+http://www.engadget.com/2015/04/29/hololens-prototypes/?utm_source=Feed_Classic_Full&utm_medium=feed&utm_campaign=Engadget&?ncid=rss_full
+
+2. 컬러 3D프린터기, 하나의 노즐로 여러가지 색을 표현.
+#3D_printer
+https://www.kickstarter.com/projects/wr3d/the-diamond-hotend-single-nozzle-multi-color-3d-pr
+
+3. 자동으로 주차를 해주는 로봇.
+각 바퀴에 로봇이 달라붙어 차를 들어올리고 주차위치로 이동시킴.
+#robotics
+http://gizmodo.com/this-gang-of-flat-robots-can-autonomously-steal-or-par-1700680911
+
+4. 자신보다 100배 더 무거운 무게를 끌고 벽을 올라갈 수 있는 로봇
+#robotics
+http://www.newscientist.com/article/dn27413-tiny-robots-climb-walls-carrying-more-than-100-times-their-weight.html#.VURhwiQdfq3
+
+5. 테슬라 가정용 배터리
+#energy
+http://www.teslamotors.com/powerwall
+
+6. LED 불빛으로 정보를 표시해주는 카펫. 
+#IoT
+http://www.cnet.com/news/walk-this-way-philips-rolls-out-led-carpets/
+
+7. 모듈러 스마트폰 케이스, 스마트폰에서 할수 없었던 다양한 기능의 모듈을 추가로 설치 가능.
+#mobile_accessary
+https://www.kickstarter.com/projects/nexpaq/nexpaq-the-first-truly-modular-smartphone-case
+
+8. 학교폭력 방지 명찰, 명찰의 왼편을 누르면 교무실에 알람이 울림.
+#IoT
+http://joongang.joins.com/article/780/17703780.html?ctg=1200&cloc=joongang%7Chome%7Cnewslist1
+
+9. 작업자의 작업을 도와주는 엑소슈트 (록히드 마틴)
+#wearable
+http://www.wired.com/2015/04/try-new-exoskeleton-construction-workers/?mbid=social_fb
+
+10. 음식을 태우지 않는 조리기구,  타는것을 감지한는 센서가 있음.
+#IoT
+http://techcrunch.com/2015/04/25/slideshow-the-cinder-sensing-cooker-wont-burn-your-food-to-a-crisp/?ncid=rss&utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+Techcrunch+%28TechCrunch%29#.ugp8yw:Fk6Q
+
+11. 방구를 감지하는 기기, 심지어 제품명도 CH4 (메탄의 분자식)
+#wearable
+https://www.kickstarter.com/projects/963861855/keep-track-of-your-gases-with-ch4
+
+12. 가상현실 헤드셋을 이용, 원격 로봇이 보는 시각을 볼 수 있음.
+#VR #wearable
+http://www.engadget.com/2015/04/29/dora-oculus-rift-telepresence/?utm_source=Feed_Classic_Full&utm_medium=feed&utm_campaign=Engadget&?ncid=rss_full
+
+13. 소변검사를 통한 생체정보 측정 기기.
+#medical
+http://besuccess.com/2015/04/scanadu-raises-35m-series-b-to-check-your-pee-and-scan-your-vitals/
+
+14. 가정용 에이즈 진단 테스터기.
+#medical
+http://www.engadget.com/2015/04/27/first-hiv-home-test-kit-uk/
+
+15. 혈액 샘플 채취 기기.
+#medical
+http://interestingengineering.com/hemolink-sampling-device-could-put-an-end-to-needles-for-blood-testing/
