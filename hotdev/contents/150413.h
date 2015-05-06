@@ -49,5 +49,5 @@ https://vimeo.com/124604407
 
 #kickstarter
 
-150414 <tech>
+150413 <tech>
 세일러묵 드림.

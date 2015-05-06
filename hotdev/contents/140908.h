@@ -1,0 +1,61 @@
+<지난주 핫 IT 프로덕트>
+
+1. Dyson이 출시한 로봇청소기 ,
+턱을 자유자재로 넘나들음, 강력한 흡입.
+http://blogs.wsj.com/personal-technology/2014/09/04/dyson-debuts-first-robot-vacuum-cleaner-the-eye-360/
+
+2. 측면까지 디스플레이가 되는 스마트폰
+http://www.theverge.com/2014/9/3/6097297/samsung-galaxy-note-edge-wraparound-display
+
+3. 스마트 젓가락 , 먹는 음식의 성분 분석, 
+http://thenextweb.com/asia/2014/09/04/smart-chopsticks-analyze-quality-food-youre-eat/
+
+4. 색캡쳐 스타일러스 , 현실의 책을 캡쳐해서 태블릿에서 바로 이용.
+http://techcrunch.com/2014/09/02/mozbii/?ncid=rss&utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+Techcrunch+%28TechCrunch%29&utm_content=FaceBook
+
+5. 스마트폰을 이용한 가상현실 헤드셋 (오큘러스VR+삼성전자)
+http://www.theverge.com/2014/9/3/6101247/samsung-gear-vr-hands-on
+
+6. Motorola 무선 이어폰 + 충전기  케이스
+http://bgr.com/2014/09/05/moto-hint-and-power-pack-micro/
+
+7. 스마트 링
+반지에 디스플레이 장치가 있어서 스마트폰 알림 표시
+http://www.engadget.com/2014/09/06/mota-smartring-indiegogo/?ncid=rss_truncated
+
+8. 스마트 홈을 제어하는 팔찌
+http://www.cnet.com/products/playtabase-reemo/
+
+9. 얼굴인식, 공기오염 감지 홈 카메라
+http://www.wired.com/2014/09/a-smart-nanny-cam-with-facial-recognition-and-air-pollution-sensors/?mbid=social_fb
+
+10. 스마트 럭비공 , 럭비공의 방향과 위치를 측정
+http://www.engadget.com/2014/09/05/magneto-track-footballs-know-where-they-are-and-what-direction-t/?ncid=rss_truncated
+
+11. 시속 22km/h로 달리는 스마트폰 조종 장난감.
+http://www.theverge.com/2014/9/4/6105449/ollie-sphero-smartphone-controlled-racer-drives-14-mph
+
+12. 새로운 방식의 도어락 , 쉬운 설치.
+http://techcrunch.com/2014/09/03/haven-keeps-your-doors-locked-without-keys/?ncid=fb&utm_source=feedburner&utm_medium=feed&utm_campaign=fb&utm_content=FaceBook
+
+13. 골키퍼 트레이닝 디바이스, 각종 정보 측정
+http://www.wired.com/2014/09/recording-the-frenzy-of-soccer-goalkeeping-1000-times-a-second/
+
+14.핸드믹서기 + 알뜰주걱
+http://gizmodo.com/a-tiny-battery-powered-beater-that-mixes-better-than-a-1629533383
+
+15. 달리기가 가능한 2족보행 로봇
+http://www.engadget.com/2014/09/02/achires/?utm_source=Feed_Classic_Full&utm_medium=feed&utm_campaign=Engadget&%3Fncid=rss_full
+
+16. 천장으로 움직이는 로봇
+http://gizmodo.com/this-robotic-bridge-inspector-was-originally-a-disney-c-1627998821
+
+17. 계단으로 무거운 짐을 날라주는 로봇
+http://gizmodo.com/a-robotic-dolly-means-youll-never-carry-anything-up-sta-1629507866
+
+지난주는 대기업 제품이 많았네요.
+
+140908 월요일 아침 <Tech>
+세일러묵 드림.
+
+

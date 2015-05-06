@@ -21,3 +21,5 @@ map ni }}{jI
 
 " Apply local .vimrc of current directory
 map ,1 :source<Space>.vimrc<CR>
+
+map ,2 :bn<CR>

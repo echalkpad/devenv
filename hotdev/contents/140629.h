@@ -1,0 +1,41 @@
+2014년 6월29일 월요일 
+세일러묵이 드리는 저녁 반찬 <Tech>
+
+지난주 핫 IT 프로덕트!
+
+
+1. 1600만 컬러를 표현하는 펜
+http://www.getscribblepen.com/index.html#newsletter
+
+2. Perching 로봇 , 새처럼 나뭇가지에 앉을수있는 로봇
+http://techcrunch.com/2014/06/24/this-perching-robot-could-point-to-the-future-of-flying-drones/?ncid=fb&utm_source=feedburner&utm_medium=feed&utm_campaign=fb
+
+3. 골판지로 만든 가상 현실 헤드셋 (Google)
+Cardboard lift
+http://thenextweb.com/google/2014/06/26/googles-wacky-new-cardboard-project-could-help-take-virtual-reality-mainstream/
+
+4. 자신을따라오며 촬영하는 드론
+http://spectrum.ieee.org/automaton/robotics/aerial-robots/drones-that-follow-you#.U6wi2s4Xnfs.facebook
+
+5. 축구광을 위한 스마트워치
+관심있는 팀을 지정해주면 현재 스코어 시간등을 표시함
+http://besuccess.com/2014/06/hotblack/
+
+6. 타자기를 닮은 기계식 키보드
+https://www.kickstarter.com/projects/954250822/the-qwerkywriter-typewriter-inspired-mechanical-ke
+
+7. 자전거용 투명헬멧
+http://m.insight.co.kr/news.php?Idx=4040&Code1=002
+
+8. 구글 프로젝트 ARA
+http://www.extremetech.com/extreme/185417-google-turns-on-the-worlds-first-modular-smartphone-reveals-more-juicy-details-about-project-ara
+
+9. 처음보는 악기를 연주하는 장갑
+http://www.earlyadopter.co.kr/2064
+
+10. 도트픽셀로 이루어진 탁상용 스마트 시계
+스마트폰과 연동하여 메일,시간,일정,페이스북정보,피트니스 정보등을 표시
+https://www.kickstarter.com/projects/smartatoms/lametric-customizable-smart-ticker-for-life-and-bu?ref=discovery
+
+
+
