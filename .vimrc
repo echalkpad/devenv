@@ -22,4 +22,7 @@ map ni }}{jI
 " Apply local .vimrc of current directory
 map ,1 :source<Space>.vimrc<CR>
 
-map ,2 :bn<CR>
+map ,2 :bn<CR><ESC>G
+
+" For check count of hot product from 1 year
+map 44 :!echo<Space><cword><Space>>><Space>temp<CR>,2
