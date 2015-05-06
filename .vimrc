@@ -1,0 +1,23 @@
+set nu
+set hlsearch
+syntax on
+colorscheme desert
+map <C-C> "+y
+set smartindent
+
+" Memorization line of file
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+nmap tt :!vimdic.sh<Space><cword><CR>
+xmap tt y<ESC>:!vimdic.sh<Space><C-R>"<CR>
+
+" For hot_IT
+map y7 <Esc>V}<C-C>}
+nmap 88 v$y<ESC>:!google-chrome<Space><C-R>"<CR>
+map ni }}{jI
+
+" For Highlighting non ascii char
+"syntax match nonascii "[^\x00-\x7F]"
+"highlight nonascii guibg=Red ctermbg=3 term=standout
+
+" Apply local .vimrc of current directory
+map ,1 :source<Space>.vimrc<CR>

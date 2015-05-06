@@ -1,0 +1,45 @@
+2014.05.26 월요일
+세일러 묵이 드리는 점심 반찬 <Tech>
+
+< 지난주 핫 IT 제품 >
+
+카메라관련 다양한 제품 + 앱세서리 등장
+# 모든링크에는 영상이 포함되어있습니다. (영상만 봐도 충분함)
+
+1. 열감지 터치 
+손가락으로 터치이후 물체에 남아있는 잔존 열을 감지하여 터치를인식 하는 증강현실
+http://gigaom.com/2014/05/22/metaio-unveils-thermal-touch-technology-for-making-user-interfaces-out-of-thin-air/
+
+2. 안경없이 3D 영상을 시청할 수 있는 기술 (MIT 주의)
+http://gizmodo.com/mit-is-building-an-affordable-hologram-at-home-system-1578384078
+
+3. 자가 조립 가구 로봇 
+http://motherboard.vice.com/read/self-assembling-transformer-furniture-robots-put-ikea-to-shame
+
+4. gif 카메라 - 촬영하면 바로 움짤로 나옴
+https://www.kickstarter.com/projects/1598272670/meet-otto-the-hackable-gif-camera
+
+5. (어린이용) 태블릿+카메라 이용 스크린 밖에서 게임을 할수 있는 앱+악세서리
+http://gigaom.com/2014/05/22/the-ipads-next-killer-app-osmo-connects-ios-kids-games-with-the-real-world/
+
+6. 360도 모든 방향으로 영상 촬영되는 카메라
+http://gigaom.com/2014/05/21/the-virtual-reality-cameras-are-coming-360cam-passes-kickstarter-goal-in-a-day/
+
+7. 스마트폰으로 쉽게 캡쳐를 도와주는 앱세서리
+http://vimeo.com/95749073
+
+8. 프리즘을 이용하여 앞에있는 대상을 똑같이 그리도록 도와주는 툴 
+http://youtu.be/OAbPW8duYWk
+
+9. 반려견 위치추적 디바이스
+http://youtu.be/NrgC51s8db0
+
+10. 트래킹기록 + 신체 센서 + 무선 이어폰 (이어폰에 선만없는 형태)
+https://www.kickstarter.com/projects/hellobragi/the-dash-wireless-smart-in-ear-headphones
+
+11. 전후 좌우 모든 방향으로 걸을 수 있는 러닝머신
+http://www.engadget.com/2014/05/20/this-treadmill-lets-you-walk-in-any-direction/
+
+12. 텔레프레즌스 로봇 - 원격지에서 상대방 얼둘을 보면서 대화하고 움직일 수 있는 로봇 아바타 
+http://techholic.co.kr/archives/16822
+http://homeofthefuture.gizmodo.com/exploring-the-great-outdoors-from-a-remote-control-ipad-1577985867/+ericlimer

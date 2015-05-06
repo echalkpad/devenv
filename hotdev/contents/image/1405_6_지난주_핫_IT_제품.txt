@@ -1,0 +1,40 @@
+2014.06.02 월요일
+세일러 묵이 드리는 점심 반찬 <Tech>
+
+< 지난주 핫 IT 제품 >
+
+
+# 모든링크에는 영상이 포함되어있습니다. (영상만 봐도 충분함)
+
+
+1. 태양광 도로 - 구성하는 각 셀은 LED가 내장되어있어 차선,횡단보도,위험요소등을 직접 표시할 수 있음
+http://www.extremetech.com/extreme/183130-solar-roadways-passes-1-4-million-in-crowdfunding-just-short-of-the-56-trillion-required-but-not-bad-for-a-crazy-idea
+
+2. Eye Scanning Device (지문인식 대체)
+http://mashable.com/2014/01/06/eyelock-myris/
+
+3. 스마트폰을 3D 카메라로 만들어주는 악세서리
+https://www.kickstarter.com/projects/332648737/lazeeeye-turn-your-smartphone-into-a-3d-camera?ref=category
+
+4. 스마트폰화면 허공에서도 터치가 가능한 디바이스 (손가락 끝의 공간위치 측정으로 새로운 메커니즘의 터치 구현)
+http://vimeo.com/92972949
+
+5. 에어컨을 스마트하게 만들어주는 디바이스 (에어컨에 간단하게 부착)
+http://www.theverge.com/2014/5/30/5763708/sensibo-smart-air-conditioner-indiegogo
+
+6. Lomo Instant Camera
+로모카메라 + 즉석인화 + 다양한 렌즈 + 다양한 효과
+http://mobile.theverge.com/2014/5/27/5755436/lomography-lomoinstant-instant-camera
+
+7. 구글 무인 자동차 New Concept (핸들,패달 없음)
+http://www.theverge.com/2014/5/27/5756436/this-is-googles-own-self-driving-car
+
+8. 그 자체가 거치대인 스마트폰 충전 케이블
+http://mashable.com/2014/05/27/this-magic-iphone-stand-makes-your-smartphone-levitate-sort-of/#:eyJzIjoiZiIsImkiOiJfamhreHBrbXplMGcyM3UxMCJ9
+
+9. 새로운 형태의 스노클링 마스크 
+http://www.huffingtonpost.kr/2014/05/25/story_n_5387962.html?utm_hp_ref=tw
+
+10. 레고 블럭을 이용한 3D 프린터 (재료가 래고 블럭) - 빠른 프로토타입 제작
+http://makezine.com/2014/02/08/legofy-it-3d-printing-lego-for-fast-prototyping/
+
