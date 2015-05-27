@@ -7,8 +7,13 @@ set smartindent
 
 " Memorization line of file
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" For vimdic
 nmap tt :!vimdic.sh<Space><cword><CR>
 xmap tt y<ESC>:!vimdic.sh<Space><C-R>"<CR>
+" Reading text
+xmap ts y<ESC>:!say<Space>-v<Space>samantha<Space><<<Space>EOF<Space>"<C-R>""<Space>EOF<CR>
+map ta V}JVts
 
 " For hot_IT
 map y7 <Esc>V}<C-C>}
@@ -26,3 +31,4 @@ map ,2 :bn<CR><ESC>G
 
 " For check count of hot product from 1 year
 map 44 :!echo<Space><cword><Space>>><Space>temp<CR>,2
+
