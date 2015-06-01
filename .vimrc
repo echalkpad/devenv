@@ -12,15 +12,14 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 nmap tt :!vimdic.sh<Space><cword><CR>
 xmap tt y<ESC>:!vimdic.sh<Space><C-R>"<CR>
 " Reading text
-xmap ts y<ESC>:!say<Space>-v<Space>samantha<Space><<<Space>EOF<Space>"<C-R>""<Space>EOF<CR>
-map ta V}JVts
+xmap ts y<ESC>:!say.sh<Space><<<Space>EOF<Space>"<C-R>""<Space>EOF<CR>
 
 " For hot_IT
 map y7 <Esc>V}<C-C>}
 nmap 88 v$y<ESC>:!google-chrome<Space><C-R>"<CR>
 map ni }}{jI
 
-" For Highlighting non ascii char
+" For Highlighting non ascii charactor
 "syntax match nonascii "[^\x00-\x7F]"
 "highlight nonascii guibg=Red ctermbg=3 term=standout
 
