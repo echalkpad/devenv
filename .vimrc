@@ -23,6 +23,9 @@ map ni }}{jI
 "syntax match nonascii "[^\x00-\x7F]"
 "highlight nonascii guibg=Red ctermbg=3 term=standout
 
+" For Highlighting word you want
+xmap tm y<ESC>:syntax match this "<C-R>""<CR><ESC>:highlight this guibg=red ctermbg=2 term=standout<CR>
+
 " Apply local .vimrc of current directory
 "map ,1 :source<Space>.vimrc<CR>
 
@@ -33,3 +36,5 @@ map 44 :!echo<Space><cword><Space>>><Space>temp<CR>,2
 
 " Modifying vim mode for translation
 map ,1 :source<Space>~/project/devenv/.vimrc_translating<CR>
+" Adaptation 80 column
+map no v}gq
