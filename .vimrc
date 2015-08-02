@@ -38,3 +38,5 @@ map 44 :!echo<Space><cword><Space>>><Space>temp<CR>,2
 map ,1 :source<Space>~/project/devenv/.vimrc_translating<CR>
 " Adaptation 80 column
 map no v}gq
+
+nmap tj :!grep<Space>-nr<Space><cword><Space>linux/Documentation/development-process/*<CR>

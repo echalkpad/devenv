@@ -49,6 +49,7 @@ http://thenextweb.com/gadgets/2015/07/07/barclays-bpay-band-convenient-contactle
 
 16. 뒤집어 끼워도 꽂아지는 마이크로 USB단자
 http://www.earlyadopter.co.kr/59523
+http://www.cnet.com/news/finally-a-reversible-micro-usb-cable/
 
 17. 얇고 가벼운 태양광 충전기
 http://www.earlyadopter.co.kr/59506
