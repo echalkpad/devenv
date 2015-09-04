@@ -1,7 +1,13 @@
 
+#HOT DEV
+#ICE EVE
+#RY WEEK
+
+
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150831 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 
@@ -66,14 +72,14 @@ https://www.indiegogo.com/projects/exploride-turn-your-car-into-a-smart-car#/sto
 20. Force 터치 패널 모듈
 http://www.wired.com/2015/08/sensel-morph/?mbid=social_fb
 
-#kickstarter
 
-150831 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150824 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 1. 전자잉크를 이용한 밴더블 스마트와치
@@ -133,14 +139,14 @@ https://www.scanadu.com/scout/
 
 19. 유아용 스마트 좌석밸트
 http://www.cnet.com/products/nabi-car-seat-clip/
-#kickstarter
 
-150824 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150817 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 
@@ -210,14 +216,14 @@ http://thenextweb.com/insider/2015/08/13/review-ihome-control-smartplug-offers-h
 20. 잠시동안 SNS나 이메일과 차단을 시켜 주는 버튼.
 http://funtenna.co.kr/220447668740
 
-#kickstarter
 
-150817 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150810 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 1. 테슬라용 무인 충전기. 뱀모양의 로봇팔이 스스로 충전단자에 연결됨.
@@ -292,14 +298,14 @@ http://gizmodo.com/these-glasses-block-facial-recognition-technology-1722826081?
 23. 신체의 온도를 측정 관리하는 이어플러그
 https://www.kickstarter.com/projects/1460153872/yono-fertility-friend-a-wearable-basal-thermometer?utm_source=Early+Bird&utm_campaign=12e87803bf-Early_Bird_for_Kickstarter8_3_2015&utm_medium=email&utm_term=0_b6eff9d06a-12e87803bf-137822113
 
-#kickstarter
 
-150810 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150803 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 1. 점자 스마트 워치
@@ -366,14 +372,14 @@ https://www.kickstarter.com/projects/1275963200/sunport-plug-into-solar-power-no
 21. 스마트 글래스
 http://www.engadget.com/2015/07/31/recon-gopro-control-app/?sr_share=facebook
 
-#kickstarter
 
-150803 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150727 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 1. 두껍지않아 불편하지 않은 구명조끼.
@@ -446,14 +452,14 @@ https://www.youtube.com/watch?v=7kZap4JunhA
 19. 개인 피트니스 코치 웨어러블 밴드
 https://www.youtube.com/watch?v=dMJQhhop76Q
 
-#kickstarter
 
-150 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150720 <tech>
 지난주 핫 했던 제품이 요약되어 있습니다.
 
 1. 기존의 스마트폰에 자석커넥터로 만들어주는 커넥터 단자.
@@ -532,14 +538,14 @@ http://www.engadget.com/2015/07/15/gundetect/
 24. 사람과 상호작용할 수 있는 로봇장난감.
 http://toyland.gizmodo.com/someone-at-pixar-built-the-most-adorable-peek-a-boo-pla-1717046545
 
-#kickstarter
 
-150720 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150713 <tech>
 
 1. 새로 출시된 고프로 카메라 GoPro Session
 보다 콤팩트하고 저렴함.
@@ -623,14 +629,14 @@ http://www.geek.com/news/triple-your-laptop-display-space-with-slidenjoy-1627138
 26. 패션에 좀 더 신경쓴 스마트 팔찌
 https://www.indiegogo.com/projects/helen-smart-bracelet-with-custom-straps#/story
 
-#kickstarter
 
-150713 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150706 <tech>
 
 1. 크라우드 펀딩받는 애플워치 스트랩
 http://www.earlyadopter.co.kr/59010
@@ -705,14 +711,14 @@ http://www.engadget.com/2015/06/30/loogun-toilet-cleaner/
 23. 살균기능이 있는 텀블러
 http://www.earlyadopter.co.kr/59046
 
-#kickstarter
 
-150706 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150629 <tech>
 
 1. 가족용 스마트 전화기
 각각의 스마트폰으로 단절된 소통문제를 해결.
@@ -789,15 +795,15 @@ http://www.engadget.com/2015/06/21/raspberry-pi-case/?utm_source=Feed_Classic_Fu
 http://www.businessinsider.com/cooler-and-pvc-pipe-air-conditioner-costs-50-to-make-2015-6?utm_content=buffer82d4b&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
 
-#kickstarter
 
-150629 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
-#kickstarter
+#150622 <tech>
+
 
 1. 감정을 읽고 사람과 소통할 수 있는 로봇 페퍼 출시 178만원 (소프트뱅크)
 http://news.jtbc.joins.com/html/254/NB10933254.html
@@ -859,12 +865,12 @@ http://www.cnet.com/news/gravity-defying-3d-printer-to-print-bridge-over-water-i
 19. 수도꼭지를 원격으로 틀었다 잠갔다 할 수 있는 기기
 http://www.cnet.com/products/wise-orchard/
 
-150622 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150615 <tech>
 
 1. 한시간이면 조립할 수 있는 오픈소스 전기 자동차 플랫폼.
 누구나 설계도를 받아서 제작할 수 있고, 이 회사는 구글에 인수되었음.
@@ -938,14 +944,14 @@ http://www.earlyadopter.co.kr/44173
 22. 복합적인 기능을 가진 아웃도어용 키트
 http://www.earlyadopter.co.kr/44089
 
-#kickstarter
 
-150615 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150608 <tech>
 
 1. DRC(DARPA Robotics Chanllenge) 우승한 KAIST팀 로봇 (DRC-HUBO)
 현존 가장 권위있는 로봇 대회라고 볼 수 있으며,
@@ -1033,14 +1039,14 @@ http://www.engadget.com/2015/06/02/acer-diaperpie-intel-edison/?utm_source=Feed_
 25. 좀더 안경 같다고 주장하는(?) VR 헤드셋
 http://www.psfk.com/2015/06/virtual-reality-goggles-weigh-four-ounces-dlodlo-vr-goggles.html
 
-#kickstarter
 
-150608 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150601 <tech>
 
 Google I/O 행사에서 진행된 4가지 프로젝트부터 소개합니다.
 
@@ -1166,14 +1172,14 @@ http://gizmodo.com/this-robot-learns-new-tasks-by-doing-them-like-a-human-170656
 #robotics
 http://www.iflscience.com/technology/robots-can-adapt-injury-within-minutes
 
-#kickstarter
 
-150601 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150525 <tech>
 
 1. 안드로이드의 뒤로가기 버튼을 아이폰에서도 가능하게 해주는 보호 필름.
 그냥 필름만 붙이면 동작함. 미세한 내부 회로 존재.
@@ -1258,13 +1264,13 @@ http://www.wired.com/2015/05/table-sucks-heat-lower-ac-bills/?mbid=social_fb
 
 
 
-#kickstarter
 
-150525 <tech>
+
 세일러묵 드림.
 
 ---
 ---
+#150518 <tech>
 <#지난주_핫_IT_프로덕트> 1주년 기념Week
 매주 월요일 아침 출근길,등교길에 
 지난주 가장 HOT 했던 디바이스를 파악해 보세요.
@@ -1363,14 +1369,15 @@ https://www.indiegogo.com/projects/touchpico-turn-any-surface-into-a-touch-scree
 
 
 
----
----
 오늘 부로 #지난주_핫_IT_프로덕트 가 포스팅 1주년을 맞이 하였습니다.
-#kickstarter
 
-150518 <tech>
+
 세일러묵 드림.
+
+---
+---
 <#지난주_핫_IT_프로덕트> 가 오늘부로 딱 1년째 포스팅을 하였습니다.
+#150511 <tech>
 지난 1년 52주 동안 총 647개의 흥미로운 제품을 소개 하였습니다. 
 저의 포스팅에 지속적으로 관심을 갖고 구독해주신 분들께 감사드리며
 제품에 대한 인사이트와 트렌드를 파악할 수 있는 훌륭한 컨텐츠가 되도록 
@@ -1450,10 +1457,15 @@ http://shop.soloshot.com/#
 23. 가상현실 기기용 3축으로 제어되는 의자
 https://www.youtube.com/watch?v=ZdhaK9s1RdU
 
-#kickstarter
 
-150511 <tech>
+
 세일러묵 드림.
+
+---
+---
+#150504
+
+
 1. 마이크로 소프트 홀로렌즈, 가장 진보한 형태의 VR + AR 기기
 #VR #AR #wearable 
 http://www.engadget.com/2015/04/29/hololens-prototypes/?utm_source=Feed_Classic_Full&utm_medium=feed&utm_campaign=Engadget&?ncid=rss_full
@@ -1518,6 +1530,7 @@ http://interestingengineering.com/hemolink-sampling-device-could-put-an-end-to-n
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150427 <tech>
 
 1. 플렉서블하게 고정(Mounting)이 가능한 귀여운 액션캠 
 Pixar에서 만든것같이 생겼지만 국내 스타트업 Boud 제품.
@@ -1579,12 +1592,12 @@ http://gizmodo.com/plastic-gears-reinforced-with-carbon-fiber-could-replac-16994
 (펠트 : 양모등을 압출해서 만든 부드럽고 두꺼운 천)
 http://www.huffingtonpost.kr/2015/04/18/story_n_7094174.html
 
-150427 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150420 <tech>
 
 1. 자동화장 머신 
 스마트폰앱으로 원하는 스타일을 선택한뒤 기기에 얼굴을 위치시키면 30초 정도면 화장을 끝내줌.
@@ -1655,14 +1668,14 @@ https://www.kickstarter.com/projects/wearality/wearality-sky-limitless-vr?ref=ca
 전면 3D센서로 전방 손이나 물체를 감지하고 VR 기기에서 실제 증강현실을 보여줌.
 https://www.kickstarter.com/projects/impressionpi/impression-mobile-vr-ar-with-gesture-position-trac
 
-#product #kickstarter #indigogo #engadget #wired #cnet #tech #design
+#product  #indigogo #engadget #wired #cnet #tech #design
 
-150420 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150413 <tech>
 
 1. 진짜 나비처럼 날아다니는 로봇 (독일기업 Festo) 
 영상참고. 대단하다는 말밖에.
@@ -1711,14 +1724,14 @@ http://www.perpetualplasticproject.com/#ppp1
 13. 스마트워치의 진동을 이용한 진보된 햅틱 피드백 터치 기술
 https://vimeo.com/124604407
 
-#kickstarter
 
-150413 <tech>
+
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150406 <tech>
 
 1. 미세먼지 99.95% 없애주는 선풍기(다이슨)
 http://www.earlyadopter.co.kr/14019
@@ -1781,12 +1794,12 @@ http://www.open-electronics.org/grobotz-modular-open-source-robots-they-grow-up-
 20. 3차원 도표를 실제 3차원으로 보여주는 기기
 http://gizmodo.com/will-the-next-generation-of-displays-be-3d-1695708988?rev=1428181613675&utm_campaign=socialflow_gizmodo_facebook&utm_source=gizmodo_facebook&utm_medium=socialflow
 
-150406 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150330 <tech>
 
 1. 운전중에도 안전하게 스마트폰을 사용하게 해주는 기기
 알림이 오면 음성으로 안내해주고 핸들에 장착하는 리모컨으로 주행중 스마트폰을 안전하게 조작
@@ -1839,12 +1852,12 @@ http://www.theverge.com/2015/3/25/8285355/fove-eye-tracking-headset-hands-on
 다른사람이 내 과자를 뺏어먹지 못하게 할 수 있음.
 http://www.engadget.com/2015/03/24/ksafe-smart-cookie-jar/?ncid=rss_truncated
 
-150330 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150323 <tech>
 
 지난 한 주간 흥미로웠던 H/W 프로젝트를 소개하고 있습니다.
 댓글 및 메시지 피드백 환영 합니다.
@@ -1888,12 +1901,12 @@ http://www.gizmag.com/night-runner-shoe-lights/36634/
 13. 주변 사물을 촬영하여 사물의 진동을 분석 무슨말을 했는지 알아내는 기술
 http://mnews.joins.com/news/article/article.aspx?total_id=17376870
 
-150323 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150316 <tech>
 
 1. 칠판에 필기하는 대로 바로 저장되는 스마트 보드마카
 http://techcrunch.com/2015/03/11/the-equil-smart-marker-records-everything-you-write/
@@ -1935,12 +1948,12 @@ http://mashable.com/2015/03/13/mobile-lorm-glove/?utm_cid=mash-com-fb-main-link
 http://www.extremetech.com/electronics/200665-researchers-create-glasses-free-3d-display-with-tiny-spherical-lenses
 
 
-150316 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150309 <tech>
 
 1. 전구 소켓에 끼울 수 있는 빔 프로젝터.
 http://www.earlyadopter.co.kr/12363
@@ -1998,12 +2011,12 @@ https://www.indiegogo.com/projects/flow-hive-honey-on-tap-directly-from-your-bee
 18. 바이올린 연주 로봇
 http://gizmodo.com/ro-bow-is-a-violin-paying-robot-that-actually-sounds-pr-1687311126?utm_campaign=socialflow_gizmodo_facebook&utm_source=gizmodo_facebook&utm_medium=socialflow
 
-150309 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150223 <tech>
 
 1. 구형태의 로봇
 http://www.geek.com/news/us-military-is-testing-rolling-eyeball-robots-originally-designed-for-mars-1616153/
@@ -2052,12 +2065,12 @@ http://www.psfk.com/2015/02/oral-b-oral-b-pro-7000-smart-toothbrush.html?utm_con
 15. 게임을 이용한 재활치료 기기
 http://www.fraunhofer.de/en/press/research-news/2015/february/fitness-game-for-the-physically-impaired.html
 
-150223 <tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150216
 
 1. 스마트 줄넘기, 줄넘기 횟수가 줄의 LED 잔상을 통해 디스플레이됨.
 영상 참고. (탱그램 디자인 연구소)
@@ -2127,6 +2140,7 @@ http://community.arm.com/groups/internet-of-things/blog/2015/02/12/14-smart-prod
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150209  <tech>
 
 1. 한장의 카드로 모든 카드를 이용가능
 http://techneedle.com/archives/19844
@@ -2177,13 +2191,13 @@ http://www.earlyadopter.co.kr/11233
 15. 반려동물과 놀아주는 기기 +급식
 http://ballready.com/
 
-150209  <tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150126  <tech>
 
 1. 증강현실 헤드셋 홀로렌즈(Microsoft)
 http://m.blog.naver.com/appifystudio/220248179103
@@ -2230,7 +2244,6 @@ http://www.darpa.mil/NewsEvents/Releases/2015/01/20.aspx
 14. 레고를 이용해 만든 점자 프린터
 http://www.huffingtonpost.kr/2015/01/21/story_n_6513298.html
 
-150126  <tech>
 세일러묵 드림.
 
 
@@ -2238,6 +2251,7 @@ http://www.huffingtonpost.kr/2015/01/21/story_n_6513298.html
 ---
 <#지난주_핫_IT_프로덕트>
 
+#150119  <tech>
 1. 새로운 형태의 매우 작은 휴대용 무선 키보드
 http://techneedle.com/archives/19745
 
@@ -2278,13 +2292,13 @@ http://www.funshop.co.kr/funtenna/detail/3468
 12. 모듈 형식의 인공위성을 만들 수 있는 로봇.
 http://www.pcmag.com/article2/0,2817,2475070,00.asp
 
-150119  <tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150112  <tech>
 
 CES 특집 - 흥미로운 37 가지의 제품을 소개합니다.
 
@@ -2407,7 +2421,6 @@ http://venturebeat.com/2015/01/07/i-tried-on-56-wearables-today-heres-a-photo-of
 
 
 
-150112  <tech>
 세일러묵 드림.
 
 
@@ -2415,6 +2428,7 @@ http://venturebeat.com/2015/01/07/i-tried-on-56-wearables-today-heres-a-photo-of
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#150105 새해 첫 #지난주_핫_IT_프로덕트.
 
 0. 마지막에 퀴즈 있음. 상품은 스타벅스 키프티콘 
 (댓글 주신 분중에 추첨 1명).
@@ -2458,9 +2472,8 @@ http://techcrunch.com/2014/12/30/matter-and-forms-3d-scanner-is-inexpensive-and-
 
 ---
 ---
-150105 새해 첫 #지난주_핫_IT_프로덕트.
-세일러묵 드림.
 <#지난주_핫_IT_프로덕트>
+#141229 월요일 <Tech>
 
 
 1. 영수증 용지에 바로 사진을 출력해주는 즉석 카메라
@@ -2499,7 +2512,6 @@ https://www.indiegogo.com/projects/jelwek-watch
 11. 열면 발신자에게 전화가 걸리는 크리스마스 카드
 http://www.bizion.com/bbs/board.php?bo_table=marketing&wr_id=209
 
-141229 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2507,6 +2519,7 @@ http://www.bizion.com/bbs/board.php?bo_table=marketing&wr_id=209
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141222 월요일 <Tech>
 
 1. 뒷면에 전자잉크 디스플레이가 탑재된 아이폰6 케이스
 http://techholic.co.kr/archives/24592?utm_source=twitterfeed&utm_medium=facebook
@@ -2536,13 +2549,13 @@ http://www.neosmartpen.com/
 
 
 
-141222 월요일 <Tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141215 월요일 <Tech>
 
 1. 보다 진보한 펜 형태의 무선 마우스 
 http://www.psfk.com/2014/12/penclic-is-a-next-generation-computer-mouse-for-lefties-and-righties.html?utm_content=buffer1a71e&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
@@ -2583,13 +2596,13 @@ http://www.earlyadopter.co.kr/9576
 12. 앉아서 생활하는 직장인의 건강과 자세를 관리해주는 기기
 http://www.businessinsider.com/prana-gadget-helps-you-maintain-proper-posture-and-breathe-better-2014-12?utm_content=buffere5c8e&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
-141215 월요일 <Tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141208 월요일 <Tech>
 
 1. 손가락에 끼워서 사용하는 제스쳐 기반 마우스(작년 펀딩 성공하고 판매시작)
 https://www.kickstarter.com/projects/mycestro/mycestrotm-the-next-generation-3d-mouse
@@ -2627,7 +2640,6 @@ http://www.cnet.com/products/green-creative-br30-cloud-led/
 12. 스마트 수도절약 기기
 http://www.cnet.com/products/amphiro-b1/
 
-141208 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2637,6 +2649,7 @@ http://www.cnet.com/products/amphiro-b1/
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141201 월요일 <Tech>
 
 이번주 추천 프로젝트 : 1, 2, 3, 9번
 
@@ -2682,7 +2695,6 @@ http://www.cnet.com/news/samsungs-eyecan-lets-your-eyes-control-your-computer/
 13. 무선 스피커 + 물병.
 http://www.cnet.com/news/splish-splash-its-the-wireless-speaker-water-bottle/
 
-141201 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2690,6 +2702,7 @@ http://www.cnet.com/news/splish-splash-its-the-wireless-speaker-water-bottle/
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141124 월요일 <Tech>
 
 2, 3, 4, 5, 9번 -> 매우 재미있는 프로젝트입니다. 링크의 영상을 꼭 확인해 보세요.
 
@@ -2727,7 +2740,6 @@ http://interestingengineering.com/this-laser-can-project-3-d-display-in-mid-air-
 10. 아이들에게 코딩을 알려주는 10달러짜리 로봇 
 http://www.wired.com/2014/11/10-dollar-education-robot/?mbid=social_fb
 
-141124 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2735,6 +2747,7 @@ http://www.wired.com/2014/11/10-dollar-education-robot/?mbid=social_fb
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141117 월요일 <Tech>
 
 1. 가상현실 헤드셋 용 원격 3D 카메라
 17개의 카메라로 360도 모든방향의 3D영상을 기어 VR로 전송해 멀리서도 그 장소에 있는것처럼 느낄 수 있음. 실시간 스트리밍 가능. 양안시차를 이용해 depth를 느낄 수있는 3D영상.
@@ -2792,7 +2805,6 @@ http://www.youtube.com/watch?v=UH0k2hFHzyc&feature=youtu.be
 17. 보안 경비 로봇.
 http://www.technologyreview.com/news/532431/rise-of-the-robot-security-guards/?utm_campaign=socialsync&utm_medium=social-post&utm_source=facebook
 
-141117 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2800,6 +2812,7 @@ http://www.technologyreview.com/news/532431/rise-of-the-robot-security-guards/?u
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141110 월요일 <Tech>
 
 1. 집에서 사용하는 음성인식 로봇 (아마존 에코)
 http://www.earlyadopter.co.kr/8163
@@ -2823,13 +2836,13 @@ http://www.engadget.com/2014/11/03/onewheel-handson/?ncid=rss_truncated
 http://www.engadget.com/2014/11/05/onyx-communicator/?ncid=rss_truncated
 
 
-141110 월요일 <Tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141104 월요일 <Tech>
 
 1. 모니터 + 빔프로젝터 + 카메라 가 합쳐지면? (HP)
 새로운 형태의 입/출력 장치를 가진 PC.
@@ -2869,7 +2882,6 @@ http://blog.naver.com/anatzblog/220165577890
 
 기타 궁금한 사항은 댓글 남겨 주세요.
 
-141104 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2877,6 +2889,7 @@ http://blog.naver.com/anatzblog/220165577890
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141027 월요일 <Tech>
 
 1. 스티커 형식의 블루투스 전등 스위치. 집안의 원하는 위치에 부착시켜 점/소등.
 http://www.engadget.com/2014/10/21/avi-on-dimmer-switch/?ncid=rss_truncated
@@ -2931,7 +2944,6 @@ http://www.cnet.com/news/torch-through-stuff-on-the-fly-with-portable-laser-cutt
 14. 새로운 방식의 잡는(grab) 매커니즘이 적용된 로봇
 http://www.engadget.com/2014/10/25/robotic-hand-electrostatic-attraction/?ncid=rss_truncated
 
-141027 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2939,6 +2951,7 @@ http://www.engadget.com/2014/10/25/robotic-hand-electrostatic-attraction/?ncid=r
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141020 월요일 <Tech>
 
 1. 어느장소에나 스크린을 쏴주는 로봇.
 TV, 태블릿, 스마트폰 등의 컨텐츠를 로봇을 통해서 더 넓고 공간의 제약이 없는 환경에서 감상 할 수 있음.
@@ -2975,7 +2988,6 @@ http://www.engadget.com/2014/10/15/dotti-pixel-art-led-block/?utm_source=Feed_Cl
 사륜구동 전기자동차, 자동 운전 보조 기능.
 http://techneedle.com/archives/18735
 
-141020 월요일 <Tech>
 세일러묵 드림.
 
 
@@ -2983,6 +2995,7 @@ http://techneedle.com/archives/18735
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141013 월요일 <Tech>
 
 
 1. 펜글씨를 디지털로 옮겨 주는 스마트펜 + 센서  
@@ -3033,13 +3046,13 @@ http://techcrunch.com/2014/10/07/tinyscreen-lets-you-put-a-tiny-screen-on-it/?nc
 (1) http://www.engadget.com/2014/10/07/romocart-turns-your-living-room-into-a-video-game/?ncid=rss_truncated
 (2) http://www.earlyadopter.co.kr/7527
 
-141013 월요일 <Tech>
 세일러묵 드림.
 
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#141006 월요일 <Tech>
 
 1. 고프로 4
 http://ko.shop.gopro.com/APAC/cameras
@@ -3058,12 +3071,12 @@ https://www.kickstarter.com/projects/1842650056/sam-the-ultimate-internet-connec
 http://www.engadget.com/2014/10/04/epson-moverio-bt-200/?ncid=rss_truncated
 
 
-141006 월요일 <Tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#140929 월요일 <Tech>
 
 1. 반복을 통해 학습이 가능한 로봇과 OS 개발 (BrainOS)
 프로그래밍을 통해 새로운 기능을 추가하는게 아니라 마치 강아지를 키우는것 처럼 반복 학습을 시킴.
@@ -3126,12 +3139,12 @@ http://interestingengineering.com/new-robotic-glove-gives-you-the-sensation-of-t
 
 
 
-140929 월요일 <Tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#140922 월요일 <Tech>
 
 1. PC/스마트폰/태블릿PC를 하나의 키보드로 타이핑
 http://www.logitech.com/en-us/product/multi-device-keyboard-k480
@@ -3171,12 +3184,12 @@ http://www.geek.com/science/mits-cheetah-robot-gets-let-off-the-leash-to-run-and
 http://www.wired.com/2014/09/a-new-concept-for-shape-shifting-architecture-that-responds-to-heat/?mbid=social_fb
 
 
-140922 월요일 <Tech>
 세일러묵 드림.
 
 ---
 ---
 <#지난주_핫_IT_프로덕트>
+#140915 월요일 <Tech>
 
 1. 손을 심하게 떠는 사람을 위한 숟가락.
 기기의 진동으로 손의 떨림이 상쇄됨.
@@ -3231,9 +3244,13 @@ https://gigaom.com/2014/09/10/forget-terminator-the-robots-of-the-apocalypse-cou
 
 
 
-140915 월요일 <Tech>
 세일러묵 드림.
-<지난주 핫 IT 프로덕트>
+
+---
+---
+
+<#지난주_핫 IT 프로덕트>
+#140908 월요일 아침 <Tech>
 
 1. Dyson이 출시한 로봇청소기 ,
 턱을 자유자재로 넘나들음, 강력한 흡입.
@@ -3290,11 +3307,13 @@ http://gizmodo.com/a-robotic-dolly-means-youll-never-carry-anything-up-sta-16295
 
 지난주는 대기업 제품이 많았네요.
 
-140908 월요일 아침 <Tech>
 세일러묵 드림.
 
 
+---
+---
 <지난주 핫 IT 프로덕트>
+#140901 월요일 아침 <Tech>
 
 1. 구글에서 만든 배달용 드론 "Project Wing"
 유사제품 : Prime Air(아마존) 보다 더 빠름
@@ -3341,9 +3360,13 @@ http://www.cnet.com/news/forget-smartwatches-heres-the-connected-hat/
 혈압,심박수,폐활량,ECG등 체크가능
 https://azoi.com/
 
-140901 월요일 아침 <Tech>
 세일러묵 드림.
 
+---
+---
+
+지난주
+#140825 월요일 아침 <Tech>
 
 1.블루투스로 열리는 자물쇠
 http://www.engadget.com/2014/08/18/noke-bluetooth-padlock-kickstarter/?ncid=rss_truncated
@@ -3398,10 +3421,13 @@ http://techcrunch.com/2014/08/14/watch-a-thousand-micro-robots-self-assemble-int
 http://www.earlyadopter.co.kr/5167
 
 
-140825 월요일 아침 <Tech>
 세일러묵 드림.
 
+---
+---
+
 <지난주 핫 IT 프로덕트>
+#140818 월요일 아침 <Tech>
 
 1. 허공에 떠 있는 블루투스 스피커
 http://www.cnet.com/news/om-one-levitating-bluetooth-disco-ball-speaker-defies-gravity/
@@ -3433,9 +3459,11 @@ http://t-robotics.blogspot.kr/2014/08/ieee.html#.U_C3P_l_t8E
 http://www.earlyadopter.co.kr/4907
 
 
-140818 월요일 아침 <Tech>
 세일러묵 드림.
-140811
+
+---
+---
+#140811
 
 1. 맥북의 자석형 커넥터가 아이폰으로
 http://www.earlyadopter.co.kr/4597
@@ -3472,7 +3500,9 @@ http://mobile.theverge.com/2014/8/7/5979723/x-ray-vision-using-wi-fi-on-robots
 http://www.wired.com/2014/08/mit-develops-a-phone-screen-that-corrects-poor-vision/?mbid=social_fb
 
 
-140804
+---
+---
+#140804
 
 1. 스마트 슈즈
 목적지에 다다르기 까지 갈 방향을 진동으로 알려줌
@@ -3506,7 +3536,9 @@ http://techneedle.com/archives/17772
 9. 시동이 걸리면 SMS 가 차단되는 기기
 http://www.geek.com/mobile/straight-talks-new-car-accessory-disables-sms-while-the-engine-is-running-1600992/
 
-140728
+---
+---
+#140728
 
 1. 모듈 조립식 와치 
 http://www.engadget.com/2014/07/08/blocks-modular-smartwatch/
@@ -3531,7 +3563,10 @@ https://www.kickstarter.com/projects/hello/sense-know-more-sleep-better/
 7. 휴대폰 신호를 감지하여 사람을 찾는 드론
 http://gigaom.com/2014/07/25/this-drone-can-find-lost-or-stranded-people-by-picking-up-their-mobile-phone-signals/?utm_medium=social&utm_campaign=socialflow&utm_source=facebook&utm_content=this-drone-can-find-lost-or-stranded-people-by-picking-up-their-mobile-phone-signals_860597
 
-2014년 7월21일 월요일 
+
+---
+---
+#2014년 7월21일 월요일 
 세일러묵이 드리는 저녁 반찬 <Tech>
 
 지난주 핫 IT 프로덕트!
@@ -3573,8 +3608,14 @@ http://9to5mac.com/2014/07/17/kickstarter-campaign-offers-magsafe-for-iphone-app
 
 11. 새로운형태의 드론
 http://www.popsci.com/article/technology/drone-dangerous-missions?src=SOC&dom=fb
-2014년 7월14일 월요일 
+
+
+
+---
+---
+#2014년 7월14일 월요일 
 세일러묵이 드리는 저녁 반찬 <Tech>
+
 
 지난주 핫 IT 프로덕트!
 
@@ -3601,7 +3642,11 @@ http://www.fasttrackcompany.com
 
 7. 해수욕장에서 아이가 부모로부터 거리가 멀어지면 알람을 울려주는 스마트 밴드 (NIVEA)
 http://youtu.be/9HrRniRr1-M
-2014년 7월7일 월요일 
+
+
+---
+---
+#2014년 7월7일 월요일 
 세일러묵이 드리는 저녁 반찬 <Tech>
 
 지난주 핫 IT 프로덕트!
@@ -3635,8 +3680,10 @@ http://www.swivl.com
 http://fuffr.com
 
 
+---
+---
 
-2014년 6월29일 월요일 
+#2014년 6월29일 월요일 
 세일러묵이 드리는 저녁 반찬 <Tech>
 
 지난주 핫 IT 프로덕트!
@@ -3676,8 +3723,9 @@ http://www.earlyadopter.co.kr/2064
 https://www.kickstarter.com/projects/smartatoms/lametric-customizable-smart-ticker-for-life-and-bu?ref=discovery
 
 
-
-140623
+---
+---
+#140623
 
 
 1. 아마존 스마트폰 
@@ -3707,7 +3755,12 @@ http://www.iflscience.com/technology/new-type-computer-capable-calculating-640tb
 접혔다펴지는 종이로 구성된 바퀴
 http://spectrum.ieee.org/automaton/robotics/robotics-hardware/robots-get-flexible-and-torqued-up-with-deformable-origami-wheels#.U580aj_g6dg.facebook
 
+
+---
+---
+
 <지난주 핫 IT Poduct>
+#140616
 
 스마트홈 관련 기기 많이 등장. 
 애플이 스마트홈 관련 제품or서비스 시작할때부터 스마트홈 전쟁이 본격적으로 시작될것으로 생각됨
@@ -3746,7 +3799,12 @@ Ringly | Pre-order now: http://youtu.be/C5c06ayfTYs
 10. 괜찮은 스마트홈 제품 정리(기사)
 http://mobile.theverge.com/2014/6/7/5786668/the-best-smart-home-products-you-havent-heard-of
 
+
+---
+---
+
 <지난주_핫_IT_Poduct>
+#140609
 
 기존의 전등 보일러 제어에서 벗어난 스마트홈 up
 
@@ -3787,8 +3845,9 @@ http://gigaom.com/2014/06/03/drop-launches-a-connected-kitchen-scale-and-a-rethi
 http://bt.tn
 
 
-
-2014.06.02 월요일
+---
+---
+#2014.06.02 월요일
 세일러 묵이 드리는 점심 반찬 <Tech>
 
 < 지난주 핫 IT 제품 >
@@ -3827,7 +3886,12 @@ http://www.huffingtonpost.kr/2014/05/25/story_n_5387962.html?utm_hp_ref=tw
 
 10. 레고 블럭을 이용한 3D 프린터 (재료가 래고 블럭) - 빠른 프로토타입 제작
 http://makezine.com/2014/02/08/legofy-it-3d-printing-lego-for-fast-prototyping/
-2014.05.26 월요일
+
+
+---
+---
+
+#2014.05.26 월요일
 세일러 묵이 드리는 점심 반찬 <Tech>
 
 < 지난주 핫 IT 제품 >
@@ -3877,7 +3941,7 @@ http://homeofthefuture.gizmodo.com/exploring-the-great-outdoors-from-a-remote-co
 
 ---
 ---
-140519  첫번째 <#지난주_핫_IT_프로덕트>
+#140519  첫번째 <#지난주_핫_IT_프로덕트>
 
 청소기 이후에 집에서 만날수 있는 로봇은 로봇 장난감이 될듯
 아기,반려동물등을 타겟 한 IT 제품이 많아지는 추세
