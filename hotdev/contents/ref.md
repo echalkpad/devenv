@@ -1,8 +1,9 @@
-<#지난주_핫_IT_프로덕트>
-지난주 핫 했던 제품이 요약되어 있습니다.
+
+---  
+#150  
+> 2015년 주차 **HOT DEVICE EVERY WEEK**  
+> ![pic](../image/MAIN.png)  
+
+---  
 
 
-#kickstarter
-
-150 <tech>
-세일러묵 드림.

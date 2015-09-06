@@ -1,13 +1,15 @@
 #! /bin/bash
 WHICH_SYSTEM=$(uname -s)
+MAC=Darwin 
+LINUX=Linux 
 DIR="../contents"
 IMG="../image"
 
-cp $DIR/ref.h $DIR/$1.h
+cp $DIR/ref.md $DIR/$1.md
 mkdir $IMG/$1
 
 if [[ $WHICH_SYSTEM == $MAC ]]; then
-	sed -i '' "s/150/$1/g" $DIR/$1.h
+	sed -i "s/150/$1/g" $DIR/$1.md
 elif [[ $WHICH_SYSTEM == $LINUX ]]; then
-	sed -i "s/150/$1/g" $DIR/$1.h
+	sed -i "s/150/$1/g" $DIR/$1.md
 fi
