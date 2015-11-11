@@ -60,3 +60,13 @@ Offending ECDSA key in /home/jihuun/.ssh/known_hosts:1
 > remove with: ssh-keygen -f "/home/jihuun/.ssh/known_hosts" -R 192.168.0.9  
 > 이렇게 위에나온대로 지워주면 됨.  
 
+
+## 6 공유기 설정 : 여러 기기 접속시키기  
+공유기 접속 -> 포트포워드 설정 + 강제 IP 할당 : 이두가지만 하면 됨.  
+위에서 DMZ 설정은 모든 포트를 열어두는것이기 때문에 지금까지접속이 되엇던것임, 보안취약.  
+외부에서 접속할때 포트까지 지정해서 접속해야됨.  
+포트포워드 설정은 외부 포트는 5580 내부포트는 80 으로 지정(웹접속)  
+내부포트는 웹접속일때 80 , ssh 일때는 22. 표준으로 지정되어있음.   
+ssh 접속할때  
+ssh -p 5522 root@procyonq.iptime.org  
+이렇게 -p 옵션(포트번호지정) 을 주어야 접속이 됨.  
