@@ -70,3 +70,18 @@ Offending ECDSA key in /home/jihuun/.ssh/known_hosts:1
 ssh 접속할때  
 ssh -p 5522 root@procyonq.iptime.org  
 이렇게 -p 옵션(포트번호지정) 을 주어야 접속이 됨.  
+
+
+## 7 Rune UI 수동 업데이트  
+RPI 1 의 배포판은 14년도에 릴리즈되었기때문에 rune UI가 오래된것임 수동으로 업데이트필요.  
+(실제로 conneting 이 무한으로 돌고있는 버그가 있었음)  
+
+수동 없데이트 방법 :  
+http://www.runeaudio.com/documentation/troubleshooting/updating/
+
+1) ssh 접속  
+2) cd /var/www  
+3) git pull  
+	해당 디렉토리의 파일들은 git server의 로컬 리포로 되어있어서 pull로 최신 버전으로 땡김.  
+4) curl -s -X GET 'http://localhost/clear'  
+	이게 무슨 역할인지 잘 모름.  
