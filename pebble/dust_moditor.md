@@ -91,5 +91,23 @@ static void sync_changed_handler(const uint32_t key, const Tuple *new_tuple, con
 
 
 ### 2. Tuple , Tuplet?
+
+![Tuple_pic](https://developer.getpebble.com/assets/images/guides/pebble-apps/communications/tuplet.png)  
+
+```c
+	// Setup initial values
+	Tuplet initial_values[] = {
+		TupletInteger(KEY_COUNT, 0),
+	};
+
+	// Begin using AppSync
+	app_sync_init(&s_sync, s_sync_buffer, sizeof(s_sync_buffer), initial_values,
+			ARRAY_LENGTH(initial_values), ... );
+```
+> Tuplet 으로 전체 통신해야할 데이터구조를 초기화.  
+각 키에 해당하는 value는 Tuple에서 초기화함. 
+그리고 Tuplet 변수는 app_sync_init에서 등록함.
+
+
 ### 3. Dictionary
 
