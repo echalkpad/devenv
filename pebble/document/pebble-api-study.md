@@ -14,7 +14,25 @@ http://www.airkorea.or.kr/sidoCompare?itemCode=10008
 http://www.airkorea.or.kr/sido_compare_p01?itemCode=10008&ymd=2015-12-31%2012&areaCode=031  
 HTML 파일이 안열림  
   
-  
+
+
+html 파싱?
+
+```js
+var jq = document.createElement('script');
+jq.src = "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(jq);
+
+// … give time for script to load, then type.
+jQuery.noConflict();var jq = document.createElement('script');
+jq.src = "//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(jq);
+
+// … give time for script to load, then type.
+jQuery.noConflict();
+$(".table_05 tr:eq(36) td").each(function() { console.log($(this).text().trim()) });
+```
+ 
   
   
 ### SYNCHRONIZING APP UI 내용 참고 아래 두 소스코드 비교해 볼것.  
@@ -122,3 +140,8 @@ tuple은 data와 key를 가지고있는 간단한 객체임.
   
 ### 3. Dictionary  
   
+
+
+### 4. pebblekit-js 가이드  
+독립된 모바일용 앱 필요없이 폰과 연동하여 페블앱의 기능을 확장 시켜줌.
+https://developer.getpebble.com/guides/pebble-apps/pebblekit-js/
