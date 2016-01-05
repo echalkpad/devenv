@@ -1,5 +1,9 @@
-# For mac ox x
 #! /bin/bash
+
+# Speaking input text.
+# With -f options, you can convert text files to audio file which can read input file.
+# This script is for mac ox x
+
 TTS=say
 VOICE=samantha
 SPEED=160
