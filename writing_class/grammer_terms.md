@@ -94,14 +94,29 @@ Did you hear about the tiger that __broke out__ of the zoo?
 There are many __books__ on my __shelves__.
 Six __children__ and four __adults__ are in the room.
 - `possessive`  
-
+__Mary's__ mother works as an attorney.
+The __leader of the country__ is visiting China this week.
 - `preposition`  
+Please put the plates __on__ the table.
+Sarah has been standing __in__ line __for__ an hour.
 - `present tense`  
+The sun __is shining__.
+My ankle __hurts__
 - `pronoun`  
+__She__ is my sister.
+Can you igve teh present to __them__?
 - `proper noun`  
+__San Francisco, California__ is a beautiful city.
+The math teacher's name is __Mr. Johnson__.
 - `reflexive pronoun`  
+Jack saw __himself__ in the mirror.
+Please help __yourself__.
 - `relative pronoun`  
+The house __that__ my father built is still standing.
+The teacher, __whose__ class begins at nine, is runnign late.
 - `subjunctive`  
+It is critical that you __be__ on time tomorrow.
+I suggest that you __not take__ the job until you know its hours.
 - `superlative`  
 - `transitive verb`  
 - `verb`  
