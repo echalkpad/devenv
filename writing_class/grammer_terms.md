@@ -67,16 +67,34 @@ They say a cat has nine __lives__.
 We __bound__ the papers up with a ribbon.
 Terry __fed__ her pet goldfish.
 - `mass noun` 
-__Rice__  
+__Rice__ doesn't take long to cook.
+There is a picher of juice on teh table.
 - `modal`  
+__Would__ you like to see a movie?
+Frank __can__ visit us tomorrow.
 - `modifier`  
+The __eager__ students will start their papers soon.
+__Five__ new classrooms will be added to compus this week.
 - `noun`  
+If __warter__ boils, it turns to steam.
+If Maria studies, she will pass the __exam__.
 - `participle`  
+__Having heard her story__, we felt sympathetic.
+They have __stopped__ work for the day.
 - `past tense`  
+He __walked__ to the football game.
+Barbara __took__ the bus all last week.
 - `perfect tense`  
+I __have eaten__ in that restaurant three times.
+__Had__ Susan ever __seen__ an opera before?
 - `phrasal verb`  
+If you want to a definition, __look__ it __up__ in the dictionary.
+Did you hear about the tiger that __broke out__ of the zoo?
 - `plural`  
+There are many __books__ on my __shelves__.
+Six __children__ and four __adults__ are in the room.
 - `possessive`  
+
 - `preposition`  
 - `present tense`  
 - `pronoun`  
