@@ -77,13 +77,11 @@ void recur(int index, int cnt, int result)
 	cnt++;
 
 	/* Sort of Pruning */
-	if (data[0] != NOBALL) {
-		st_index = find_b(0, RIGHT);
-		if (st_index == NOTFND)
-			st = 0;
-		else
-			st = st_index;
-	}
+	st_index = find_b(0, RIGHT);
+	if (st_index == NOTFND)
+		st = 0;
+	else
+		st = st_index;
 
 	/* Recursion */
 	for(i = st; i < N; i++)
