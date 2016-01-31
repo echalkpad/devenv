@@ -85,3 +85,28 @@ http://www.runeaudio.com/documentation/troubleshooting/updating/
 	해당 디렉토리의 파일들은 git server의 로컬 리포로 되어있어서 pull로 최신 버전으로 땡김.  
 4) curl -s -X GET 'http://localhost/clear'  
 	이게 무슨 역할인지 잘 모름.  
+
+
+## 8 mac 에서 ssh 로 접속하기
+
+Mac 에선 이런식으로 접속이 안됨  
+```bash
+ $ ssh root@procyonq.iptime.org:5522
+
+```
+
+이렇게 해야함  
+```bash
+ $ ssh -l root -p 5522 procyonq.iptime.org
+
+```
+
+내 PC 접속 환경
+```bash
+# rune audio 접속 , rune
+ $ ssh -l root -p 5522 procyonq.iptime.org
+
+# Ubuntu 접속
+ $ ssh -l jihuun -p 4422 procyonq.iptime.org
+
+```
