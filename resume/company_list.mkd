@@ -1,0 +1,544 @@
+
+# Applied History
+
+### Nectar, IoT, 10/NOV/2017 
+> smart bottle cap, that can alert befor run out contain.
+> Firmware engineer
+> https://getnectar.com/
+> visa not available, 11-50 emp
+
+https://angel.co/nectar/jobs/125142-firmware-engineer
+
+Hello, I am firmware engineer working for the mobile division of Samsung Electronics. I fascinated about making the embedded product, especially for IoT devices like Nectar does. I want to be part of Nectar team and aid in organizational growth owing to my skills in embedded, firmware developing skills. I am waiting for your answer, thank you. 
+
+
+
+
+
+
+
+
+
+
+
+# Company List
+
+
+## Tier #3
+--------------------------------------------------------------------
+
+
+#### Nectar
+`IoT`, `Firmware engineer`, `Palo Alto`, `no visa`
+
+https://angel.co/nectar/jobs/125142-firmware-engineer
+
+``````txt
+
+Skills
+C++, Embedded Systems, C, Bare metal microcontrollers, Embedded Firmware Development, Start Ups, Product, Bare Footing, Bare Metal Firmware
+
+Requirements: 
+
+10+ years as an electrical engineer in firmware development 
+Work with electrical and mechanical engineers to develop the firmware requirements 
+Expert in bare metal development 
+Expert in firmware design and implementation 
+Expert in low level C and C++ programming 
+Expert in BLE (Bluetooth Low Energy) and 802.11 protocols 
+Ability to develop and manage optimized, codebase with tiny footprint 
+Expert in embedded device full life cycle testing 
+Experience developing for low power ARM MCU 
+MS or BS in electrical engineer or related field. Masters preferred
+
+Desired: 
+
+Familiarity with Nordic MCU family and ARM Cortex M series 
+Good knowledge of processing Analog mixed signal 
+Familiarity with Real Time Operating System 
+Ability to understand and work with Schematics 
+Familiarity using Oscilloscope, Sig Gen, Spectrum Analyzer
+``````
+
+
+#### Tensyr
+`Driving deployment`, `dataOS Software Engineer (Autonomous Vehicles)`, `Mountain View`
+`no visa`
+
+https://angel.co/tensyr-1/jobs/281122-dataos-software-engineer-autonomous-vehicles
+
+``````txt
+Skills
+Embedded Systems, Embedded Linux, Low-Latency, C/Lua/Python Developer, ARM
+
+In this role within the team you will: 
+● Design, develop, and ship on-vehicle software including the Tensyr Dataflow and Insight engines for real-time analytics. 
+● Ensure correctness, performance and reliability of the system 
+● Participate in product discussions, influence the roadmap, and take ownership and responsibility over new projects to make them happen
+
+Experience with the following is highly valuable but not required. More important is an interest and eagerness to figure out how things really work (or not!): 
+● 3-5 Years of software experience preferably in a real time environment 
+● Writing code that is latency sensitive 
+● Quantitative systems design, performance analysis and optimization of reliable, safe and high-performance systems software 
+● Knowledge of Unix/Linux environments and embedded Linux 
+● Knowledge of one or more of the following: embedded systems development, operating systems, ARM, x86 assembly, or hardware / software integration 
+● Programming in C, Lua 
+● Masters/PhD in Computer Science or related field preferred but not required.
+``````
+
+
+#### Point One Navigation
+`Precise Location as a Service`, `Senior Embedded Software Engineer at Point One Navigation`, `San Francisco`
+`no visa`
+
+https://angel.co/point-one-navigation/jobs/166800-senior-embedded-software-engineer
+
+````txt
+Skills
+Embedded Linux, Microcontrollers, Embedded C/C++, ARM Cortex M4
+
+Things you'll work with everyday: 
+- Application code development in C++ 
+- Embedded peripherals and drivers (UART/CAN/SPI/I2C) 
+- Wireless communication systems (Cellular, Wifi, BLE) 
+- Networking protocols (TCP/UDP) 
+- Embedded Linux 
+- FreeRTOS or similar low level RTOS
+
+Qualifications: 
+- Bachelors in Computer Science, Electrical Engineering or both 
+- 4+ years experience in real world applications involving embedded systems 
+- Demonstrated understanding of software design principles
+
+Preferred: 
+- Masters degree or similar job experience 
+- Experience with algorithm packages (Eigen, OpenCV, etc.) 
+- Worked with TI M4 class processors 
+- Worked with Linux on ARM processors 
+- Worked with Embedded GCC 
+- Experience with automotive systems or UAV systems
+
+Perks: 
+- Generous early stage equity package in a venture backed startup 
+- Offices at Pier 9 Workshop with unlimited training on almost every machine shop tool imaginable 
+- Healthcare and dental 
+- Flexible work hours
+````
+
+#### Bigstream
+`Accelerating Intelligence`, `Linux Device Driver Developer,` `Mountain View` `Visa`
+
+https://angel.co/bigstream/jobs/208654-linux-device-driver-developer
+
+````txt
+Skills
+Linux, Linux Kernel, C programming, Linux Device Drivers, Multi Threaded Programming
+
+Qualifications:
+
+- Bachelor's degree in Computer Science or Computer Engineering required 
+- Master's degree preferred 
+- 2+ years of experience working with C programming language and Linux operating system 
+- Solid understanding of Operating Systems in general is required 
+- Solid C/C++ development and debugging skills in Linux operating environments is required 
+- Solid multi-thread programming skills is required 
+- Solid understanding of Linux kernel architecture, kernel subsystems, and device model is required 
+- Experience with Linux device drivers would be highly preferred 
+- Experience with PCI device drivers, protocol stack drivers (eg. TCP/IP, UDP/IP) and user-mode networking preferred 
+- Experience with virtualization technologies such as KVM, SR-IOV, Intel VT-d preferred 
+- Experience with continuous integration workflow and tools preferred 
+- Good verbal and written communication skills is required
+````
+
+#### Trustlook  
+`Unknown Mobile Threats Detection Solutions` `Embedded Linux Kernel Developer at Trustlook` `San Jose` `Visa`
+
+https://angel.co/trustlook/jobs/237449-embedded-linux-kernel-developer
+
+````txt
+Requirements
+
+BSEE degree or equivalent 
+At least 3 years experience working as an embedded linux developer 
+Fluent in C/C++ 
+Ability to create a custom linux platform with bootloader, kernel, drivers and build environment
+Good oral and written communication skills 
+Experience working in a startup environment is a plus
+````
+
+
+#### Excelfore  
+`Driving Automotive IoT Solutions` `Linux/Android Embedded Engineer at Excelfore` `Fremont` `Visa`
+
+https://angel.co/excelfore/jobs/173111-linux-android-embedded-engineer
+
+````txt
+Skills and Requirements: 
+· Passionate about software development 
+· Strong experience in embedded domains, preferably automotive 
+· Exceptional C programming skills 
+· Strong expertise in Linux system internals 
+· In-depth knowledge of network and socket device drivers 
+· Experience in hardware debugging, porting and board bring-up 
+· Development experience on GNU tools and cross-tool chain
+
+Extra points if you have: 
+· Strong knowledge of Android Framework. Experience with embedded Android 
+· Low level Ethernet protocol -- lower than the transport layer 
+· Automotive Standards: SPICE, AUTOSAR, ASIL 
+· Automotive Protocols: AVB/TSN, DoIP, SOME/IP, CAN 
+· Experience working with distributed teams 
+````
+
+#### Shape
+`Meet ShapeScale, Personal 3D Body Scanner & Fitness Tracking [YC S15]` `Embedded Firmware Engineer at Shape` `San Francisco Bay Area`
+`no visa`
+
+https://angel.co/shape-inc/jobs/270256-embedded-firmware-engineer
+
+````txt
+Skills
+C++, Embedded Systems, C, Linux, Embedded Linux, Firmware, Internet of Things, WiFi (802.11a/b/g/n/ac) and Bluetooth HW
+
+<What you’ll do>
+
+- Analyze, design, program, debug and modify firmware, typically using high-level languages (e.g., C, C++). . Work often involves analog and digital hardware, embedded Linux and real-time operating systems. Position requires knowledge of and exposure to hardware design. 
+- Write and execute complete testing plans, protocols, and documentation for assigned portion of application. Identifies and debugs, and creates solutions for issues with code and integration into application architecture. 
+- Architect firmware to support various algorithms embedded in hardware platforms. 
+- Evaluate and specify OS for use within embedded platforms. 
+- Generate and evaluate functional and design specifications. 
+- Work with project leaders to define assignments, schedules, quality expectations, and other project criteria. 
+- Participate in defining product requirements. 
+- Characterize system and component performance. 
+- Write device drivers to support third-party hardware in our acquisition environment. 
+- Working with other engineers to develop appropriate data interface/format for storing data. 
+- Support full firmware lifecycle including design, development, debugging and ongoing sustaining. 
+- Author test cases and input into system test plans. 
+- Assist with triage of problem reports and provide resolution progress. 
+- Maintain various engineering tools used to debug, analyze, and test embedded products. 
+- Help setup and maintain the set of embedded development tools like compilers, and debuggers, etc. 
+- Design embedded firmware using C/C++ for real-time electromechanical interactions. 
+- May lead a team of other firmware engineers and internal and outsourced development partners. 
+- Facilitates information sharing, validation, and team decision making processes. 
+- Present results and recommendations in an executive summary form. 
+- Collaborates and communicates with management, internal, and outsourced development partners regarding firmware design status, project progress, and issue resolution.
+
+<REQUIREMENTS>
+
+> Minimum
+
+- BS in Electrical Engineering, Computer Engineering, or similar field plus minimum 3 years of related experience. 
+- Has experience working on volume manufactured consumer products. 
+- Proficient in C & C++ with experience in writing robust and maintainable production code. 
+- Excellent general knowledge in electronics and embedded systems 
+- Extended knowledge of embedded Linux with ideally experience with consumer products 
+- Knowledge and experience with many different processors, as well as HW peripherals (e.g. PWM, ADC, DAC, CAN, UART, I2C, SPI, USB, MIPI, DDR3, LVDS etc.) 
+- Experience with IoT consumer devices and their communication stack (Wifi / BT) 
+- Experience with source code control systems 
+- Experience using third-party frameworks, APIs, and DLLs is highly desired. 
+- Applicant must work well in a team environment.
+
+> Preferred
+
+- MS / Ph D. in Electrical Engineering, Computer Engineering, or similar field plus 5 years of related experience 
+- Knowledge of other language(s) is a plus (C#, VB, Python, Assembly, etc.) 
+- Experience with Intel / Arm Linux platform 
+- Experience with motion control and robotics 
+- Experience with sensor acquisition and processing 
+- Experience optimizing C and Matlab algorithms for high data throughput 
+- Familiarity interfacing with large distributed database system is a definite plus.
+````
+
+
+#### Cirrent  
+`Zero touch Wi-Fi Joining` `Embedded Software Developer at Cirrent` `San Mateo` `no visa`
+
+````txt
+Skills
+C++, Networking, Embedded Systems, Linux, Firmware, Internet of Things, TCP/IP, Internet of Everything, Embedded Firmware Development, WiFi, Internet of Things (Rpi / Arduino / Sensors), Broadcom WICED SDK
+The person should also have: 
+
+High-energy work habits 
+* BS or MS in computer science or equivalent 
+* Experience with embedded development for consumer products 
+* Proven experience in a startup environment 
+* Demonstrated ability to deliver highly robust and reliable products 
+* Experience with connected products (preferably as a developer and a consumer!)
+
+The person must be proficient with: 
+* Embedded OS: embedded Wi-Fi development platforms from Qualcomm IoE, Broadcom WICED, TI, Marvel, and others; linux, micrium, VxWorks, and others 
+* Embedded development: C, C++, python, java 
+* Wireless: 802.11, 802.1x, OpenWRT, wpa supplicant, hostapd, 
+* Networking: TCP/IP, dhcp, 
+* Security: Public key cryptography
+````
+
+#### SimpliSafe  
+`The best self-installed wireless home security system.`
+`Senior Embedded Linux Engineer`
+`Boston`
+`Visa`
+
+https://angel.co/simplisafe/jobs/118339-senior-embedded-linux-engineer
+
+````txt
+Skills
+C++, C, Linux, Linux Kernel
+
+SimpliSafe is looking for a Senior Embedded Sofware Engineer to design and develop our next generation platform for our award winning IoT consumer products infrastructure. In this role, you will:
+
+- Develop the embedded Linux platform for current and next generation products 
+- Design, code and integrated comprehensive solutions to improve our products 
+Identify and fix potential security threats 
+- Continually improve and maintain Linux distribution 
+- Unit test and verification of code and related API framework
+````
+
+
+#### Leap Motion
+`Reach into virtual reality with your bare hands`
+`Embedded Software and Firmware Engineer`
+`San Francisco `
+`No Visa`
+
+https://angel.co/leap-motion/jobs/55002-embedded-software-and-firmware-engineer
+
+
+````txt
+Responsibilities:
+
+-Develop sensor and USB drivers to deliver the highest possible quality of data at 
+high speed 
+-Develop drivers and build tools in a demanding embedded linux environment 
+-Research new possibilities for minimizing power usage while improving 
+throughput 
+-Test and provide guarantees about the stability and speed of our devices
+
+Requirements:
+
+-B.S. in Software Engineering or Computer Science, or related field 
+-3+ years in industry 
+-Expert in C 
+-Experience developing device drivers for Embedded Linux or other RTOSes 
+-Familiar with USB, MIPI, I2C, and UART protocols 
+-Familiar with C++ and ARM Assembly 
+-Familiar with serialization, backwards compatibility concerns, and terminal 
+debugging 
+-Strong understanding of multitasking in an RTOS context 
+-Comfortable using an oscilloscope for debugging 
+-Capable of operating in the hardware domain, and able to read schematics and - 
+block-level diagrams
+````
+
+
+
+
+
+#### Kumbaya  
+`Humanitarian Technology Company, Powering and Connecting Rural Africa`
+`Sr. Linux Kernel Device Driver Engineer at Kumbaya`
+`Rancho Palos Verdes, CA`
+`No visa`
+
+https://angel.co/kumbaya/jobs/266373-sr-linux-kernel-device-driver-engineer
+
+````txt
+Skills
+C++, Linux Kernel, Ubuntu, Device Drivers, Yocto, Bitbake
+Primary Responsibilities Include, But Are Not Limited To:
+
+Cross-compile Ubuntu Kernel using Yocto, Bitbake for i.MX6, ARM architecture 
+Implement device drivers for audio, video, TV, USB, Ethernet, Wi-Fi modules 
+Investigate existing device drivers issues 
+Implement middleware daemons 
+Implement microcontrollers firmware 
+Lead OS level architectural design, contribute to technical discussions 
+Work closely with electrical, hardware engineers
+
+Position Qualifications:
+
+8 years of experience as Ubuntu/Linux kernel engineer 
+2 years of experience with Yocto, Bitbake 
+8 years of experience implementing device drivers 
+10 years of experience C/C++ 
+Expert knowledge of Ubuntu 
+Experience with NXP boards (i.MX6, ARM) 
+Cross-compile tool chains 
+Experience integrating with device middleware on Linux/Ubuntu 
+Experience building packages/tools from C, C++ source code 
+Excellent work ethic and good reading, writing, and communication skills 
+Pluses: Qt, QtWebEngine, embedded databases experience
+````
+
+
+#### Verdigris  
+`Energy Intelligence for Buildings`
+`Embedded Engineer at Verdigris` `Mountain View` `No visa`
+
+https://angel.co/verdigris/jobs/237673-embedded-engineer
+
+````txt
+Skills
+Product Management, Mechanical Engineering, Firmware, Schematic Capture, Digital/ Analog Circuit Design, Circuit Board Design, Design for Manufacturing, Product Design, Analog Circuit Design, Printed Circuit Board Design and Layout
+
+Required Skills & Qualifications
+
+Technical 
+-You have experience building Embedded Linux Kernels, modules, and packages (Debian) 
+-You can architect industrial and consumer grade test methodologies 
+-You know how to use IoT communication frameworks (MQTT, AWS IoT) 
+-You understand electrical designs 
+-You deploy your work using Cloud Computing infrastructure (AWS, Heroku) 
+Growth 
+-You have 3+ years of relevant experience 
+-You are a continuous learner seeking to expand your skill sets in work and life. 
+-You highly value paired development and robust testing methodologies to accelerate your work and team 
+-You can communicate effectively to both technical and non-technical audiences
+````
+
+
+
+#### iBeat
+`Wearable`
+`Firmware Engineer at iBeat` `San Francisco` `no visa`
+
+https://angel.co/ibeat/jobs/295074-firmware-engineer
+````txt
+Skills
+Firmware, Firmware Testing
+
+Required skills to succeed in this role: 
+• Degree in Computer Science or equivalent 
+• 5+ years experience in C/C++ firmware development. 
+• Experience with scripting languages such as Python, shell scripts, etc. 
+• Experience with Unit Test frameworks and mock environments. 
+• Experience in limited-resource environments, and low power usage systems. 
+• Nice to have: experience with cellular and GPS communications. 
+• Good communication skills. Ability to follow logical test methodologies, document results, summarize etc. 
+• Experience with CI, Bug tracking and automation systems. 
+• Experience with consumer wearables and/or medical devices. 
+• Experience with manufacturing tests. 
+• Experience with real-time operating systems, and ARM Architecture.
+````
+
+
+####
+````txt
+````
+
+
+####
+````txt
+````
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+
+####
+````txt
+````
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+
+####
+````txt
+````
+
+
+####
+````txt
+````
+
+
+
+
+
+
+
+
+
+
+
+
+### Tier #2
+--------------------------------------------------------------------
+
+#### Cruise Automation  
+`Self driving cars`
+`Firmware Engineer`
+`San Francisco`
+`Visa`
+
+https://angel.co/cruise-automation/jobs
+https://www.getcruise.com/careers/listing/788434
+
+````txt
+Responsibilities:
+Design and develop complex, highly scalable, and latency-optimized software in C
+Invent, extend, design and develop next-generation features for self-driving car applications
+Improve and deliver reliable software through continuous integration, automated testing and code reviews
+Requirements:
+
+4+ years of experience as a Firmware Engineer writing production quality code in C
+Eagerness to learn and explore new technologies
+Ability to write or quickly learn how to write clean, fast, and reliable C code
+Working experience operating and debugging embedded systems
+Strong organizational and communication skills
+Unit test everything, but know when to ask our stellar tools team for scripts or tools
+Bonus Skills:
+
+Experience with Linux
+Experience with ROS
+````
+
+
+### Tier #1
+--------------------------------------------------------------------
+
+
