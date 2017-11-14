@@ -456,7 +456,7 @@ Background:
 ````
 
 
-### Mindtribe Product Engineering  STARRED
+### Mindtribe Product Engineering  
 Consumer Electronics, Engineering Firms, Innovation Engineering, New Product Development
 `Mid-Level or Senior-Level Embedded Software Engineer at Mindtribe Product Engineering`
 `San Francisco`
@@ -479,7 +479,7 @@ Day-to-day, we work in close-knit teams of typically 2 - 6 engineers. Here are t
 -Sleeping soundly because you're just as proud of your test suite as you are of the code it's bulletproofing.
 ````
 
-### Flow Labs  STARRED
+### Flow Labs  
 Real-time water insights; Forbes 30 Under 30 - Energy; Launch Festival - Best Social Good
 `Lead Embedded Firmware Engineer at Flow Labs`
 `Silicon Valley`
@@ -535,7 +535,7 @@ Desired Experience and Skills
 
 ````
 
-### doblet  STARRED
+### doblet  
 On-demand power network. Portable chargers at your favorite locations.
 `Firmware Engineer at doblet`
 `San Francisco`
@@ -561,7 +561,7 @@ Preferred:
 ````
 
 
-### beaconhome  STARRED
+### beaconhome  
 startup in stealth mode
 `Embedded Software Engineer - Senior at beaconhome`
 `San Francisco Bay Area`
@@ -597,7 +597,7 @@ Even Better
 
 ````
 
-### infiswift  STARRED
+### infiswift  
 Infiswift is an IoT platform to build enterprise-grade connected solutions
 `Firmware Engineer `
 `San Ramon, CA, Remote OK`
@@ -621,7 +621,7 @@ Ability to communicate embedded software ideas to non-technical people, and tech
 Ability to manage multiple tasks concurrently 
 ````
 
-### Motiv  STARRED
+### Motiv  
 The intelligent way to achieve a better you. 
 `Firmware Engineer, Algorithm Integration at Motiv`
 `San Francisco`
@@ -647,7 +647,7 @@ Minimum of 3 years relevant experience.
 Bachelor’s of Science in a discipline such as Electrical Engineering, Computer Engineering, Computer Science, or equivalent experience.
 ````
 
-### STOWER  STARRED
+### STOWER  
 Mobile-Enabled Energy 
 `Senior Embedded Systems Engineer at STOWER`
 `San Francisco Bay Area`
@@ -661,7 +661,7 @@ C++, Product Development, Distributed Systems, Embedded Systems, Consumer Produc
 
 ````
 
-### BHO Tech  STARRED
+### BHO Tech  
 Technology Headhunting Agency
 `Firmware Engineer at BHO Tech`
 `San Francisco Bay Area, Remote`
@@ -683,7 +683,7 @@ Firmware
 ````
 
 
-### Anova Culinary  STARRED
+### Anova Culinary  
 Subid, Anova makes it super simple for anyone to cook restaurant-quality meals, everyday.
 `Senior Embedded Software Engineer at Anova Culinary`
 `San Francisco`
@@ -713,7 +713,7 @@ Requirements
 ````
 
 
-### Lynk Remote Technologies  STARRED
+### Lynk Remote Technologies  
 Vertical segment Internet of Things (IoT)
 `Sr. IoT Software and Hardware Engineer at Lynk Remote Technologies`
 `Los Angeles`
@@ -763,7 +763,7 @@ Preferred locations are Los Angeles, CA, San Francisco, CA or San Jose, CA
 ````
 
 
-### Proxy Co.  STARRED
+### Proxy Co.  
 Your digital identiy for the physical world.
 `Lead Firmware Engineer at Proxy Co.`
 `San Francisco`
@@ -801,7 +801,7 @@ Bonus Points:
 ````
 
 
-### Pubinno  STARRED
+### Pubinno  
 Smart Taps for Perfect Beer
 `Embedded Software Engineer at Pubinno`
 `San Francisco`
@@ -834,7 +834,7 @@ Preferred Qualifications
 
 
 
-### Lucid VR  STARRED
+### Lucid VR  
 World's First True VR Camera - 3D 180°
 `Embedded Firmware Engineer at Lucid VR`
 `Santa Clara`
@@ -869,7 +869,7 @@ Qualifications
 
 
 
-### Astranis  STARRED
+### Astranis  
 Small, low-cost telecommunications satellites
 `Embedded Software Engineer at Astranis`
 `San Francisco`
@@ -908,7 +908,7 @@ BONUS
 
 
 
-### Orion  STARRED
+### Orion  
 Orion is a platform for real-time voice communication everywhere.
 `Firmware Engineering Lead at Orion`
 `San Francisco`
@@ -936,7 +936,7 @@ You are eager to learn.
 
 
 
-### zGlue  STARRED
+### zGlue  
 zGlue is developing an IoT platform that allows products to be fully customized from silicon to the cloud, 
 `Firmware Engineer (OS / SDK) at zGlue`
 `Mountain View`
@@ -979,7 +979,7 @@ Qualifications
 
 
 
-### Impossible Aerospace  STARRED
+### Impossible Aerospace  
 Electric Aircraft
 `Embedded Systems Engineer at Impossible Aerospace`
 `Sunnyvale `
@@ -995,7 +995,7 @@ C++, Embedded Systems, C, Hardware Engineering, Sensors
 ````
 
 
-### Credence ID  STARRED
+### Credence ID  
 Reinventing Biometrics for Today’s Mobile World.
 `Kernel Software Engineer at Credence ID`
 `Emeryville`
@@ -1024,7 +1024,7 @@ Understanding of Android Frameworks and Applications.
 
 
 
-### Mere Coffee  STARRED
+### Mere Coffee  
 Single-serve convenience meets cafe quality.
 `Embedded Systems Engineer at Mere Coffee`
 `San Francisco`
@@ -1043,7 +1043,7 @@ We are seeking a self-starting, highly motivated Embedded Systems Engineer to ta
 
 
 
-### Skydio  STARRED
+### Skydio  
 Autonomous flying camera drones
 `Software Engineer - Embedded at Skydio`
 `Redwood City `
@@ -1075,7 +1075,7 @@ USEFUL SKILLS:
 
 
 
-### Mode  STARRED
+### Mode  
 Enabling “Hardware as a Service” for leading commercial hardware companies.
 `Software Engineer (Full-stack/Embedded Linux) at Mode`
 `San Mateo`
@@ -1108,7 +1108,7 @@ This is a truly full-stack position! You will work from web development to backe
 
 
 
-### Atmosic Technologies  STARRED
+### Atmosic Technologies  
 Next-generation low power platforms for the Internet-of-Things (IoT)
 Embedded Software Engineer at Atmosic Technologies
 San Francisco Bay Area
@@ -1143,15 +1143,22 @@ Desired Experience:
 
 
 
-### Cisco Meraki  STARRED
-We’re making IT easier, faster, and smarter, with technology that simply works.
+
+### Secured Universe
+We STOP malware on the 2 billion devices powered by Android.
+Kernel Hacker at Secured Universe
+San Diego, Remote
+no visa
+
+https://angel.co/secured-universe/jobs/73426-kernel-hacker
+
 ````txt
-````
+Skills
+C++, C, Linux Kernel/drivers., ARM Assembly, X86 Assembly/machine Code
 
+Job Description
 
-
-###
-````txt
+Intimately familiar with the linux kernel with at least 5 years experience actual kernel/driver development. Embedded/ARM a plus, and you should be extremely comfortable with assembly.
 ````
 
 
@@ -1202,7 +1209,7 @@ Experience with Linux
 Experience with ROS
 ````
 
-### Awair  STARRED
+### Awair  
 Know What's in the Air You Breathe
 Firmware/Hardware Engineer at Awair
 San Francisco
