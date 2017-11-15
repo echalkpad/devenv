@@ -28,6 +28,403 @@ Hello, I am firmware engineer working for the mobile division of Samsung Electro
 --------------------------------------------------------------------
 
 
+
+### Embedded Linux engineer
+--------------------------------------------------------------------
+
+### Bigstream
+`Accelerating Intelligence`, `Linux Device Driver Developer,` `Mountain View` `Visa`
+
+https://angel.co/bigstream/jobs/208654-linux-device-driver-developer
+
+````txt
+Skills
+Linux, Linux Kernel, C programming, Linux Device Drivers, Multi Threaded Programming
+
+Qualifications:
+
+- Bachelor's degree in Computer Science or Computer Engineering required 
+- Master's degree preferred 
+- 2+ years of experience working with C programming language and Linux operating system 
+- Solid understanding of Operating Systems in general is required 
+- Solid C/C++ development and debugging skills in Linux operating environments is required 
+- Solid multi-thread programming skills is required 
+- Solid understanding of Linux kernel architecture, kernel subsystems, and device model is required 
+- Experience with Linux device drivers would be highly preferred 
+- Experience with PCI device drivers, protocol stack drivers (eg. TCP/IP, UDP/IP) and user-mode networking preferred 
+- Experience with virtualization technologies such as KVM, SR-IOV, Intel VT-d preferred 
+- Experience with continuous integration workflow and tools preferred 
+- Good verbal and written communication skills is required
+````
+
+
+### Trustlook  
+`Unknown Mobile Threats Detection Solutions` `Embedded Linux Kernel Developer at Trustlook` `San Jose` `Visa`
+
+https://angel.co/trustlook/jobs/237449-embedded-linux-kernel-developer
+
+````txt
+Requirements
+
+BSEE degree or equivalent 
+At least 3 years experience working as an embedded linux developer 
+Fluent in C/C++ 
+Ability to create a custom linux platform with bootloader, kernel, drivers and build environment
+Good oral and written communication skills 
+Experience working in a startup environment is a plus
+````
+
+
+### Excelfore  
+`Driving Automotive IoT Solutions` `Linux/Android Embedded Engineer at Excelfore` `Fremont` `Visa`
+
+https://angel.co/excelfore/jobs/173111-linux-android-embedded-engineer
+
+````txt
+Skills and Requirements: 
+· Passionate about software development 
+· Strong experience in embedded domains, preferably automotive 
+· Exceptional C programming skills 
+· Strong expertise in Linux system internals 
+· In-depth knowledge of network and socket device drivers 
+· Experience in hardware debugging, porting and board bring-up 
+· Development experience on GNU tools and cross-tool chain
+
+Extra points if you have: 
+· Strong knowledge of Android Framework. Experience with embedded Android 
+· Low level Ethernet protocol -- lower than the transport layer 
+· Automotive Standards: SPICE, AUTOSAR, ASIL 
+· Automotive Protocols: AVB/TSN, DoIP, SOME/IP, CAN 
+· Experience working with distributed teams 
+````
+
+
+
+### SimpliSafe  
+`The best self-installed wireless home security system.`
+`Senior Embedded Linux Engineer`
+`Boston`
+`Visa`
+
+https://angel.co/simplisafe/jobs/118339-senior-embedded-linux-engineer
+
+````txt
+Skills
+C++, C, Linux, Linux Kernel
+
+SimpliSafe is looking for a Senior Embedded Sofware Engineer to design and develop our next generation platform for our award winning IoT consumer products infrastructure. In this role, you will:
+
+- Develop the embedded Linux platform for current and next generation products 
+- Design, code and integrated comprehensive solutions to improve our products 
+Identify and fix potential security threats 
+- Continually improve and maintain Linux distribution 
+- Unit test and verification of code and related API framework
+````
+
+
+
+### Kumbaya  
+`Humanitarian Technology Company, Powering and Connecting Rural Africa`
+`Sr. Linux Kernel Device Driver Engineer at Kumbaya`
+`Rancho Palos Verdes, CA`
+`No visa`
+
+https://angel.co/kumbaya/jobs/266373-sr-linux-kernel-device-driver-engineer
+
+````txt
+Skills
+C++, Linux Kernel, Ubuntu, Device Drivers, Yocto, Bitbake
+Primary Responsibilities Include, But Are Not Limited To:
+
+Cross-compile Ubuntu Kernel using Yocto, Bitbake for i.MX6, ARM architecture 
+Implement device drivers for audio, video, TV, USB, Ethernet, Wi-Fi modules 
+Investigate existing device drivers issues 
+Implement middleware daemons 
+Implement microcontrollers firmware 
+Lead OS level architectural design, contribute to technical discussions 
+Work closely with electrical, hardware engineers
+
+Position Qualifications:
+
+8 years of experience as Ubuntu/Linux kernel engineer 
+2 years of experience with Yocto, Bitbake 
+8 years of experience implementing device drivers 
+10 years of experience C/C++ 
+Expert knowledge of Ubuntu 
+Experience with NXP boards (i.MX6, ARM) 
+Cross-compile tool chains 
+Experience integrating with device middleware on Linux/Ubuntu 
+Experience building packages/tools from C, C++ source code 
+Excellent work ethic and good reading, writing, and communication skills 
+Pluses: Qt, QtWebEngine, embedded databases experience
+````
+
+
+
+### Secured Universe
+We STOP malware on the 2 billion devices powered by Android.
+Kernel Hacker at Secured Universe
+San Diego, Remote
+no visa
+
+https://angel.co/secured-universe/jobs/73426-kernel-hacker
+
+````txt
+Skills
+C++, C, Linux Kernel/drivers., ARM Assembly, X86 Assembly/machine Code
+
+Job Description
+
+Intimately familiar with the linux kernel with at least 5 years experience actual kernel/driver development. Embedded/ARM a plus, and you should be extremely comfortable with assembly.
+````
+
+
+
+### Verifone
+Now, Verifone is one of the world’s largest POS terminal vendors 
+Senior Embedded Linux SW Engineer
+Rocklin, California
+
+http://jobs.jobvite.com/careers/verifone/job/o1ST4fwA?__jvst=Job%20Board&__jvsd=Indeed
+
+````txt
+Position Summary: 
+
+Department/Environment:
+
+Core Embedded Linux Software Development in Verifone DUBLIN R&D office.
+This office is a centre of excellence office w.r.t. Linux in Verifone.
+The role is for a senior/lead engineer
+Works with other development centres worldwide in USA and Europe.
+Works closely with local and global SQA departments
+
+Essential Duties and Responsibilities:
+
+Software Design and Development on Embedded Linux based electronic payment devices.
+Design and develop solutions for new products and enhancements for existing products
+Support the sustaining of shipping products and features
+Lead, mentor and coach a local team of engineers
+Technical lead for individual project development across the OS development team
+Some travel is required - typically 1-2 weeks per quarter
+
+Knowledge & Experience:
+
+Minimum 4 year primary degree in computer science or equivalent
+8-10 years working in Linux development environment
+Fluent in C programming on Linux
+In depth knowledge of OS and Networking
+Linux driver development
+Solution architecture
+Team Leading
+Experience with source control defect & task management, documentations and code-review systems, (e.g. GIT, JIRA,Confluence, doxygen, crucible,)
+Excellent verbal and written communication skills (English)
+Embedded Linux development including new product bring-up desirable
+Familiarity with USB, Wifi, Bluetooth, GPRS drivers and S/W stacks desirable
+Security/Encryption technologies desirable
+Software development on Android / iOS based systems desirable
+````
+
+
+
+
+
+
+### Advantech
+Embedded Linux Software Engineer 
+Irvine, CA 
+
+https://www.indeed.com/viewjob?jk=413a0805720becfd&q=Embedded+Linux+kernel+Engineer&l=CA&tk=1butgln1v0g2m297&from=web
+
+````txt
+
+Minimum Qualifications:
+
+Bachelor’s degree or above in Computer Science, Information Technology or engineering related fields.
+Minimum three years of Linux embedded or desktop experience.
+
+Preferred Skills and Experience:
+
+Experience working with multiple flavors of Linux and Unix (Fedora, Ubuntu, CentOS). Yocto and Android a plus
+Experience programming with C/C++ on Linux embedded operating systems
+Three years’ experience of any Linux scripting language Shell, BASH, Python, or Perl.
+Design, code and test software that includes device drivers, kernel modifications, system management and diagnostic tools
+Must exhibit excellent documentation, code management, and tracking skills.
+Two years’ experience in troubleshooting, schematically analyzing, technical support or hardware design in RISC or x86 PC architecture or related field.
+Excellent interpersonal, English written and verbal communication skills. Bilingual ability English and Mandarin a plus
+Excellent time management and resource management skills.
+Self-motivated and self-accountable for delivery and adherence to standards and delivery timelines.
+Exhibit teamwork skills and capable of working independently in multinational organizations.
+````
+
+
+
+### Knowles Electronics 
+microphones
+Staff Engineer, Linux Kernel Development
+Mountain View, California
+
+http://jobs.jobvite.com/careers/audience/job/olQy5fwy?__jvst=Job%20Board&__jvsd=Indeed
+
+````txt
+JOB DETAILS
+
+Develop application processor Linux device drivers for audio integrated circuits in Android.  Integrate Knowles device drivers into Android mobile devices. 
+
+Required Skill Set and Experience
+
+Ability to bring up Android on different development platforms from scratch
+8+ years experience in software development.
+5+ years experience in embedded Linux application processor device driver development.
+Strong C programming skills.
+Strong in software development for real-time embedded systems.
+Experience writing device drivers for audio codecs
+Experience with Qualcomm, Intel, Nvidia SoCs
+Experience using Advance Linux Sound Architecture (ALSA).
+Working experience on serial bus interfaces like SPI, I2C, UART
+Familiarity with standard digital audio interfaces like I2S, TDM, PDM.
+Proven ability to effectively work with customers on software integration.
+Good troubleshooting skills.
+Ability to use lab equipment for test and debug of audio systems.
+Excellent verbal and written communication skills.
+Good team player with strong initiative.
+Bachelor’s or Master’s (preferred) degree in Electrical Engineering or Computer Science, or equivalent experience required
+Experience in Android programming and Android audio framework.
+Exposure to cellular wireless industry and IOT.
+Audio expertise including audio codecs.
+Ability to use the Android SDK and all tools listed on http://developer.android.com/tools/index.html under Tools Help
+Ability to create and review changes for Gerrit and participate in a continuous integration loop
+Ability to rebuild the entire Android system including the kernel, middleware (AOSP) and applications
+Knowledge of and use of Android mailing lists and other mechanisms to get support
+Set up and maintain build and release infrastructure for code patches and kernel builds.
+````
+
+
+### Tandem Recruiting Group
+They are headquartered in the Silicon Valley California, provides MEMS-based force-sensing solutions for the Automotive, Mobile, IoT, Wearable, Medical and Industrial markets.
+Senior Linux Embedded Software Engineer LP9638
+Mountain View, California
+
+https://www.linkedin.com/jobs/view/460481209/
+
+````txt
+Experience:
+
+5 years of relevant work experience in embedded software development, including firmware, driver, system integration and applications support on mobile and consumer platforms.
+
+Knowledge/Skills Required:
+
+Firmware, driver and applications software; Android systems proficiency required.
+Linux kernel driver
+Python, C, C++, Java
+Excellent analytical and organizational skills
+Ability to work with multi-discipline internal and external engineering teams
+Excellent verbal and written communication skills. Chinese proficiency strongly preferred.
+About the company
+
+````
+
+
+
+
+### CyberCoders  
+Kernel Software Engineer - Android, Linux Kernel
+Emeryville, CA, US
+
+[link](https://www.linkedin.com/jobs/view/437989270/?recommendedFlavor=HIDDEN_GEM&trk=d_flagship3_job_home_savedjobs&lipi=urn%3Ali%3Apage%3Ad_flagship3_job_home_savedjobs%3BioxsRODcR2KIDCnr8DzM2Q%3D%3D&licu=urn%3Ali%3Acontrol%3Ad_flagship3_job_home_savedjobs-A_jobshome_saved_job_click)
+
+````txt
+Minimum Qualification
+Bachelor's degree in Computer Science, Computer Engineering or equivalent combination of education and experience.
+Proven Experience in kernel development for consumer electronics product.
+3+ years of experience in Linux kernel on x86/ARM.
+Understanding of Android Frameworks and Applications.
+````
+
+
+
+### Modis
+Linux Embedded Developer (Android)
+Palo Alto, CA, US
+
+[link](https://www.linkedin.com/jobs/view/499858835/?recommendedFlavor=HIDDEN_GEM&trk=d_flagship3_job_home_savedjobs&lipi=urn%3Ali%3Apage%3Ad_flagship3_job_home_savedjobs%3BioxsRODcR2KIDCnr8DzM2Q%3D%3D&licu=urn%3Ali%3Acontrol%3Ad_flagship3_job_home_savedjobs-A_jobshome_saved_job_click)
+
+````txt
+The Job
+Architect and implement killer code
+Learn quickly through rapid and incremental prototyping
+Develop and implement new algorithms to solve difficult tasks in a mobile environment
+
+Skills
+Veteran-level experience with fundamentals of CS in C/C++, Java, JNI
+3+ years experience working on Linux embedded systems, such as Android
+Experience in Android full-stack development
+Experience with Camera2 Android API a plus
+Expertise in mobile security and/or encryption a plus
+
+````
+
+
+### Applied Materials
+Senior Linux Device Drive Engineer - (E4)
+Santa Clara, CA
+
+[link](https://www.glassdoor.com/Job/santa-clara-ca-senior-linux-device-drive-engineer-e4-jobs-SRCH_IL.0,14_IC1147439_KO15,52.htm?src=GD_JOB_AD&t=EMPLOYER_SEARCH_RESULTS&ao=182894&s=21&rdserp=true&srs=EI_JOBS&jl=2550427708)
+
+````txt
+Key Responsibilities
+Develop and design tamper-resistant, secure boot process, encryption of Uboot, Linux Kernel image, and FPGA config bitstream. Perform security reviews of embedded systems or Linux OS systems.
+Understanding of ARM or x86 Architecture, and Xilinx Zynq/Virtex FPGA platforms.
+Develop tests to verify U-Boot/OS security features; evaluation of test results as a basis for code and test improvement. Debug of the system using the testing and diagnostic routines on the hardware system and potentially in the simulation environment.
+Development and modification of U-Boot/Linux kernel/device driver changes to support ongoing feature development. Develop documentation, specifications, requirements regarding security features.
+5 years experience in Security; secure U-Boot, and Linux OS.
+5 years experience in U-Boot and Linux kernel or device driver development.
+Excellent C Programming skills, and ASM language knowledge.
+Strong knowledge or X86 or ARM architectures and Computer Systems architecture.
+Linux bash/shell scripting, Python scripting exposure.
+Ability to write software specifications, requirements, and also document production software.
+Ability to work with a broad peer group and cross-functional teams. Also, Ability to work independently.
+````
+
+### Ouster
+Advanced sensor hardware and vision algorithms for autonomous cars and drones
+Embedded Linux Engineer
+San Francisco, CA
+
+[link](https://www.glassdoor.com/job-listing/embedded-linux-engineer-ouster-JV_IC1147401_KO0,23_KE24,30.htm?jl=2488598223&ctt=1510675406233)
+
+````txt
+Skills
+Strong knowledge of embedded Linux (e.g. boot loader, U-Boot)
+Strong C programming skills
+Strong C++ programming skills
+Experience working with the Linux kernel (e.g. writing a driver, customizing the kernel and the boot process)
+Experience with kernel level debugging
+Experience constructing a cross-compiler
+Understands DMA interrupt handling
+BONUS: Some ability to write Hardware Description Language (HDL)
+BONUS: Experience using the ZYNQ chip made by Xilinx
+````
+
+### Mobiveil
+Linux Kernel & Drivers Developers
+
+[link](https://www.glassdoor.com/job-listing/linux-kernel-drivers-developers-mobiveil-JV_IC1147428_KO0,31_KE32,40.htm?jl=2485841804&ctt=1510675397033)
+
+````txt
+Requirements:
+Should have PCIe Protocol and driver development experience
+Experience in developing and debugging Linux device drivers, boot loaders, board support package (BSP) development. Experience in ARM based SoC software development.
+Strong experience in Linux kernel, Driver porting/development experience essential with Advanced C and Proficiency in Red Boot, u Boot or other similar boot loader development.
+Excellent experience on Linux, porting experience on ARM or any other Architecture.
+Good exposure on understanding requirements, design, coding, testing of complex and large-scale embedded system projects. Very good C skills. Should have worked on the following or any of the following Driver experience Display , Camera drivers , Touch screen, Backlight, Key driver Storage drivers- any of this (MMC/SD, NOR, NAND, eMMC/eSD, OneNAND).
+
+Experience: 10+ years 
+````
+
+
+### Embedded Firmware developer
+--------------------------------------------------------------------
+
 ### Nectar
 `IoT`, `Firmware engineer`, `Palo Alto`, `no visa`
 
@@ -125,70 +522,7 @@ Perks:
 - Flexible work hours
 ````
 
-### Bigstream
-`Accelerating Intelligence`, `Linux Device Driver Developer,` `Mountain View` `Visa`
 
-https://angel.co/bigstream/jobs/208654-linux-device-driver-developer
-
-````txt
-Skills
-Linux, Linux Kernel, C programming, Linux Device Drivers, Multi Threaded Programming
-
-Qualifications:
-
-- Bachelor's degree in Computer Science or Computer Engineering required 
-- Master's degree preferred 
-- 2+ years of experience working with C programming language and Linux operating system 
-- Solid understanding of Operating Systems in general is required 
-- Solid C/C++ development and debugging skills in Linux operating environments is required 
-- Solid multi-thread programming skills is required 
-- Solid understanding of Linux kernel architecture, kernel subsystems, and device model is required 
-- Experience with Linux device drivers would be highly preferred 
-- Experience with PCI device drivers, protocol stack drivers (eg. TCP/IP, UDP/IP) and user-mode networking preferred 
-- Experience with virtualization technologies such as KVM, SR-IOV, Intel VT-d preferred 
-- Experience with continuous integration workflow and tools preferred 
-- Good verbal and written communication skills is required
-````
-
-### Trustlook  
-`Unknown Mobile Threats Detection Solutions` `Embedded Linux Kernel Developer at Trustlook` `San Jose` `Visa`
-
-https://angel.co/trustlook/jobs/237449-embedded-linux-kernel-developer
-
-````txt
-Requirements
-
-BSEE degree or equivalent 
-At least 3 years experience working as an embedded linux developer 
-Fluent in C/C++ 
-Ability to create a custom linux platform with bootloader, kernel, drivers and build environment
-Good oral and written communication skills 
-Experience working in a startup environment is a plus
-````
-
-
-### Excelfore  
-`Driving Automotive IoT Solutions` `Linux/Android Embedded Engineer at Excelfore` `Fremont` `Visa`
-
-https://angel.co/excelfore/jobs/173111-linux-android-embedded-engineer
-
-````txt
-Skills and Requirements: 
-· Passionate about software development 
-· Strong experience in embedded domains, preferably automotive 
-· Exceptional C programming skills 
-· Strong expertise in Linux system internals 
-· In-depth knowledge of network and socket device drivers 
-· Experience in hardware debugging, porting and board bring-up 
-· Development experience on GNU tools and cross-tool chain
-
-Extra points if you have: 
-· Strong knowledge of Android Framework. Experience with embedded Android 
-· Low level Ethernet protocol -- lower than the transport layer 
-· Automotive Standards: SPICE, AUTOSAR, ASIL 
-· Automotive Protocols: AVB/TSN, DoIP, SOME/IP, CAN 
-· Experience working with distributed teams 
-````
 
 ### Shape
 `Meet ShapeScale, Personal 3D Body Scanner & Fitness Tracking [YC S15]` `Embedded Firmware Engineer at Shape` `San Francisco Bay Area`
@@ -273,28 +607,6 @@ The person must be proficient with:
 * Security: Public key cryptography
 ````
 
-### SimpliSafe  
-`The best self-installed wireless home security system.`
-`Senior Embedded Linux Engineer`
-`Boston`
-`Visa`
-
-https://angel.co/simplisafe/jobs/118339-senior-embedded-linux-engineer
-
-````txt
-Skills
-C++, C, Linux, Linux Kernel
-
-SimpliSafe is looking for a Senior Embedded Sofware Engineer to design and develop our next generation platform for our award winning IoT consumer products infrastructure. In this role, you will:
-
-- Develop the embedded Linux platform for current and next generation products 
-- Design, code and integrated comprehensive solutions to improve our products 
-Identify and fix potential security threats 
-- Continually improve and maintain Linux distribution 
-- Unit test and verification of code and related API framework
-````
-
-
 ### Leap Motion
 `Reach into virtual reality with your bare hands`
 `Embedded Software and Firmware Engineer`
@@ -332,43 +644,6 @@ block-level diagrams
 
 
 
-
-
-### Kumbaya  
-`Humanitarian Technology Company, Powering and Connecting Rural Africa`
-`Sr. Linux Kernel Device Driver Engineer at Kumbaya`
-`Rancho Palos Verdes, CA`
-`No visa`
-
-https://angel.co/kumbaya/jobs/266373-sr-linux-kernel-device-driver-engineer
-
-````txt
-Skills
-C++, Linux Kernel, Ubuntu, Device Drivers, Yocto, Bitbake
-Primary Responsibilities Include, But Are Not Limited To:
-
-Cross-compile Ubuntu Kernel using Yocto, Bitbake for i.MX6, ARM architecture 
-Implement device drivers for audio, video, TV, USB, Ethernet, Wi-Fi modules 
-Investigate existing device drivers issues 
-Implement middleware daemons 
-Implement microcontrollers firmware 
-Lead OS level architectural design, contribute to technical discussions 
-Work closely with electrical, hardware engineers
-
-Position Qualifications:
-
-8 years of experience as Ubuntu/Linux kernel engineer 
-2 years of experience with Yocto, Bitbake 
-8 years of experience implementing device drivers 
-10 years of experience C/C++ 
-Expert knowledge of Ubuntu 
-Experience with NXP boards (i.MX6, ARM) 
-Cross-compile tool chains 
-Experience integrating with device middleware on Linux/Ubuntu 
-Experience building packages/tools from C, C++ source code 
-Excellent work ethic and good reading, writing, and communication skills 
-Pluses: Qt, QtWebEngine, embedded databases experience
-````
 
 
 ### Verdigris  
@@ -1144,24 +1419,6 @@ Desired Experience:
 
 
 
-### Secured Universe
-We STOP malware on the 2 billion devices powered by Android.
-Kernel Hacker at Secured Universe
-San Diego, Remote
-no visa
-
-https://angel.co/secured-universe/jobs/73426-kernel-hacker
-
-````txt
-Skills
-C++, C, Linux Kernel/drivers., ARM Assembly, X86 Assembly/machine Code
-
-Job Description
-
-Intimately familiar with the linux kernel with at least 5 years experience actual kernel/driver development. Embedded/ARM a plus, and you should be extremely comfortable with assembly.
-````
-
-
 ###
 ````txt
 ````
@@ -1238,10 +1495,105 @@ Nice to have:
 ````
 
 
+### NameCircle Media Inc. (with Disney)
+
+Senior Embedded Linux Engineer
+Company Name Circle Media Inc.  Company LocationCypress, California
+
+https://www.linkedin.com/jobs/view/384840209/
+
+````txt
+Job description
+You will be working with a highly skilled team to further develop our main product Circle, a widely used Internet-connected IOT device.
+Working on embedded linux systems based on multiple SoCs, including ARM, MIPS, X86, etc
+Working with GNU cross compiling toolchain
+Using C and C++ to develop Embedded Linux applications, mostly networking oriented.
+Building and securing firmware
+Working with cloud-based APIs on Embedded Linux
+Understanding and changing network packet flow in Linux
+````
+
+
 
 
 
 ### Tier #1
 --------------------------------------------------------------------
 
+### Facebook
+Kernel Software Engineer, Building 8
+(Menlo Park, CA)
+
+https://www.facebook.com/careers/jobs/a0I1200000LTZxqEAH/
+
+````txt
+Responsibilities
+Design, develop and test kernel sub-systems and device drivers.
+Work closely with the System Engineering, Hardware, and QA teams in addition to our manufacturing partners.
+Participate in design reviews and code reviews for the Software team.
+Participate in reviews of block diagrams and schematics with the Hardware team.
+Minimum Qualifications
+Bachelor’s degree in Computer Science, Computer Engineering or equivalent combination of education and experience.
+Experience in kernel development for consumer electronics product.
+5+ years of experience in Linux kernel on ARM.
+JTAG debugging experience.
+Understanding of Android Frameworks and Applications.
+````
+
+
+
+### Google
+ChromeOS Kernel
+Software Engineer, Kernel
+San Francisco, CA, USA
+
+[link](https://careers.google.com/jobs?src=Online/Job+Board/indeed&utm_source=indeed&utm_medium=jobaggr&utm_campaign=freeaggr#!t=jo&jid=/google/software-engineer-kernel-345-spear-st-san-francisco-ca-usa-2585190214)
+
+````txt
+
+Responsibilities
+
+Design, develop, test, deploy, maintain and improve software.
+Manage individual project priorities, deadlines and deliverables.
+Qualifications
+Minimum qualifications:
+BS degree in a technical field of study or equivalent practical experience.
+1 year of experience with kernel development.
+Experience programming in C.
+
+Preferred qualifications:
+
+Experience with one or more of the following: Microcontrollers, SoC, device drivers, hardware bringup, power management, ARM processors, performance optimization, file systems or bootloading.
+Experience with embedded programming.
+Experience with Linux or Windows kernel development.
+````
+
+### GoPro
+
+Embedded Firmware Engineer, Aerial
+San Mateo, CA, US
+
+[link](https://www.linkedin.com/jobs/view/407225636/?recommendedFlavor=IN_NETWORK&trk=d_flagship3_job_home_savedjobs&lipi=urn%3Ali%3Apage%3Ad_flagship3_job_home_savedjobs%3B0ucB2IdKQuCJbEVyjNHYfA%3D%3D&licu=urn%3Ali%3Acontrol%3Ad_flagship3_job_home_savedjobs-A_jobshome_saved_job_click)
+
+
+````txt
+Skills We’re Stoked About
+BA/BS degree in Electrical, Computer Science, Robotics or Aerospace engineering.
+Experience in UAV firmware development: Multi-sensor fusion, control system identification, sensor calibration, Gimbal control, stabilization, motor controllers etc..
+Understanding of agile software development processes
+Know-how of current state-of-the-art in MEMS based sensor technology
+Experience with bootloaders/low level drivers is a plus
+Good understanding of basic RTOS concepts
+Good understanding of tasks, threads, inter-process communications, semaphore and other embedded operating system concepts
+Ability to read and understand circuit schematics
+Proficient in using oscilloscope to debug issues
+Experience/good understanding of manufacturing test process and procedure for consumer electronic device manufacturing
+Languages: C/C++, NEON/SSE instructions
+Excellent interpersonal and communication skills
+Creative and agile, ability to adapt in a fast pace engineering environment
+Ability to work independently with little direction and to work with cross-functional teams such as hardware, mechanical, program management, etc.
+Results and deadline driven
+Takes great pride and ownership in designs produced
+
+````
 
