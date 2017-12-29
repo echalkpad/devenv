@@ -1,0 +1,10 @@
+
+
+### Spelling check
+https://www.linux.com/learn/using-spell-checking-vim
+
+`:setlocal spell spelllang=en_us`
+`:set nospell`
+`]s` and `[s` To move to a misspelled word, use 
+`z=` Vim will suggest a list of alternatives that it thinks 
+
