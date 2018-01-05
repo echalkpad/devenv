@@ -2,19 +2,19 @@
 
 #### 기초 사항  
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 .dtsi : SoC 에대한 속성이 기록됨.
 .dts :  board 에대한 속성 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 device tree 의 내용과 platform driver를 연결해 주는 것은 compatible 속성이다.  
 compatible을 찾아서 실제 드라이버에서 pdev.dev->of_node로 연결시켜 주는듯.  
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 - /soc 의 자식 노드는 memory mapped device 임!!  
 > The children of the /soc node are memory mapped devices.  
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 dev.platform_data 는 디바이스트리를 사용할지말지 결정하는 포인터? 아래를 읽어볼것
 ```txt
 from LWN..
@@ -33,16 +33,16 @@ devices dev.of_node field. The various device tree access functions
 information from the device tree. After that, it`s business as usual.
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 모듈로 DT를 사용할때, of_device_id 구조체 인스턴스 포인터는 아래와 같이 초기화.  
     MODULE_DEVICE_TABLE(of, my_of_ids);
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 dts의 값들이 of_node 구조체 포인터에 어떻게 저장되는가?
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 
 #### driver에서 사용할 수 있는 property value 얻는 API
 
@@ -71,7 +71,7 @@ dts의 값들이 of_node 구조체 포인터에 어떻게 저장되는가?
 	if (of_get_property(np, "fsl,uart-has-rtscts", NULL))
 ````
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 
 
 #### 디바이스 트리 초기화는 어떻게?
@@ -112,7 +112,7 @@ dtb-list = exynos7880-joonlte_eur_open_00 exynos7880-joonlte_eur_open_01
 ```
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 
 #### fdt.c 디바이스 트리 파서  
 
@@ -237,7 +237,7 @@ Tagging an uninitialized global variable "__initdata" will cause
 the compiler to move it from .bss to .data.
 ```
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----
 
 - dtb로 부터 device_node생성하기 unflatten_device_tree()
 
@@ -287,4 +287,4 @@ the compiler to move it from .bss to .data.
 
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+----

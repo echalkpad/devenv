@@ -27,10 +27,10 @@ user가 os의 console을 이용하는 방법은 여러가지가 있는데 그중
 다음 두 그림으로 이해하면 무척 쉬움.
 
 1. UART통신을 이용한 콘솔 구조
-![case1](/img/case1.png)
+![case1](./img/case1.png)
 
 2. 모니터+키보드를 이용한 콘솔 구조
-![case2](/img/case2.png)
+![case2](./img/case2.png)
 
 
 결국 user는 tty driver를 사용해서 console을 다루게 된다.
