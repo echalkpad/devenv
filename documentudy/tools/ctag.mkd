@@ -1,0 +1,14 @@
+
+
+## setup
+
+````bash
+ $ cd $move-to-root-directory
+ $ ctags -R ./*
+````
+
+## usage
+`ctrl + ]`		move forward
+`ctrl + t`		move backward
+`:tj <symbol name>`	move to <symbol name>
+`:sts`			list up

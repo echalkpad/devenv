@@ -1,0 +1,80 @@
+
+
+## rebase
+
+next 브랜치 작업을 기준으로 topic 브랜치 작업을 하고 있는데, 
+master branch에 next가 병합된 상태이고, topic 을 다시 최신 commit 기반으로 작업 하고 싶다면?
+
+```sh
+          $  git rebase --onto master next topic
+```
+
+참고  
+
+```txt
+ $ man git-rebase
+
+.....
+
+       Here is how you would transplant a topic branch based on one branch to
+       another, to pretend that you forked the topic branch from the latter
+       branch, using rebase --onto.
+
+       First let’s assume your topic is based on branch next. For example, a
+       feature developed in topic depends on some functionality which is found
+       in next.
+
+               o---o---o---o---o  master
+                    \
+                     o---o---o---o---o  next
+                                      \
+                                       o---o---o  topic
+
+       We want to make topic forked from branch master; for example, because
+       the functionality on which topic depends was merged into the more
+       stable master branch. We want our tree to look like this:
+
+               o---o---o---o---o  master
+                   |            \
+                   |             o'--o'--o'  topic
+                    \
+                     o---o---o---o---o  next
+
+       We can get this using the following command:
+
+           git rebase --onto master next topic
+
+.....
+
+```
+
+
+### rebase confilct 났을때
+
+git diff 하면 confilict 난 부분 볼수 있고
+수동으로 수정한뒤
+
+```sh
+root@ubuntu:~/project/a5_nile/android/kernel/exynos7880# git status
+rebase in progress; onto ea72e2b
+You are currently rebasing branch 'muic-work' on 'ea72e2b'.
+  (fix conflicts and then run "git rebase --continue")
+  (use "git rebase --skip" to skip this patch)
+  (use "git rebase --abort" to check out the original branch)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   include/linux/muic/s2mu004-muic.h
+
+Unmerged paths:
+  (use "git reset HEAD <file>..." to unstage)
+  (use "git add <file>..." to mark resolution)
+
+	both modified:      drivers/muic/s2mu004-muic.c
+```
+
+```sh
+git add "Unmerged paths"
+git rebase --continue
+```

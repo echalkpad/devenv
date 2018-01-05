@@ -1,0 +1,28 @@
+
+
+## setup
+
+- Make cscope.out
+Move to root directory of source code
+
+````bash
+ $ find . \( -name '*.c' -o -name '*.cpp' -o -name '*.cc' -o -name '*.h' -o -name '*.s' -o -name '*.S' \) -print>cscope.files
+ $ cscope -i cscope.files	# using file name from cscope.fils
+ 				# Then there will be cscope.out
+````
+
+- Setup .vimrc
+
+````vimrc
+set csto=0
+set cst
+set nocsverb
+
+if filereadable("./cscope.out")
+	cs add cscope.out
+else
+	cs add SOURCE_DIR/cscope.out
+endif
+set csverb
+````
+
