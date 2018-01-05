@@ -1,0 +1,206 @@
+[    1.293356] jihuun,i2c_adap_exynos5_init,1916 
+[    1.293390] (jihuun) driver_register, 152
+[    1.293515] (jihuun) bus_for_each_dev, 307
+[    1.293552] (jihuun) bus_for_each_dev, 317 dev:reg-dummy
+[    1.293586] (jihuun) bus_for_each_dev, 317 dev:139f0000.pinctrl
+[    1.293626] (jihuun) bus_for_each_dev, 317 dev:148c0000.pinctrl
+[    1.293666] (jihuun) bus_for_each_dev, 317 dev:139e0000.pinctrl
+[    1.293705] (jihuun) bus_for_each_dev, 317 dev:13750000.pinctrl
+[    1.293743] (jihuun) bus_for_each_dev, 317 dev:139c0000.pinctrl
+[    1.293781] (jihuun) bus_for_each_dev, 317 dev:139b0000.pinctrl
+[    1.293819] (jihuun) bus_for_each_dev, 317 dev:139d0000.pinctrl
+[    1.293859] (jihuun) bus_for_each_dev, 317 dev:10630000.pinctrl
+[    1.293901] (jihuun) bus_for_each_dev, 317 dev:10790200.BUSMON_NRT_GROUP1
+[    1.293942] (jihuun) bus_for_each_dev, 317 dev:10780200.BUSMON_RT_GROUP2
+[    1.293983] (jihuun) bus_for_each_dev, 317 dev:107b0000.BUSMON_CP_GROUP3
+[    1.294021] (jihuun) bus_for_each_dev, 317 dev:107a0000.BUSMON_PERI_GROUP4
+[    1.294061] (jihuun) bus_for_each_dev, 317 dev:10100000.chipid
+[    1.294100] (jihuun) bus_for_each_dev, 317 dev:reboot
+[    1.294138] (jihuun) bus_for_each_dev, 317 dev:psci
+[    1.294176] (jihuun) bus_for_each_dev, 317 dev:exynos-powermode
+[    1.294214] (jihuun) bus_for_each_dev, 317 dev:106e1000.interrupt-controller
+[    1.294254] (jihuun) bus_for_each_dev, 317 dev:timer
+[    1.294293] (jihuun) bus_for_each_dev, 317 dev:10680000.clock-controller
+[    1.294335] (jihuun) bus_for_each_dev, 317 dev:106b0000.system-controller
+[    1.294377] (jihuun) bus_for_each_dev, 317 dev:101b0000.mct
+[    1.294416] (jihuun) bus_for_each_dev, 317 dev:13810000.uart
+[    1.294455] (jihuun) bus_for_each_dev, 317 dev:13820000.uart
+[    1.294495] (jihuun) bus_for_each_dev, 317 dev:10130000.tmuctrl_CPUCL0
+[    1.294534] (jihuun) bus_for_each_dev, 317 dev:10130000.tmuctrl_CPUCL1
+[    1.294574] (jihuun) bus_for_each_dev, 317 dev:10130000.tmuctrl_G3D
+[    1.294613] (jihuun) bus_for_each_dev, 317 dev:17000010.devfreq_mif
+[    1.294653] (jihuun) bus_for_each_dev, 317 dev:17000020.devfreq_int
+[    1.294691] (jihuun) bus_for_each_dev, 317 dev:17000030.devfreq_disp
+[    1.294730] (jihuun) bus_for_each_dev, 317 dev:17000040.devfreq_cam
+[    1.294768] (jihuun) bus_for_each_dev, 317 dev:exynos-pmu
+[    1.294807] (jihuun) bus_for_each_dev, 317 dev:cpufreq
+[    1.294846] (jihuun) bus_for_each_dev, 317 dev:10170000.watchdog
+[    1.294884] (jihuun) bus_for_each_dev, 317 dev:101a0000.rtc
+[    1.294923] (jihuun) bus_for_each_dev, 317 dev:secgpio_dvs
+[    1.294962] (jihuun) bus_for_each_dev, 317 dev:13540000.dwmmc0
+[    1.295001] (jihuun) bus_for_each_dev, 317 dev:13550000.dwmmc1
+[    1.295039] (jihuun) bus_for_each_dev, 317 dev:13870000.i2c
+[    1.295078] (jihuun) bus_for_each_dev, 317 dev:13880000.i2c
+[    1.295117] (jihuun) bus_for_each_dev, 317 dev:13890000.i2c
+[    1.295156] (jihuun) bus_for_each_dev, 317 dev:13840000.i2c
+[    1.295194] (jihuun) bus_for_each_dev, 317 dev:13830000.i2c
+[    1.295233] (jihuun) bus_for_each_dev, 317 dev:138d0000.i2c
+[    1.295271] (jihuun) bus_for_each_dev, 317 dev:138e0000.i2c
+[    1.295310] (jihuun) bus_for_each_dev, 317 dev:13850000.i2c
+[    1.295348] (jihuun) bus_for_each_dev, 317 dev:13860000.i2c
+[    1.295386] (jihuun) bus_for_each_dev, 317 dev:10610000.hsi2c
+[    1.295424] (jihuun) __driver_attach, 478
+[    1.295456] bus(jihuun): platform: driver_probe_device: matched device 10610000.hsi2c with driver exynos5-hsi2c
+[    1.295495] bus: platform: really_probe: probing driver exynos5-hsi2c with device 10610000.hsi2c
+[    1.299928] bus(jihuun): i2c: driver_probe_device: matched device 0-a066 with driver sec_pmic
+[    1.299969] bus: i2c: really_probe: probing driver sec_pmic with device 0-a066
+[    1.300609] jihuun,i2c_device_probe,640 s2mpu05-pmic
+[    1.302049] bus(jihuun): i2c: driver_probe_device: matched device 0-0006 with driver dummy
+[    1.302090] bus: i2c: really_probe: probing driver dummy with device 0-0006
+[    1.302370] jihuun,i2c_device_probe,640 dummy
+[    1.302414] bus: i2c: really_probe: bound device 0-0006 to driver dummy
+[    1.306013] bus(jihuun): platform: driver_probe_device: matched device s2mpu05-pmic with driver s2mpu05-pmic
+[    1.306056] bus: platform: really_probe: probing driver s2mpu05-pmic with device s2mpu05-pmic
+
+..............................................
+
+[    1.524523] bus: platform: really_probe: bound device s2mpu05-pmic to driver s2mpu05-pmic
+[    1.525661] bus: i2c: really_probe: bound device 0-a066 to driver sec_pmic
+[    1.527789] exynos5-hsi2c 10610000.hsi2c: i2c-0: exynos5 I2C adapter
+[    1.527832] bus: platform: really_probe: bound device 10610000.hsi2c to driver exynos5-hsi2c
+
+[    1.528425] (jihuun) bus_for_each_dev, 317 dev:13950000.hsi2c
+[    1.528465] (jihuun) __driver_attach, 478
+[    1.528499] bus(jihuun): platform: driver_probe_device: matched device 13950000.hsi2c with driver exynos5-hsi2c
+[    1.528537] bus: platform: really_probe: probing driver exynos5-hsi2c with device 13950000.hsi2c
+[    1.531411] exynos5-hsi2c 13950000.hsi2c: i2c-1: exynos5 I2C adapter
+[    1.531452] bus: platform: really_probe: bound device 13950000.hsi2c to driver exynos5-hsi2c
+
+[    1.531567] (jihuun) bus_for_each_dev, 317 dev:13960000.hsi2c
+[    1.531606] (jihuun) __driver_attach, 478
+[    1.531639] bus(jihuun): platform: driver_probe_device: matched device 13960000.hsi2c with driver exynos5-hsi2c
+[    1.531677] bus: platform: really_probe: probing driver exynos5-hsi2c with device 13960000.hsi2c
+[    1.534514] exynos5-hsi2c 13960000.hsi2c: i2c-2: exynos5 I2C adapter
+[    1.534555] bus: platform: really_probe: bound device 13960000.hsi2c to driver exynos5-hsi2c
+
+[    1.534663] (jihuun) bus_for_each_dev, 317 dev:138a0000.hsi2c
+[    1.534703] (jihuun) __driver_attach, 478
+[    1.534736] bus(jihuun): platform: driver_probe_device: matched device 138a0000.hsi2c with driver exynos5-hsi2c
+[    1.534774] bus: platform: really_probe: probing driver exynos5-hsi2c with device 138a0000.hsi2c
+[    1.541467] exynos5-hsi2c 138a0000.hsi2c: i2c-3: exynos5 I2C adapter
+[    1.541512] bus: platform: really_probe: bound device 138a0000.hsi2c to driver exynos5-hsi2c
+
+[    1.541680] (jihuun) bus_for_each_dev, 317 dev:138b0000.hsi2c
+[    1.541720] (jihuun) __driver_attach, 478
+[    1.541752] bus(jihuun): platform: driver_probe_device: matched device 138b0000.hsi2c with driver exynos5-hsi2c
+[    1.541791] bus: platform: really_probe: probing driver exynos5-hsi2c with device 138b0000.hsi2c
+[    1.546448] exynos5-hsi2c 138b0000.hsi2c: i2c-4: exynos5 I2C adapter
+[    1.546493] bus: platform: really_probe: bound device 138b0000.hsi2c to driver exynos5-hsi2c
+
+[    1.546649] (jihuun) bus_for_each_dev, 317 dev:138c0000.hsi2c
+[    1.546688] (jihuun) __driver_attach, 478
+[    1.546720] bus(jihuun): platform: driver_probe_device: matched device 138c0000.hsi2c with driver exynos5-hsi2c
+[    1.546758] bus: platform: really_probe: probing driver exynos5-hsi2c with device 138c0000.hsi2c
+[    1.551402] exynos5-hsi2c 138c0000.hsi2c: i2c-5: exynos5 I2C adapter
+[    1.551446] bus: platform: really_probe: bound device 138c0000.hsi2c to driver exynos5-hsi2c
+
+[    1.551613] (jihuun) bus_for_each_dev, 317 dev:138f0000.hsi2c
+[    1.551653] (jihuun) __driver_attach, 478
+[    1.551685] bus(jihuun): platform: driver_probe_device: matched device 138f0000.hsi2c with driver exynos5-hsi2c
+[    1.551724] bus: platform: really_probe: probing driver exynos5-hsi2c with device 138f0000.hsi2c
+[    1.558412] exynos5-hsi2c 138f0000.hsi2c: i2c-6: exynos5 I2C adapter
+[    1.558457] bus: platform: really_probe: bound device 138f0000.hsi2c to driver exynos5-hsi2c
+
+[    1.558617] (jihuun) bus_for_each_dev, 317 dev:13920000.spi
+[    1.558658] (jihuun) bus_for_each_dev, 317 dev:100c0000.spi
+[    1.558697] (jihuun) bus_for_each_dev, 317 dev:13930000.spi
+[    1.558735] (jihuun) bus_for_each_dev, 317 dev:13900000.spi
+[    1.558773] (jihuun) bus_for_each_dev, 317 dev:13910000.spi
+[    1.558811] (jihuun) bus_for_each_dev, 317 dev:13600000.usb
+[    1.558849] (jihuun) bus_for_each_dev, 317 dev:135c0000.usbphy
+[    1.558888] (jihuun) bus_for_each_dev, 317 dev:10650000.adc
+[    1.558926] (jihuun) bus_for_each_dev, 317 dev:13970000.pwm
+[    1.558965] (jihuun) bus_for_each_dev, 317 dev:11400000.mali
+[    1.559004] (jihuun) bus_for_each_dev, 317 dev:13970000.pwm-clock-controller
+[    1.559043] (jihuun) bus_for_each_dev, 317 dev:106b4000.pd-g3d
+[    1.559083] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud
+[    1.559122] (jihuun) bus_for_each_dev, 317 dev:106b4040.pd-isp
+[    1.559161] (jihuun) bus_for_each_dev, 317 dev:106b4060.pd-mfcmscl
+[    1.559200] (jihuun) bus_for_each_dev, 317 dev:amba
+[    1.559239] (jihuun) bus_for_each_dev, 317 dev:10600000.mcu_ipc
+[    1.559278] (jihuun) bus_for_each_dev, 317 dev:ion
+[    1.559316] (jihuun) bus_for_each_dev, 317 dev:mdev_output
+[    1.559354] (jihuun) bus_for_each_dev, 317 dev:14821000.vpp
+[    1.559393] (jihuun) bus_for_each_dev, 317 dev:14822000.vpp
+[    1.559432] (jihuun) bus_for_each_dev, 317 dev:14823000.vpp
+[    1.559471] (jihuun) bus_for_each_dev, 317 dev:14824000.vpp
+[    1.559510] (jihuun) bus_for_each_dev, 317 dev:148f100c.phy_m4s4_dsi
+[    1.559548] (jihuun) bus_for_each_dev, 317 dev:14800000.dsim
+[    1.559586] (jihuun) bus_for_each_dev, 317 dev:14810000.dsim
+[    1.559623] (jihuun) bus_for_each_dev, 317 dev:14830000.decon_f
+[    1.559662] (jihuun) bus_for_each_dev, 317 dev:iommu-domain_disp
+[    1.559702] (jihuun) bus_for_each_dev, 317 dev:14860000.sysmmu
+[    1.559744] (jihuun) bus_for_each_dev, 317 dev:iommu-domain_fimc-is
+[    1.559784] (jihuun) bus_for_each_dev, 317 dev:14470000.sysmmu
+[    1.559827] (jihuun) bus_for_each_dev, 317 dev:14490000.sysmmu
+[    1.559866] (jihuun) bus_for_each_dev, 317 dev:144a0000.sysmmu
+[    1.559903] (jihuun) bus_for_each_dev, 317 dev:uart_sel
+[    1.559942] (jihuun) bus_for_each_dev, 317 dev:10670000.mcu_ipc
+[    1.559979] (jihuun) bus_for_each_dev, 317 dev:gnss_pdata
+[    1.560016] (jihuun) bus_for_each_dev, 317 dev:148f0000.lpass
+[    1.560054] (jihuun) bus_for_each_dev, 317 dev:14880000.s1402x
+[    1.560091] (jihuun) bus_for_each_dev, 317 dev:148a0000.i2s
+[    1.560129] (jihuun) bus_for_each_dev, 317 dev:148b0000.i2s
+[    1.560167] (jihuun) bus_for_each_dev, 317 dev:iommu-domain_mscl
+[    1.560205] (jihuun) bus_for_each_dev, 317 dev:12c80000.sysmmu
+[    1.560243] (jihuun) bus_for_each_dev, 317 dev:iommu-domain_mfc
+[    1.560281] (jihuun) bus_for_each_dev, 317 dev:12c90000.sysmmu
+[    1.560319] (jihuun) bus_for_each_dev, 317 dev:12c10000.scaler
+[    1.560356] (jihuun) bus_for_each_dev, 317 dev:12c00000.scaler
+[    1.560394] (jihuun) bus_for_each_dev, 317 dev:12c20000.smfc
+[    1.560431] (jihuun) bus_for_each_dev, 317 dev:12c30000.mfc0
+[    1.560468] (jihuun) bus_for_each_dev, 317 dev:144f1040.phy_isp_csi
+[    1.560506] (jihuun) bus_for_each_dev, 317 dev:14420000.fimc_is_sensor
+[    1.560543] (jihuun) bus_for_each_dev, 317 dev:14460000.fimc_is_sensor
+[    1.560581] (jihuun) bus_for_each_dev, 317 dev:14480000.fimc_is
+[    1.560620] (jihuun) bus_for_each_dev, 317 dev:10000.mif_pdata
+[    1.560657] (jihuun) bus_for_each_dev, 317 dev:shmem@F0000000
+[    1.560695] (jihuun) bus_for_each_dev, 317 dev:gpio_keys
+[    1.560734] (jihuun) bus_for_each_dev, 317 dev:usb_notifier
+[    1.560772] (jihuun) bus_for_each_dev, 317 dev:touchkeyi2c
+[    1.560811] (jihuun) bus_for_each_dev, 317 dev:cp_dummy
+[    1.560849] (jihuun) bus_for_each_dev, 317 dev:fm_dummy
+[    1.560887] (jihuun) bus_for_each_dev, 317 dev:bt_dummy
+[    1.560926] (jihuun) bus_for_each_dev, 317 dev:dummy-codec
+[    1.560963] (jihuun) bus_for_each_dev, 317 dev:sound
+[    1.561003] (jihuun) bus_for_each_dev, 317 dev:fimc_is_preprocessor@14420000
+[    1.561041] (jihuun) bus_for_each_dev, 317 dev:fimc_is_device_companion0@
+[    1.561080] (jihuun) bus_for_each_dev, 317 dev:fimc_is_device_companion1@
+[    1.561119] (jihuun) bus_for_each_dev, 317 dev:fimc-is_sensor_2p2@5A
+[    1.561158] (jihuun) bus_for_each_dev, 317 dev:fimc-is_sensor_4e6@6A
+[    1.561195] (jihuun) bus_for_each_dev, 317 dev:fimc-is-flash_gpio@0
+[    1.561234] (jihuun) bus_for_each_dev, 317 dev:isa1000
+[    1.561271] (jihuun) bus_for_each_dev, 317 dev:sec_thermistor@0
+[    1.561309] (jihuun) bus_for_each_dev, 317 dev:battery
+[    1.561348] (jihuun) bus_for_each_dev, 317 dev:cnss_dcdc_en
+[    1.561387] (jihuun) bus_for_each_dev, 317 dev:wlan
+[    1.561425] (jihuun) bus_for_each_dev, 317 dev:bluetooth
+[    1.561463] (jihuun) bus_for_each_dev, 317 dev:gps
+[    1.561501] (jihuun) bus_for_each_dev, 317 dev:runtime_pm_test
+[    1.561535] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-vpp0@106b4020
+[    1.561573] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-vpp1@106b4020
+[    1.561613] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-vpp2@106b4020
+[    1.561652] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-vpp3@106b4020
+[    1.561691] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-dsim0@106b4020
+[    1.561730] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-dsim1@106b4020
+[    1.561770] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-disp@106b4020
+[    1.561808] (jihuun) bus_for_each_dev, 317 dev:106b4020.pd-dispaud:spd-aud@106b4020
+[    1.561847] (jihuun) bus_for_each_dev, 317 dev:106b4060.pd-mfcmscl:spd-mfc@10484060
+[    1.561886] (jihuun) bus_for_each_dev, 317 dev:106b4060.pd-mfcmscl:spd-mscl0@10484060
+[    1.561925] (jihuun) bus_for_each_dev, 317 dev:106b4060.pd-mfcmscl:spd-mscl1@10484060
+[    1.561964] (jihuun) bus_for_each_dev, 317 dev:106b4060.pd-mfcmscl:spd-jpeg@10484060
+[    1.562002] (jihuun) bus_for_each_dev, 317 dev:s2mpu05-pmic
+[    1.562035] (jihuun) bus_for_each_dev, 317 dev:s2m-rtc
+
+
+[    1.562658] (jihuun) driver_register, 152
