@@ -1,0 +1,368 @@
+From d589a94460d9bfd98b295b419db8bd890a0662cd Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Thu, 3 Mar 2016 21:55:19 +0900
+Subject: [PATCH 6/6] Making sysfs node
+
+1. Making sysfs node.
+2. Builing test done.
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ drivers/muic/sm5504.c       |  279 ++++++++++++++++++++++++++++++++++++++++++-
+ include/linux/muic/sm5504.h |    8 +-
+ 2 files changed, 282 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/muic/sm5504.c b/drivers/muic/sm5504.c
+index b653695..927c695 100755
+--- a/drivers/muic/sm5504.c
++++ b/drivers/muic/sm5504.c
+@@ -50,6 +50,10 @@
+ #include <linux/vbus_notifier.h>
+ #endif /* CONFIG_VBUS_NOTIFIER */
+ 
++static void sm5504_muic_handle_attach(struct sm5504_muic_data *muic_data,
++			muic_attached_dev_t new_dev, int adc, u8 vbvolt);
++static void sm5504_muic_handle_detach(struct sm5504_muic_data *muic_data);
++
+ static int sm5504_i2c_read_byte(const struct i2c_client *client, u8 command)
+ {
+ 	int ret;
+@@ -96,6 +100,271 @@ static int sm5504_i2c_write_byte(const struct i2c_client *client, u8 command, u8
+ 	return ret;
+ }
+ 
++static ssize_t sm5504_muic_show_uart_en(struct device *dev,
++						struct device_attribute *attr, char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	int ret = 0;
++
++	if (!muic_data->is_rustproof) {
++		pr_info("%s:%s: UART ENABLE\n", MUIC_DEV_NAME, __func__);
++		ret = sprintf(buf, "1\n");
++	} else {
++		pr_info("%s:%s: UART DISABLE\n", MUIC_DEV_NAME, __func__);
++		ret = sprintf(buf, "0\n");
++	}
++
++	return ret;
++}
++
++static ssize_t sm5504_muic_set_uart_en(struct device *dev,
++						struct device_attribute *attr,
++						const char *buf, size_t count)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++
++	if (!strncmp(buf, "1", 1))
++		muic_data->is_rustproof = false;
++	else if (!strncmp(buf, "0", 1))
++		muic_data->is_rustproof = true;
++	else
++		pr_info("%s:%s: invalid value\n", MUIC_DEV_NAME, __func__);
++
++	pr_info("%s:%s: uart_en(%d)\n", MUIC_DEV_NAME, __func__, !muic_data->is_rustproof);
++
++	return count;
++}
++
++static ssize_t sm5504_muic_show_usb_en(struct device *dev,
++					struct device_attribute *attr,
++					char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++
++	return sprintf(buf, "%s:%s attached_dev = %d\n",
++		MUIC_DEV_NAME, __func__, muic_data->attached_dev);
++}
++
++static ssize_t sm5504_muic_set_usb_en(struct device *dev,
++					struct device_attribute *attr,
++					const char *buf, size_t count)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	muic_attached_dev_t new_dev = ATTACHED_DEV_USB_MUIC;
++
++	if (!strncasecmp(buf, "1", 1))
++		sm5504_muic_handle_attach(muic_data, new_dev, 0, 0);
++	else if (!strncasecmp(buf, "0", 1))
++		sm5504_muic_handle_detach(muic_data);
++	else
++		pr_info("%s:%s: invalid value\n", MUIC_DEV_NAME, __func__);
++
++	pr_info("%s:%s: attached_dev(%d)\n", MUIC_DEV_NAME, __func__, muic_data->attached_dev);
++
++	return count;
++}
++
++static ssize_t sm5504_muic_show_adc(struct device *dev,
++				struct device_attribute *attr, char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	int ret;
++
++	mutex_lock(&muic_data->muic_mutex);
++	ret = sm5504_i2c_read_byte(muic_data->i2c, SM5504_MUIC_REG_ADC);
++	mutex_unlock(&muic_data->muic_mutex);
++	if (ret < 0) {
++		pr_err("%s:%s: err read adc reg(%d)\n", MUIC_DEV_NAME, __func__, ret);
++		return sprintf(buf, "UNKNOWN\n");
++	}
++
++	return sprintf(buf, "%x\n", (ret & ADC_MASK));
++}
++
++static ssize_t sm5504_muic_show_usb_state(struct device *dev,
++					    struct device_attribute *attr,
++					    char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	static unsigned long swtich_slot_time;
++
++	if (printk_timed_ratelimit(&swtich_slot_time, 5000))
++		pr_info("%s:%s: muic_data->attached_dev(%d)\n",
++			MUIC_DEV_NAME, __func__, muic_data->attached_dev);
++
++	switch (muic_data->attached_dev) {
++	case ATTACHED_DEV_USB_MUIC:
++	case ATTACHED_DEV_CDP_MUIC:
++	case ATTACHED_DEV_JIG_USB_OFF_MUIC:
++	case ATTACHED_DEV_JIG_USB_ON_MUIC:
++		return sprintf(buf, "USB_STATE_CONFIGURED\n");
++	default:
++		break;
++	}
++
++	return 0;
++}
++
++static ssize_t sm5504_muic_show_attached_dev(struct device *dev,
++					 struct device_attribute *attr,
++					 char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++
++	pr_info("%s:%s: attached_dev[%d]\n", MUIC_DEV_NAME, __func__, muic_data->attached_dev);
++
++	switch (muic_data->attached_dev) {
++	case ATTACHED_DEV_NONE_MUIC:
++		return sprintf(buf, "No VPS\n");
++	case ATTACHED_DEV_USB_MUIC:
++		return sprintf(buf, "USB\n");
++	case ATTACHED_DEV_CDP_MUIC:
++		return sprintf(buf, "CDP\n");
++	case ATTACHED_DEV_OTG_MUIC:
++		return sprintf(buf, "OTG\n");
++	case ATTACHED_DEV_TA_MUIC:
++		return sprintf(buf, "TA\n");
++	case ATTACHED_DEV_JIG_UART_OFF_MUIC:
++		return sprintf(buf, "JIG UART OFF\n");
++	case ATTACHED_DEV_JIG_UART_OFF_VB_MUIC:
++		return sprintf(buf, "JIG UART OFF/VB\n");
++	case ATTACHED_DEV_JIG_UART_ON_MUIC:
++		return sprintf(buf, "JIG UART ON\n");
++	case ATTACHED_DEV_JIG_USB_OFF_MUIC:
++		return sprintf(buf, "JIG USB OFF\n");
++	case ATTACHED_DEV_JIG_USB_ON_MUIC:
++		return sprintf(buf, "JIG USB ON\n");
++	case ATTACHED_DEV_DESKDOCK_MUIC:
++	case ATTACHED_DEV_DESKDOCK_VB_MUIC:
++		return sprintf(buf, "DESKDOCK\n");
++	case ATTACHED_DEV_CHARGING_CABLE_MUIC:
++		return sprintf(buf, "PS CABLE\n");
++	default:
++		break;
++	}
++
++	return sprintf(buf, "UNKNOWN\n");
++}
++
++#if defined(CONFIG_USB_HOST_NOTIFY)
++static ssize_t sm5504_muic_show_otg_test(struct device *dev,
++					   struct device_attribute *attr,
++					   char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	int ret;
++	u8 val = 0;
++
++	mutex_lock(&muic_data->muic_mutex);
++	ret = sm5504_i2c_read_byte(muic_data->i2c, SM5504_MUIC_REG_INT_MASK2);
++	mutex_unlock(&muic_data->muic_mutex);
++
++	if (ret < 0) {
++		pr_err("%s:%s: fail to read muic reg\n", MUIC_DEV_NAME, __func__);
++		return sprintf(buf, "UNKNOWN\n");
++	}
++
++	pr_info("%s:%s: ret:%d val:%x buf%s\n", MUIC_DEV_NAME, __func__, ret, val, buf);
++
++	val &= INTMASK1_CHGDET;
++	return sprintf(buf, "%x\n", val);
++}
++
++static ssize_t sm5504_muic_set_otg_test(struct device *dev,
++		struct device_attribute *attr,
++		const char *buf, size_t count)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++
++	pr_info("%s:%s: buf:%s\n", MUIC_DEV_NAME, __func__, buf);
++
++	/*
++	*	The otg_test is set 0 durring the otg test. Not 1 !!!
++	*/
++
++	if (!strncmp(buf, "0", 1))
++		muic_data->is_otg_test = true;
++	else if (!strncmp(buf, "1", 1))
++		muic_data->is_otg_test = false;
++	else {
++		pr_info("%s:%s: Wrong command\n", MUIC_DEV_NAME, __func__);
++		return count;
++	}
++
++	return count;
++}
++#endif
++
++static ssize_t sm5504_muic_show_apo_factory(struct device *dev,
++					     struct device_attribute *attr,
++					     char *buf)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	const char *mode;
++
++	/* true: Factory mode, false: not Factory mode */
++	if (muic_data->is_factory_start)
++		mode = "FACTORY_MODE";
++	else
++		mode = "NOT_FACTORY_MODE";
++
++	pr_info("%s:%s: mode status[%s]\n", MUIC_DEV_NAME, __func__, mode);
++
++	return sprintf(buf, "%s\n", mode);
++}
++
++static ssize_t sm5504_muic_set_apo_factory(struct device *dev,
++				struct device_attribute *attr,
++				const char *buf, size_t count)
++{
++	struct sm5504_muic_data *muic_data = dev_get_drvdata(dev);
++	const char *mode;
++
++	pr_info("%s:%s: buf:%s\n", MUIC_DEV_NAME, __func__, buf);
++
++	/* "FACTORY_START": factory mode */
++	if (!strncmp(buf, "FACTORY_START", 13)) {
++		muic_data->is_factory_start = true;
++		mode = "FACTORY_MODE";
++	} else {
++		pr_info( "%s:%s: Wrong command\n", MUIC_DEV_NAME, __func__);
++		return count;
++	}
++
++	return count;
++}
++
++static DEVICE_ATTR(uart_en, 0664, sm5504_muic_show_uart_en,
++					sm5504_muic_set_uart_en);
++static DEVICE_ATTR(usb_en, 0664, sm5504_muic_show_usb_en,
++					sm5504_muic_set_usb_en);
++static DEVICE_ATTR(adc, 0664, sm5504_muic_show_adc, NULL);
++static DEVICE_ATTR(usb_state, 0664, sm5504_muic_show_usb_state, NULL);
++static DEVICE_ATTR(attached_dev, 0664, sm5504_muic_show_attached_dev, NULL);
++#if defined(CONFIG_USB_HOST_NOTIFY)
++static DEVICE_ATTR(otg_test, 0664, sm5504_muic_show_otg_test,
++					sm5504_muic_set_otg_test);
++#endif
++static DEVICE_ATTR(apo_factory, 0664, sm5504_muic_show_apo_factory,
++					sm5504_muic_set_apo_factory);
++
++static struct attribute *sm5504_muic_attributes[] = {
++	&dev_attr_uart_en.attr,
++	&dev_attr_usb_en.attr,
++	&dev_attr_adc.attr,
++	&dev_attr_usb_state.attr,
++	&dev_attr_attached_dev.attr,
++#if defined(CONFIG_USB_HOST_NOTIFY)
++	&dev_attr_otg_test.attr,
++#endif
++	&dev_attr_apo_factory.attr,
++	NULL
++};
++
++static const struct attribute_group sm5504_muic_group = {
++	.attrs = sm5504_muic_attributes,
++};
++
+ static int set_com_sw(struct sm5504_muic_data *muic_data,
+ 			u8 reg_val)
+ {
+@@ -607,7 +876,13 @@ static int sm5504_muic_probe(struct i2c_client *i2c,
+ 	muic_data->is_usb_ready = false;
+ 
+ #ifdef CONFIG_SEC_SYSFS
+-	/* TODO : Making sysfs node */
++	/* create sysfs group */
++	ret = sysfs_create_group(&switch_device->kobj, &sm5504_muic_group);
++	if (ret) {
++		pr_err("%s:%s: failed to create sysfs\n", MUIC_DEV_NAME, __func__);
++		goto fail;
++	}
++	dev_set_drvdata(switch_device, muic_data);
+ #endif
+ 
+ 	ret = sm5504_muic_reg_init(muic_data);
+@@ -636,7 +911,7 @@ fail_init_irq:
+ 		free_irq(i2c->irq, muic_data);
+ fail:
+ #ifdef CONFIG_SEC_SYSFS
+-//	sysfs_remove_group(&switch_device->kobj, &sm5504_muic_group);
++	sysfs_remove_group(&switch_device->kobj, &sm5504_muic_group);
+ #endif
+ 	mutex_destroy(&muic_data->muic_mutex);
+ fail_init_gpio:
+diff --git a/include/linux/muic/sm5504.h b/include/linux/muic/sm5504.h
+index f6c5377..880ef65 100755
+--- a/include/linux/muic/sm5504.h
++++ b/include/linux/muic/sm5504.h
+@@ -41,9 +41,6 @@ enum {
+ 	SM5504_MUIC_REG_END,
+ };
+ 
+-/* SM5504 ADC register */
+-#define ADC_ADC_MASK			0x1f
+-
+ // 여기부터 위아래 참고해서 위에꺼 정리
+ 
+ /* CONTROL : REG_CTRL */
+@@ -85,6 +82,7 @@ enum {
+ #define DETACH_M		(1 << 1)
+ #define ATTACH_M		(1 << 0)
+ #define INTMASK1_INIT		(ADC_CHG_M | CONNECT_M | OVP_M | DCD_OUT_M | CHGDET_M)
++#define INTMASK1_CHGDET		(CHGDET_M)
+ 
+ /* INTMASK 2 : REG_INT2_MASK */
+ #define OVP_OCP_M		(1 << 7)
+@@ -96,6 +94,9 @@ enum {
+ #define RID_CHARGER_M		(1 << 0)
+ #define INTMASK2_INIT		(OVP_OCP_M | POR_M | !UVLO_M | RID_CHARGER_M)
+ 
++/* ADC : REG_ADC */
++#define ADC_MASK		(0x1F)
++
+ /* DEVICE TYPE 1 : REG_DEV_T1 */
+ #define DEV_DCP			(1 << 6)	/* Max 1.5A */
+ #define DEV_CDP			(1 << 5)	/* Max 1.5A with Data */
+@@ -191,6 +192,7 @@ struct sm5504_muic_data {
+ 	int rev_id;
+ };
+ 
++extern struct device *switch_device;
+ extern struct muic_platform_data muic_pdata;
+ 
+ #endif /* __SM5504_H__ */
+-- 
+1.7.9.5
+

@@ -1,0 +1,1028 @@
+From 58dd43e4d33cd8bd0872b85a691ef0ed1804a05e Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Thu, 3 Mar 2016 21:16:09 +0900
+Subject: [PATCH 4/6] Functionality of cable detecting
+
+1. Writing register bit mask definition
+2. Fix issue of failing to trigger interrupt hander
+3. Making cable detect sequences
+4. Making settings of muic path using reg r/w api
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ .../boot/dts/exynos7570-javalte_eur_open_00.dtb    |  Bin 79546 -> 79654 bytes
+ arch/arm64/boot/dts/exynos7570-universal7570.dts   |    3 +
+ drivers/muic/sm5504.c                              |  488 +++++++++++++++++++-
+ include/linux/muic/sm5504.h                        |  154 +++++-
+ 4 files changed, 611 insertions(+), 34 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dtb b/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dtb
+index 7bce7af21e1631816db863e86a9032c8a8c9fa3e..3b6f96f3525111b41a19b5d0d5f305cdef21a474 100644
+GIT binary patch
+delta 16778
+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
+
+delta 16488
+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
+
+diff --git a/arch/arm64/boot/dts/exynos7570-universal7570.dts b/arch/arm64/boot/dts/exynos7570-universal7570.dts
+index da54f71..1dc3e55 100644
+--- a/arch/arm64/boot/dts/exynos7570-universal7570.dts
++++ b/arch/arm64/boot/dts/exynos7570-universal7570.dts
+@@ -363,6 +363,9 @@
+ 		muic-sm5504@14 {
+ 			compatible = "sm5504,i2c";
+ 			reg = <0x14>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&muic_irq>;
++			sm5504,irq-gpio = <&gpa1 1 0>;
+ 		};
+ 	};
+ 
+diff --git a/drivers/muic/sm5504.c b/drivers/muic/sm5504.c
+index 4554ddf..b653695 100755
+--- a/drivers/muic/sm5504.c
++++ b/drivers/muic/sm5504.c
+@@ -25,8 +25,8 @@
+  * Initialization muic with probe functions
+  * Making register R/W api
+  * Making cable detect sequences
+- * Making setting muic path using reg api
+- * Making sysfs node
++ * Making settings of muic path using reg r/w api
++ * Making sysfs nodes
+  */
+ 
+ #include <linux/device.h>
+@@ -35,6 +35,9 @@
+ #include <linux/interrupt.h>
+ #include <linux/slab.h>
+ #include <linux/wakelock.h>
++#include <linux/delay.h>
++#include <linux/gpio.h>
++#include <linux/of_gpio.h>
+ 
+ #include <linux/muic/muic.h>
+ #include <linux/muic/sm5504.h>
+@@ -47,33 +50,461 @@
+ #include <linux/vbus_notifier.h>
+ #endif /* CONFIG_VBUS_NOTIFIER */
+ 
+-#if 0
+-static int set_ctrl_reg(struct sm5504_muic_data *muic_data, int shift, bool on)
++static int sm5504_i2c_read_byte(const struct i2c_client *client, u8 command)
+ {
+-	return 0;
++	int ret;
++	int retry = 0;
++
++	ret = i2c_smbus_read_byte_data(client, command);
++
++	while (ret < 0) {
++		pr_err("%s:%s: reg(0x%x), retrying...\n", MUIC_DEV_NAME, __func__, command);
++		if (retry > 5) {
++			pr_err("%s:%s: retry failed!!\n", MUIC_DEV_NAME, __func__);
++			break;
++		}
++		msleep(100);
++		ret = i2c_smbus_read_byte_data(client, command);
++		retry++;
++	}
++
++	return ret;
+ }
+-#endif
+ 
+-static int sm5504_muic_reg_init(struct sm5504_muic_data *muic_data)
++static int sm5504_i2c_write_byte(const struct i2c_client *client, u8 command, u8 value)
++{
++	int ret;
++	int retry = 0;
++	int written = 0;
++
++	ret = i2c_smbus_write_byte_data(client, command, value);
++
++	while (ret < 0) {
++		pr_err("%s:%s: reg(0x%x), retrying...\n", MUIC_DEV_NAME, __func__, command);
++		if (retry > 5) {
++			pr_err("%s:%s: retry failed!!\n", MUIC_DEV_NAME, __func__);
++			break;
++		}
++		msleep(100);
++		ret = i2c_smbus_read_byte_data(client, command);
++		if (written < 0)
++			pr_err("%s:%s: reg(0x%x)\n", MUIC_DEV_NAME, __func__, command);
++		ret = i2c_smbus_write_byte_data(client, command, value);
++		retry++;
++	}
++
++	return ret;
++}
++
++static int set_com_sw(struct sm5504_muic_data *muic_data,
++			u8 reg_val)
++{
++	struct i2c_client *i2c = muic_data->i2c;
++	int ret = 0;
++	int temp = 0;
++
++	/*  --- MANSW [7:5][4:2][1:0] : DM DP RSVD --- */
++	temp = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_MAN_SW1);
++	if (temp < 0)
++		pr_err("%s:%s: err read MANSW(0x%x)\n", MUIC_DEV_NAME, __func__, temp);
++
++	temp &= ~MANUAL_SW1_MASK;
++	temp |= (reg_val & MANUAL_SW1_MASK);
++	pr_info("%s:%s 0x%02x, 0x%02x\n", MUIC_DEV_NAME, __func__, temp, reg_val);
++	ret = sm5504_i2c_write_byte(i2c, SM5504_MUIC_REG_MAN_SW1, temp);
++
++	return ret;
++}
++
++static int com_to_open(struct sm5504_muic_data *muic_data)
++{
++	u8 reg_val;
++	int ret = 0;
++
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++
++	reg_val = COM_OPEM;
++	ret = set_com_sw(muic_data, reg_val);
++	if (ret)
++		pr_err("%s:%s: set_com_sw err\n", MUIC_DEV_NAME, __func__);
++
++	return ret;
++}
++
++static int com_to_usb(struct sm5504_muic_data *muic_data)
+ {
++	u8 reg_val;
+ 	int ret = 0;
++
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++	reg_val = COM_TO_USB;
++	ret = set_com_sw(muic_data, reg_val);
++	if (ret)
++		pr_err("%s:%s: set_com_usb err\n", MUIC_DEV_NAME, __func__);
++
+ 	return ret;
+ }
+ 
++static int com_to_uart(struct sm5504_muic_data *muic_data)
++{
++	u8 reg_val;
++	int ret = 0;
++
++	pr_info("%s:%s: rustproof mode[%d]\n", MUIC_DEV_NAME, __func__, muic_data->is_rustproof);
++
++	if (muic_data->is_rustproof)
++		return ret;
++
++	reg_val = COM_TO_UART;
++	ret = set_com_sw(muic_data, reg_val);
++	if (ret)
++		pr_err("%s:%s: set_com_uart err\n", MUIC_DEV_NAME, __func__);
++
++	return ret;
++}
++static void sm5504_muic_handle_detach(struct sm5504_muic_data *muic_data)
++{
++	int ret = 0;
++	bool noti = true;
++
++	if (muic_data->attached_dev == ATTACHED_DEV_NONE_MUIC) {
++		pr_info("%s:%s: Detach duplicated(NONE)\n", MUIC_DEV_NAME, __func__);
++		goto out_without_noti;
++	}
++
++	pr_info("%s:%s: Detach device[%d]\n", MUIC_DEV_NAME, __func__, muic_data->attached_dev);
++
++#if defined(CONFIG_MUIC_NOTIFIER)
++	if (noti) {
++		if (!muic_data->suspended)
++			muic_notifier_detach_attached_dev(muic_data->attached_dev);
++		else
++			muic_data->need_to_noti = true;
++	}
++#endif /* CONFIG_MUIC_NOTIFIER */
++
++out_without_noti:
++	ret = com_to_open(muic_data);
++	muic_data->attached_dev = ATTACHED_DEV_NONE_MUIC;
++}
++
++static void sm5504_muic_handle_attach(struct sm5504_muic_data *muic_data,
++			muic_attached_dev_t new_dev, int adc, u8 vbvolt)
++{
++	int ret = 0;
++	bool noti = (new_dev != muic_data->attached_dev) ? true : false;
++
++	pr_info("%s:%s: muic_data->attached_dev: %d, new_dev: %d, muic_data->suspended: %d\n",
++		MUIC_DEV_NAME, __func__, muic_data->attached_dev, new_dev, muic_data->suspended);
++
++	if (new_dev == muic_data->attached_dev) {
++		pr_info("%s:%s: Attach duplicated\n", MUIC_DEV_NAME, __func__);
++		return;
++	}
++
++	/* Logically Detach Accessary */
++	switch (muic_data->attached_dev) {
++	case ATTACHED_DEV_USB_MUIC:
++	case ATTACHED_DEV_CDP_MUIC:
++	case ATTACHED_DEV_JIG_USB_OFF_MUIC:
++	case ATTACHED_DEV_JIG_USB_ON_MUIC:
++	case ATTACHED_DEV_OTG_MUIC:
++	case ATTACHED_DEV_CHARGING_CABLE_MUIC:
++	case ATTACHED_DEV_TA_MUIC:
++	case ATTACHED_DEV_UNDEFINED_CHARGING_MUIC:
++	case ATTACHED_DEV_JIG_UART_OFF_VB_MUIC:
++	case ATTACHED_DEV_JIG_UART_OFF_MUIC:
++	case ATTACHED_DEV_JIG_UART_ON_MUIC:
++		sm5504_muic_handle_detach(muic_data);
++                break;
++	case ATTACHED_DEV_DESKDOCK_MUIC:
++	case ATTACHED_DEV_DESKDOCK_VB_MUIC:
++		switch (new_dev) {
++		case ATTACHED_DEV_DESKDOCK_MUIC:
++		case ATTACHED_DEV_DESKDOCK_VB_MUIC:
++			break;
++		default:
++			sm5504_muic_handle_detach(muic_data);
++			break;
++		}
++		break;
++	default:
++		break;
++	}
++	pr_info("%s:%s: new(%d)!=attached(%d)\n", MUIC_DEV_NAME, __func__,
++							new_dev, muic_data->attached_dev);
++
++	/* Attach Accessary */
++	noti = true;
++	switch (new_dev) {
++	case ATTACHED_DEV_USB_MUIC:
++	case ATTACHED_DEV_CDP_MUIC:
++	case ATTACHED_DEV_OTG_MUIC:
++		ret = com_to_usb(muic_data);
++		break;
++	case ATTACHED_DEV_CHARGING_CABLE_MUIC:
++	case ATTACHED_DEV_TA_MUIC:
++	case ATTACHED_DEV_UNDEFINED_CHARGING_MUIC:
++	case ATTACHED_DEV_UNKNOWN_MUIC:
++		ret = com_to_open(muic_data);
++		break;
++	case ATTACHED_DEV_JIG_UART_OFF_VB_MUIC:
++	case ATTACHED_DEV_JIG_UART_OFF_MUIC:
++		ret = com_to_uart(muic_data);
++		break;
++	case ATTACHED_DEV_JIG_UART_ON_MUIC:
++		ret = com_to_open(muic_data);
++		break;
++	case ATTACHED_DEV_JIG_USB_OFF_MUIC:
++	case ATTACHED_DEV_JIG_USB_ON_MUIC:
++		ret = com_to_usb(muic_data);
++		break;
++	case ATTACHED_DEV_DESKDOCK_MUIC:
++	case ATTACHED_DEV_DESKDOCK_VB_MUIC:
++		break;
++	default:
++		noti = false;
++		pr_info("%s:%s: unsupported dev=%d, adc=0x%x, vbus=%c\n",
++				MUIC_DEV_NAME, __func__, new_dev, adc, (vbvolt ? 'O' : 'X'));
++		break;
++	}
++
++	if (ret)
++		pr_err("%s:%s: something wrong %d (ERR=%d)\n", MUIC_DEV_NAME, __func__, new_dev, ret);
++
++#if defined(CONFIG_MUIC_NOTIFIER)
++	if (noti) {
++		if (!muic_data->suspended)
++			muic_notifier_attach_attached_dev(new_dev);
++		else
++			muic_data->need_to_noti = true;
++	}
++#endif /* CONFIG_MUIC_NOTIFIER */
++
++	muic_data->attached_dev = new_dev;
++}
++
++
++static void sm5504_muic_detect_dev(struct sm5504_muic_data *muic_data)
++{
++	struct i2c_client *i2c = muic_data->i2c;
++	muic_attached_dev_t new_dev = ATTACHED_DEV_UNKNOWN_MUIC;
++	int vbvolt = 0;
++	int id = 0, ctrl = 0, mansw_val1 = 0, mansw_val2 = 0;
++	int dev1 = 0, dev2 = 0, adc = 0, int2 = 0;
++
++	id = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_DEV_ID);
++	ctrl = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_CTRL);
++	mansw_val1 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_MAN_SW1);
++	mansw_val2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_MAN_SW2);
++	dev1 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_DEV_TYPE1);
++	dev2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_DEV_TYPE2);
++	adc = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_ADC);
++	int2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_INT2);
++
++	vbvolt = !(int2 & INT_UVLO_MASK);
++
++	pr_info("%s:%s: id:0x%02x, ctrl:0x%02x, mansw1:0x%02x, mansw2:0x%02x\n", MUIC_DEV_NAME, __func__, id, ctrl, mansw_val1,mansw_val2);
++	pr_info("%s:%s: dev[1:0x%02x, 2:0x%02x], adc:0x%02x, vbvolt:0x%02x\n", MUIC_DEV_NAME, __func__,
++									dev1, dev2, adc, vbvolt);
++
++	/* Detected */
++	switch (dev1) {
++	case SM5504_DEV_OTG:
++		new_dev = ATTACHED_DEV_OTG_MUIC;
++		pr_info("%s:%s: USB_OTG DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	case SM5504_DEV_SDP:
++		new_dev = ATTACHED_DEV_USB_MUIC;
++		pr_info("%s:%s: USB DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	case SM5504_DEV_UART:
++		break;
++	case SM5504_DEV_CDP:
++		new_dev = ATTACHED_DEV_CDP_MUIC;
++		pr_info("%s:%s: USB_CDP DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	case SM5504_DEV_DCP:
++		new_dev = ATTACHED_DEV_TA_MUIC;
++		pr_info("%s:%s:DEDICATED CHARGER DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	default:
++		break;
++	}
++
++	switch (dev2) {
++	case SM5504_DEV_JIG_USB_ON:
++		if (!vbvolt)
++			break;
++		new_dev = ATTACHED_DEV_JIG_USB_ON_MUIC;
++		pr_info("%s:%s: JIG_USB_ON DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	case SM5504_DEV_JIG_USB_OFF:
++		if (!vbvolt)
++			break;
++		new_dev = ATTACHED_DEV_JIG_USB_OFF_MUIC;
++		pr_info("%s:%s: JIG_USB_OFF DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	case SM5504_DEV_JIG_UART_ON:
++		if (new_dev != ATTACHED_DEV_JIG_UART_ON_MUIC) {
++			new_dev = ATTACHED_DEV_JIG_UART_ON_MUIC;
++			pr_info("%s:%s: JIG_UART_ON DETECTED\n", MUIC_DEV_NAME, __func__);
++		}
++		break;
++	case SM5504_DEV_JIG_UART_OFF:
++		if (vbvolt) {
++			new_dev = ATTACHED_DEV_JIG_UART_OFF_VB_MUIC;
++			pr_info("%s:%s: JIG_UART_OFF_VB DETECTED\n", MUIC_DEV_NAME, __func__);
++		}
++		else {
++			new_dev = ATTACHED_DEV_JIG_UART_OFF_MUIC;
++			pr_info("%s:%s: JIG_UART_OFF DETECTED\n", MUIC_DEV_NAME, __func__);
++		}
++		break;
++	case SM5504_DEV_JIG_UNKNOWN:
++		pr_info("%s:%s: UNKNOWN DEVICE DETECTED\n", MUIC_DEV_NAME, __func__);
++		break;
++	default:
++		break;
++	}
++
++	/* If there is no matching device found using device type registers
++		use ADC to find the attached device */
++	if (new_dev == ATTACHED_DEV_UNKNOWN_MUIC) {
++		switch (adc) {
++		/* This is workaround for LG USB cable which has 219k ohm ID */
++		case ADC_CEA936ATYPE1_CHG:
++		case ADC_JIG_USB_OFF:
++			if (vbvolt) {
++				new_dev = ATTACHED_DEV_USB_MUIC;
++				pr_info("%s:%s: TYPE1_CHARGER or X_CABLE DETECTED (USB)\n", MUIC_DEV_NAME, __func__);
++			}
++			break;
++		case ADC_JIG_USB_ON:
++			if (!vbvolt)
++				break;
++			new_dev = ATTACHED_DEV_JIG_USB_ON_MUIC;
++			pr_info("%s:%s: JIG_USB_ON DETECTED\n", MUIC_DEV_NAME, __func__);
++			break;
++		case ADC_CEA936ATYPE2_CHG:
++			if (vbvolt) {
++				new_dev = ATTACHED_DEV_TA_MUIC;
++				pr_info("%s:%s: TYPE2_CHARGER DETECTED\n", MUIC_DEV_NAME, __func__);
++			}
++			break;
++		case ADC_JIG_UART_OFF:
++			if (vbvolt) {
++				new_dev = ATTACHED_DEV_JIG_UART_OFF_VB_MUIC;
++				pr_info("%s:%s: JIG_UART_OFF_VB DETECTED\n", MUIC_DEV_NAME, __func__);
++			}
++			else {
++				new_dev = ATTACHED_DEV_JIG_UART_OFF_MUIC;
++				pr_info("%s:%s: JIG_UART_OFF DETECTED\n", MUIC_DEV_NAME, __func__);
++			}
++			break;
++		case ADC_JIG_UART_ON:
++			new_dev = ATTACHED_DEV_JIG_UART_ON_MUIC;
++			pr_info("%s:%s: JIG_UART_ON DETECTED\n", MUIC_DEV_NAME, __func__);
++			break;
++		case ADC_HMT:
++		case ADC_USB_LANHUB:
++		case ADC_CHARGING_CABLE:
++		case ADC_DESKDOCK:
++			if (vbvolt) {
++				new_dev = ATTACHED_DEV_UNSUPPORTED_ID_VB_MUIC;
++				pr_info("%s:%s: UNSUPPORT CHARGING (0x%02x)\n", MUIC_DEV_NAME, __func__, adc);
++			}
++			break;
++		default:
++			break;
++		}
++	}
++
++	if ((new_dev == ATTACHED_DEV_UNKNOWN_MUIC) && (ADC_OPEN != adc)) {
++		if (vbvolt) {
++			new_dev = ATTACHED_DEV_UNDEFINED_CHARGING_MUIC;
++			pr_info("%s:%s: UNDEFINED CHARGING (0x%02x)\n", MUIC_DEV_NAME, __func__, adc);
++		}
++	}
++
++	if (new_dev != ATTACHED_DEV_UNKNOWN_MUIC) {
++		pr_info("%s:%s ATTACHED\n", MUIC_DEV_NAME, __func__);
++		sm5504_muic_handle_attach(muic_data, new_dev, adc, vbvolt);
++	}
++	else {
++		pr_info("%s:%s DETACHED\n", MUIC_DEV_NAME, __func__);
++		sm5504_muic_handle_detach(muic_data);
++	}
++
++#if defined(CONFIG_VBUS_NOTIFIER)
++	vbus_notifier_handle((!!vbvolt) ? STATUS_VBUS_HIGH : STATUS_VBUS_LOW);
++#endif /* CONFIG_VBUS_NOTIFIER */
++
++}
+ static irqreturn_t sm5504_muic_irq_thread(int irq, void *data)
+ {
+-	return 0;
++	struct sm5504_muic_data *muic_data = data;
++	struct i2c_client *i2c = muic_data->i2c;
++	int int1 = 0, int2 = 0;
++
++	msleep(10);
++
++	/* Read and Clear Interrupt1/2 */
++	int1 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_INT1);
++	int2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_INT2);
++
++
++	mutex_lock(&muic_data->muic_mutex);
++	wake_lock(&muic_data->muic_wake_lock);
++
++	/* device detection */
++	sm5504_muic_detect_dev(muic_data);
++	
++	wake_unlock(&muic_data->muic_wake_lock);
++	mutex_unlock(&muic_data->muic_mutex);
++	return IRQ_HANDLED;
+ }
++
+ static int sm5504_muic_irq_init(struct sm5504_muic_data *muic_data)
+ {
+-	return 0;
++	struct i2c_client *i2c = muic_data->i2c;
++	struct muic_platform_data *pdata = muic_data->pdata;
++	int ret = 0;
++
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++
++	if (!pdata->irq_gpio) {
++		pr_err("%s:%s: No interrupt specified\n", MUIC_DEV_NAME, __func__);
++		return -ENXIO;
++	}
++	i2c->irq = gpio_to_irq(pdata->irq_gpio);
++
++	if (i2c->irq) {
++		ret = request_threaded_irq(i2c->irq, NULL,
++				sm5504_muic_irq_thread,
++				(IRQF_TRIGGER_FALLING |
++				IRQF_NO_SUSPEND | IRQF_ONESHOT),
++				"sm5504-muic", muic_data);
++		if (ret < 0) {
++			pr_err("%s:%s: failed to request IRQ(%d)\n",
++						MUIC_DEV_NAME, __func__, i2c->irq);
++			return ret;
++		}
++
++		ret = enable_irq_wake(i2c->irq);
++		if (ret < 0)
++			pr_err("%s:%s: failed to enable wakeup src\n", MUIC_DEV_NAME, __func__);
++	}
++
++	return ret;
+ }
++
+ #if defined(CONFIG_OF)
+ static int of_sm5504_muic_dt(struct device *dev, struct sm5504_muic_data *muic_data)
+ {
+-//	struct device_node *np_muic = dev->of_node;
++	struct device_node *np_muic = dev->of_node;
+ 	int ret = 0;
+-#if 0
++
+ 	if (np_muic == NULL) {
+ 		pr_err("%s:%s: np NULL\n", MUIC_DEV_NAME, __func__);
+ 		return -EINVAL;
+@@ -92,13 +523,36 @@ static int of_sm5504_muic_dt(struct device *dev, struct sm5504_muic_data *muic_d
+ 			muic_data->pdata->gpio_uart_sel = of_get_gpio(np_muic, 0);
+ 	}
+ 
+-#endif
+ 	return ret;
+ }
+ #endif /* CONFIG_OF */
+ 
++static int sm5504_muic_reg_init(struct sm5504_muic_data *muic_data)
++{
++	struct i2c_client *i2c = muic_data->i2c;
++	int ret = 0;
++	int dev1 = 0, dev2 = 0, adc = 0, mansw1 = 0, ctrl = 0;
++
++	dev1 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_DEV_TYPE1);
++	dev2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_DEV_TYPE2);
++	mansw1 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_MAN_SW1);
++	adc = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_ADC);
++	ctrl = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_CTRL);
++
++	pr_info("%s:%s: DEV1[0x%02x], DEV2[0x%02x], MANSW1[0x%02x], \
++			ADC[0x%02x], CTRL[0x%02x]\n", MUIC_DEV_NAME, \
++			__func__, dev1, dev2, mansw1, adc, ctrl);
++
++	ret = sm5504_i2c_write_byte(i2c, SM5504_MUIC_REG_CTRL, CTRL_INIT);
++	if (ret < 0)
++		pr_err( "%s:%s: failed to write ctrl(%d)\n", MUIC_DEV_NAME, __func__, ret);
++	ctrl = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_CTRL);
++	pr_info("%s:%s: CTRL[0x%02x]\n", MUIC_DEV_NAME, __func__, ctrl);
++	return ret;
++}
++
+ /* TODO: probe function
+- * functionality of i2c 
++ * functionality of i2c
+  * enable and initialization about data structure of muic and i2c
+  * enable irq
+  * making register init functions
+@@ -156,13 +610,6 @@ static int sm5504_muic_probe(struct i2c_client *i2c,
+ 	/* TODO : Making sysfs node */
+ #endif
+ 
+-/*
+-	ret = sm5504_init_rev_info(muic_data);
+-	if (ret) {
+-		pr_err("%s:%s: failed to init rev_info\n", MUIC_DEV_NAME, __func__);
+-		goto fail;
+-	}
+-*/
+ 	ret = sm5504_muic_reg_init(muic_data);
+ 	if (ret) {
+ 		pr_err("%s:%s: failed to init reg\n", MUIC_DEV_NAME, __func__);
+@@ -180,7 +627,6 @@ static int sm5504_muic_probe(struct i2c_client *i2c,
+ 	wake_lock_init(&muic_data->muic_wake_lock, WAKE_LOCK_SUSPEND, "muic_wake");
+ 
+ 	/* initial cable detection */
+-//	ret = set_ctrl_reg(muic_data, CTRL_INT_MASK_SHIFT, false);
+ 	sm5504_muic_irq_thread(-1, muic_data);
+ 
+ 	return 0;
+diff --git a/include/linux/muic/sm5504.h b/include/linux/muic/sm5504.h
+index cf4ae0c..f6c5377 100755
+--- a/include/linux/muic/sm5504.h
++++ b/include/linux/muic/sm5504.h
+@@ -1,24 +1,151 @@
++/*
++ * Copyright (C) 2016 Samsung Electronics
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
++ *
++ */
++
+ #ifndef __SM5504_H__
+ #define __SM5504_H__
+ 
+ #include <linux/muic/muic.h>
+ #define MUIC_DEV_NAME	"muic-sm5504"
+ 
+-enum sm5505_muic_reg {
+-	SM5504_REG_CHIP_ID		= 0x01,
+-	SM5504_REG_CONTROL		= 0x02,
+-	SM5504_REG_INT1			= 0x03,
+-	SM5504_REG_INT2			= 0x04,
+-	SM5504_REG_INT_MASK1		= 0x05,
+-	SM5504_REG_INT_MASK2		= 0x06,
+-	SM5504_REG_ADC			= 0x23,
+-	SM5504_REG_DEVICE1		= 0x0A,
+-	SM5504_REG_DEVICE2		= 0x0B,
+-	SM5504_REG_MANUAL_SW1		= 0x13,
+-	SM5504_REG_MANUAL_SW2		= 0x14,
+-	SM5504_REG_RESET		= 0x1B,
++/* SM5504 MUIC  registers */
++enum {
++	SM5504_MUIC_REG_DEV_ID		= 0x01,
++	SM5504_MUIC_REG_CTRL		= 0x02,
++	SM5504_MUIC_REG_INT1		= 0x03,
++	SM5504_MUIC_REG_INT2		= 0x04,
++	SM5504_MUIC_REG_INT_MASK1	= 0x05,
++	SM5504_MUIC_REG_INT_MASK2	= 0x06,
++	SM5504_MUIC_REG_ADC		= 0x07,
++	SM5504_MUIC_REG_DEV_TYPE1	= 0x0A,
++	SM5504_MUIC_REG_DEV_TYPE2	= 0x0B,
++	SM5504_MUIC_REG_MAN_SW1		= 0x13,
++	SM5504_MUIC_REG_MAN_SW2		= 0x14,
++	SM5504_MUIC_REG_RESET		= 0x1B,
++	SM5504_MUIC_REG_CHG		= 0x24,
++	SM5504_MUIC_REG_END,
+ };
+ 
++/* SM5504 ADC register */
++#define ADC_ADC_MASK			0x1f
++
++// 여기부터 위아래 참고해서 위에꺼 정리
++
++/* CONTROL : REG_CTRL */
++#define ADC_EN			(1 << 7)
++#define USBCHDEN		(1 << 6)
++#define CHGTYP			(1 << 5)
++#define SWITCH_OPEN		(1 << 4)
++#define MANUAL_SWITCH		(1 << 2)
++#define MASK_INT		(1 << 0)
++#define CTRL_INIT		(ADC_EN | USBCHDEN | CHGTYP | MANUAL_SWITCH)
++#define RESET_DEFAULT		(ADC_EN | USBCHDEN | CHGTYP | MANUAL_SWITCH | MASK_INT)
++
++/* INTERRUPT 1 : REG_INT1 */
++#define ADC_CHG			(1 << 6)
++#define CONNECT			(1 << 5)
++#define OVP			(1 << 4)
++#define DCD_OUT			(1 << 3)
++#define CHGDET			(1 << 2)
++#define DETACH			(1 << 1)
++#define ATTACH			(1 << 0)
++
++/* INTERRUPT 2 : REG_INT2 */
++#define OVP_OCP			(1 << 7)
++#define OCP			(1 << 6)
++#define OCP_LATCH		(1 << 5)
++#define OVP_FET			(1 << 4)
++#define POR			(1 << 2)
++#define UVLO			(1 << 1)	/* vbus */
++#define RID_CHARGER		(1 << 0)
++
++#define INT_UVLO_MASK 		UVLO
++
++/* INTMASK 1 : REG_INT1_MASK */
++#define ADC_CHG_M		(1 << 6)
++#define CONNECT_M		(1 << 5)
++#define OVP_M			(1 << 4)
++#define DCD_OUT_M		(1 << 3)
++#define CHGDET_M		(1 << 2)
++#define DETACH_M		(1 << 1)
++#define ATTACH_M		(1 << 0)
++#define INTMASK1_INIT		(ADC_CHG_M | CONNECT_M | OVP_M | DCD_OUT_M | CHGDET_M)
++
++/* INTMASK 2 : REG_INT2_MASK */
++#define OVP_OCP_M		(1 << 7)
++#define OCP_M			(1 << 6)
++#define OCP_LATCH_M		(1 << 5)
++#define OVP_FET_M		(1 << 4)
++#define POR_M			(1 << 2)
++#define UVLO_M			(1 << 1)
++#define RID_CHARGER_M		(1 << 0)
++#define INTMASK2_INIT		(OVP_OCP_M | POR_M | !UVLO_M | RID_CHARGER_M)
++
++/* DEVICE TYPE 1 : REG_DEV_T1 */
++#define DEV_DCP			(1 << 6)	/* Max 1.5A */
++#define DEV_CDP			(1 << 5)	/* Max 1.5A with Data */
++#define DEV_CARKIT_T1		(1 << 4)
++#define DEV_UART		(1 << 3)
++#define DEV_SDP			(1 << 2)	/* Max 500mA with Data */
++#define DEV_OTG			(1 << 0)
++#define DEV_CHARGER		(DEV_DEDICATED_CHG | DEV_USB_CHG)
++
++#define SM5504_DEV_OTG		(DEV_OTG)
++#define SM5504_DEV_SDP		(DEV_SDP)
++#define SM5504_DEV_UART		(DEV_UART)
++#define SM5504_DEV_CDP		(DEV_CDP)
++#define SM5504_DEV_DCP		(DEV_DCP)
++
++/* DEVICE TYPE 2 : REG_DEV_T2 */
++#define DEV_UNKNOWN		(1 << 7)
++#define DEV_JIG_UART_OFF	(1 << 3)
++#define DEV_JIG_UART_ON		(1 << 2)
++#define DEV_JIG_USB_OFF		(1 << 1)
++#define DEV_JIG_USB_ON		(1 << 0)
++#define DEV_JIG_ALL		(DEV_JIG_UART_OFF | DEV_JIG_UART_ON | DEV_JIG_USB_OFF | DEV_JIG_USB_ON)
++#define DEV_JIG_WAKEUP		(DEV_JIG_UART_OFF | DEV_JIG_UART_ON | DEV_JIG_USB_ON)
++
++#define SM5504_DEV_JIG_USB_ON	(DEV_JIG_USB_ON)
++#define SM5504_DEV_JIG_USB_OFF	(DEV_JIG_USB_OFF)
++#define SM5504_DEV_JIG_UART_ON	(DEV_JIG_UART_ON)
++#define SM5504_DEV_JIG_UART_OFF	(DEV_JIG_UART_OFF)
++#define SM5504_DEV_JIG_UNKNOWN	(DEV_UNKNOWN)
++
++/* MANUAL SWITCH 1 : REG_MANSW1
++ * D- [7:5] / D+ [4:2]
++ * 000: Open all / 001: USB / 011: UART
++ */
++#define DM_SHIFT		(5)
++#define DP_SHIFT		(2)
++#define COM_OPEM		(0 << DM_SHIFT) | (0 << DP_SHIFT)
++#define COM_TO_USB		(1 << DM_SHIFT) | (1 << DP_SHIFT)	/* 0010 0100 */
++#define COM_TO_AUDIO		(2 << DM_SHIFT) | (2 << DP_SHIFT)
++#define COM_TO_UART		(3 << DM_SHIFT) | (3 << DP_SHIFT)	/* 0110 1100 */
++#define MANUAL_SW1_MASK		(0xFC)
++
++/* MANUAL SWITCH 2 : REG_MANSW2 */
++#define BOOT_SW			(1 << 3)
++#define JIG_ON			(1 << 2)
++#define VBUS_FET_ONOFF		(1 << 0)
++
++/* RESET : REG_RESET */
++#define IC_RESET		(1 << 0)
++
+ /* muic chip specific internal data structure
+  * that setted at muic-xxxx.c file
+  */
+@@ -65,4 +192,5 @@ struct sm5504_muic_data {
+ };
+ 
+ extern struct muic_platform_data muic_pdata;
++
+ #endif /* __SM5504_H__ */
+-- 
+1.7.9.5
+

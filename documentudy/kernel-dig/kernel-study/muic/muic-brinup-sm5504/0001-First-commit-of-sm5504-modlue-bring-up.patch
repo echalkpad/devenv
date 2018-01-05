@@ -1,0 +1,146 @@
+From cc2738051b252f41fff09e3d58a9a389df8acaaf Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Mon, 29 Feb 2016 15:45:29 +0900
+Subject: [PATCH 1/6] First commit of sm5504 modlue bring up
+
+1. Add sm5504.c file
+2. Initialization module device driver of sm5504
+3. Enabling config of sm5504 instead of rt8973
+4. Comfirmed building test
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ arch/arm64/configs/exynos7570-base_defconfig |    3 ++-
+ arch/arm64/configs/javalte_00_defconfig      |    3 ++-
+ drivers/muic/Kconfig                         |    8 +++++++
+ drivers/muic/Makefile                        |    1 +
+ drivers/muic/sm5504.c                        |   32 ++++++++++++++++++++++++++
+ include/linux/muic/sm5504.h                  |   21 +++++++++++++++++
+ 6 files changed, 66 insertions(+), 2 deletions(-)
+ create mode 100755 drivers/muic/sm5504.c
+ create mode 100755 include/linux/muic/sm5504.h
+
+diff --git a/arch/arm64/configs/exynos7570-base_defconfig b/arch/arm64/configs/exynos7570-base_defconfig
+index e287d4c..a09f695 100644
+--- a/arch/arm64/configs/exynos7570-base_defconfig
++++ b/arch/arm64/configs/exynos7570-base_defconfig
+@@ -188,7 +188,8 @@ CONFIG_GNSS_SHMEM_IF=y
+ CONFIG_UART_SEL=y
+ CONFIG_USE_MUIC=y
+ CONFIG_MUIC_NOTIFIER=y
+-CONFIG_MUIC_RT8973=y
++# CONFIG_MUIC_RT8973=y
++CONFIG_MUIC_SM5504=y
+ CONFIG_SCSI=y
+ CONFIG_BLK_DEV_SD=y
+ CONFIG_MD=y
+diff --git a/arch/arm64/configs/javalte_00_defconfig b/arch/arm64/configs/javalte_00_defconfig
+index 4368dc1..6b0c1a9 100644
+--- a/arch/arm64/configs/javalte_00_defconfig
++++ b/arch/arm64/configs/javalte_00_defconfig
+@@ -188,7 +188,8 @@ CONFIG_GNSS_SHMEM_IF=y
+ CONFIG_UART_SEL=y
+ CONFIG_USE_MUIC=y
+ CONFIG_MUIC_NOTIFIER=y
+-CONFIG_MUIC_RT8973=y
++# CONFIG_MUIC_RT8973=y
++CONFIG_MUIC_SM5504=y
+ CONFIG_SCSI=y
+ CONFIG_BLK_DEV_SD=y
+ CONFIG_MD=y
+diff --git a/drivers/muic/Kconfig b/drivers/muic/Kconfig
+index 73b9bfe..000cf3e 100644
+--- a/drivers/muic/Kconfig
++++ b/drivers/muic/Kconfig
+@@ -180,6 +180,14 @@ config MUIC_RT8973
+ 	  If you say yes here you will get support for
+ 	  the RT8973 MUIC chip.
+ 
++config MUIC_SM5504
++	bool "Using SM5504 MUIC"
++	depends on USE_MUIC
++	default n
++	help
++	  If you say yes here you will get support for
++	  the SM5504 MUIC chip.
++
+ config MUIC_TSU6721
+ 	bool "Using TSU6721 MUIC"
+ 	depends on USE_MUIC
+diff --git a/drivers/muic/Makefile b/drivers/muic/Makefile
+index b86a0d3..7b1b2c7 100644
+--- a/drivers/muic/Makefile
++++ b/drivers/muic/Makefile
+@@ -17,3 +17,4 @@ obj-$(CONFIG_MUIC_S2MM001)		+= s2mm001.o
+ obj-$(CONFIG_MUIC_S2MU005)		+= s2mu005-muic.o
+ obj-$(CONFIG_MUIC_TSU6721)		+= tsu6721-muic.o
+ obj-$(CONFIG_MUIC_RT8973)		+= rt8973.o
++obj-$(CONFIG_MUIC_SM5504)		+= sm5504.o
+diff --git a/drivers/muic/sm5504.c b/drivers/muic/sm5504.c
+new file mode 100755
+index 0000000..c0ba799
+--- /dev/null
++++ b/drivers/muic/sm5504.c
+@@ -0,0 +1,32 @@
++#include <linux/device.h>
++#include <linux/module.h>
++
++#include <linux/muic/muic.h>
++#include <linux/muic/sm5504.h>
++
++#if defined(CONFIG_MUIC_NOTIFIER)
++#include <linux/muic/muic_notifier.h>
++#endif /* CONFIG_MUIC_NOTIFIER */
++
++#if defined(CONFIG_VBUS_NOTIFIER)
++#include <linux/vbus_notifier.h>
++#endif /* CONFIG_VBUS_NOTIFIER */
++
++static int __init sm5504_muic_init(void)
++{
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++//	return i2c_add_driver(&sm5504_muic_driver);
++	return 0;
++}
++module_init(sm5504_muic_init);
++
++static void __exit sm5504_muic_exit(void)
++{
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++//	i2c_del_driver(&sm5504_muic_driver);
++}
++module_exit(sm5504_muic_exit);
++
++MODULE_DESCRIPTION("SM5504 MUIC driver");
++MODULE_AUTHOR("Ji-Hun Kim <ji_hun.kim@samsung.com>");
++MODULE_LICENSE("GPL");
+diff --git a/include/linux/muic/sm5504.h b/include/linux/muic/sm5504.h
+new file mode 100755
+index 0000000..d008dae
+--- /dev/null
++++ b/include/linux/muic/sm5504.h
+@@ -0,0 +1,21 @@
++#ifndef __SM5504_H__
++#define __SM5504_H__
++
++#include <linux/muic/muic.h>
++#define MUIC_DEV_NAME	"muic-sm5504"
++
++enum sm5504_muic_reg {
++	SM5504_REG_CHIP_ID		= 0x01,
++	SM5504_REG_CONTROL		= 0x02,
++	SM5504_REG_INT1			= 0x03,
++	SM5504_REG_INT2			= 0x04,
++	SM5504_REG_INT_MASK1		= 0x05,
++	SM5504_REG_INT_MASK2		= 0x06,
++	SM5504_REG_ADC			= 0x23,
++	SM5504_REG_DEVICE1		= 0x0A,
++	SM5504_REG_DEVICE2		= 0x0B,
++	SM5504_REG_MANUAL_SW1		= 0x13,
++	SM5504_REG_MANUAL_SW2		= 0x14,
++	SM5504_REG_RESET		= 0x1B,
++};
++#endif /* __SM5504_H__ */
+-- 
+1.7.9.5
+

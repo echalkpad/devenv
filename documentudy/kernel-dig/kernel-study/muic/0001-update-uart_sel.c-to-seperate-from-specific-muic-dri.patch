@@ -1,0 +1,202 @@
+From 94206f926ae8da7a7bdd3ddefd535a8712ad3197 Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Wed, 16 Mar 2016 20:17:20 +0900
+Subject: [PATCH] update uart_sel.c to seperate from specific muic driver
+ independantly
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ drivers/misc/uart_sel/uart_sel.c |   15 +++++++----
+ drivers/muic/muic-core.c         |    2 --
+ drivers/muic/rt8973.c            |    4 ++-
+ drivers/muic/sm5504.c            |   51 ++++++++++++++++++++++++++++++++++++++
+ include/linux/muic/muic.h        |    5 ++++
+ include/linux/muic/rt8973.h      |    2 --
+ 6 files changed, 69 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/misc/uart_sel/uart_sel.c b/drivers/misc/uart_sel/uart_sel.c
+index 20a5d64..25fc630 100644
+--- a/drivers/misc/uart_sel/uart_sel.c
++++ b/drivers/misc/uart_sel/uart_sel.c
+@@ -24,10 +24,9 @@
+ #include <linux/sec_sysfs.h>
+ #endif
+ 
+-#ifdef CONFIG_MUIC_NOTIFIER
+ #include <linux/muic/muic.h>
++#ifdef CONFIG_MUIC_NOTIFIER
+ #include <linux/muic/muic_notifier.h>
+-#include <linux/muic/rt8973.h>
+ #endif
+ 
+ #include <linux/mcu_ipc.h>
+@@ -41,7 +40,7 @@ int config_pmu_sel(int path)
+ {
+ 	int ret	= 0;
+ 
+-	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++	pr_info("%s: Changing path \n", __func__);
+ 
+ 	if (path == AP) { /* AP */
+ 		ret = exynos_pmu_update(EXYNOS_PMU_UART_IO_SHARE_CTRL,
+@@ -95,12 +94,18 @@ static void uart_dir_work(void)
+ 		pr_info("%s: selection CP uart path\n", __func__);
+ 
+ 		config_pmu_sel(CP);
+-		muic_set_path(switch_device->driver_data, USB);
++		if (muic_pdata.muic_set_path)
++			muic_pdata.muic_set_path(switch_device->driver_data, USB);
++		else
++			pr_info("%s: fail to set path of muic\n", __func__);
+ 	} else {
+ 		pr_info("%s: selection AP uart path\n", __func__);
+ 
+ 		config_pmu_sel(AP);
+-		muic_set_path(switch_device->driver_data, UART);
++		if (muic_pdata.muic_set_path)
++			muic_pdata.muic_set_path(switch_device->driver_data, UART);
++		else
++			pr_info("%s: fail to set path of muic\n", __func__);
+ 	}
+ #endif
+ 
+diff --git a/drivers/muic/muic-core.c b/drivers/muic/muic-core.c
+index 49f3b4f..a9ae3d0 100644
+--- a/drivers/muic/muic-core.c
++++ b/drivers/muic/muic-core.c
+@@ -245,8 +245,6 @@ static void muic_cleanup_switch_dev_cb(void)
+ 	pr_info("%s: done\n", __func__);
+ }
+ 
+-extern struct muic_platform_data muic_pdata;
+-
+ /* func : set_switch_sel
+  * switch_sel value get from bootloader comand line
+  * switch_sel data consist 8 bits (xxxxyyyyzzzz)
+diff --git a/drivers/muic/rt8973.c b/drivers/muic/rt8973.c
+index 75dd2ee..800b72c 100755
+--- a/drivers/muic/rt8973.c
++++ b/drivers/muic/rt8973.c
+@@ -864,8 +864,9 @@ static void rt8973_set_manual_mode(struct rt8973_muic_data *muic_data, int en)
+ 		pr_err( "%s:%s: fail to update reg\n", MUIC_DEV_NAME, __func__);
+ }
+ 
+-int muic_set_path(struct rt8973_muic_data *muic_data, int path)
++int rt8973_muic_set_path(void *drv_data, int path)
+ {
++	struct rt8973_muic_data *muic_data = (struct rt8973_muic_data *)drv_data;
+ 	int ret = 0;
+ 
+ 	pr_info("%s:%s path : %d\n", MUIC_DEV_NAME, __func__, path);
+@@ -1420,6 +1421,7 @@ static int rt8973_muic_probe(struct i2c_client *i2c,
+ 	}
+ 
+ 	muic_data->is_rustproof = muic_data->pdata->rustproof_on;
++	muic_data->pdata->muic_set_path = rt8973_muic_set_path;
+ 
+ 	if (muic_data->pdata->init_switch_dev_cb)
+ 		muic_data->pdata->init_switch_dev_cb();
+diff --git a/drivers/muic/sm5504.c b/drivers/muic/sm5504.c
+index 821197f..49709ea 100644
+--- a/drivers/muic/sm5504.c
++++ b/drivers/muic/sm5504.c
+@@ -421,6 +421,56 @@ static int com_to_uart(struct sm5504_muic_data *muic_data)
+ 
+ 	return ret;
+ }
++
++static void sm5504_check_reg(struct sm5504_muic_data *muic_data)
++{
++	struct i2c_client *i2c = muic_data->i2c;
++	int ctrl = 0, mansw2 = 0;
++
++	ctrl = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_CTRL);
++	mansw2 = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_MAN_SW1);
++
++	pr_info("%s:%s:  ctrl:0x%02x mansw2:0x%02x\n", MUIC_DEV_NAME, __func__, ctrl, mansw2);
++}
++
++static void sm5504_set_manual_mode(struct sm5504_muic_data *muic_data, int en)
++{
++	struct i2c_client *i2c = muic_data->i2c;
++	int reg = 0;
++	int ret = 0;
++
++	reg = sm5504_i2c_read_byte(i2c, SM5504_MUIC_REG_CTRL);
++	if (en) /* manual mode */
++		reg &= ~MANUAL_SWITCH;
++	else /* auto mode */
++		reg |= MANUAL_SWITCH;
++
++	ret = sm5504_i2c_write_byte(i2c, SM5504_MUIC_REG_CTRL, reg);
++	if (ret < 0)
++		pr_err( "%s:%s: fail to update reg\n", MUIC_DEV_NAME, __func__);
++}
++
++int sm5504_muic_set_path(void *drv_data, int path)
++{
++	struct sm5504_muic_data *muic_data = (struct sm5504_muic_data *)drv_data;
++	int ret = 0;
++
++	pr_info("%s: %s path : %d\n", MUIC_DEV_NAME, __func__, path);
++	sm5504_check_reg(muic_data);
++
++	if (path) { /* UART */
++		sm5504_set_manual_mode(muic_data, 0);
++		ret = com_to_uart(muic_data); /*FIXME: it needs not? */
++	} else { /* USB */
++		sm5504_set_manual_mode(muic_data, 1);
++		ret = com_to_usb(muic_data);
++	}
++
++	/* FIXME : check register */
++	sm5504_check_reg(muic_data);
++	return ret;
++}
++
+ static void sm5504_muic_handle_detach(struct sm5504_muic_data *muic_data)
+ {
+ 	int ret = 0;
+@@ -875,6 +925,7 @@ static int sm5504_muic_probe(struct i2c_client *i2c,
+ 	}
+ 
+ 	muic_data->is_rustproof = muic_data->pdata->rustproof_on;
++	muic_data->pdata->muic_set_path = sm5504_muic_set_path;
+ 
+ 	ret = sm5504_muic_irq_init(muic_data);
+ 	if (ret) {
+diff --git a/include/linux/muic/muic.h b/include/linux/muic/muic.h
+index 97b87c7..26e9919 100644
+--- a/include/linux/muic/muic.h
++++ b/include/linux/muic/muic.h
+@@ -215,8 +215,13 @@ struct muic_platform_data {
+ 	/* muic path switch function for rustproof */
+ 	void (*set_path_switch_suspend) (struct device *dev);
+ 	void (*set_path_switch_resume) (struct device *dev);
++
++	/* for uart_sel */
++	int (*muic_set_path)(void *drv_data, int path);
+ };
+ 
+ extern int get_switch_sel(void);
++extern struct device *switch_device;
++extern struct muic_platform_data muic_pdata;
+ 
+ #endif /* __MUIC_H__ */
+diff --git a/include/linux/muic/rt8973.h b/include/linux/muic/rt8973.h
+index 6f7378e..f4f429a 100755
+--- a/include/linux/muic/rt8973.h
++++ b/include/linux/muic/rt8973.h
+@@ -228,9 +228,7 @@ struct rt8973_muic_data {
+ 	int rev_id;
+ };
+ 
+-extern struct device *switch_device;
+ extern unsigned int system_rev;
+-extern struct muic_platform_data muic_pdata;
+ extern int muic_set_path(struct rt8973_muic_data *muic_data, int path);
+ 
+ #endif /* __RT8973_H__ */
+-- 
+1.7.9.5
+

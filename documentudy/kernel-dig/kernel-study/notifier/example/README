@@ -1,0 +1,25 @@
+http://blog.naver.com/s3c24xx/130143918856
+
+
+Notifier chain(통지연쇄)
+상태 변경 메시지를 요청하는 코드 영역으로, 해당 메시지를 전달하기 위해
+사용한다. 
+
+나름 살펴본결과 사용방법은 
+1. notifier chain 선언(BLOCKING_NOTIFIER_HEAD사용) 
+2. blocking_notifier_call_chain함수 호출시 콜백되는 함수를 1번 과정에서 생성한
+notifier chain에 
+blocking_notifier_chain_register함수 이용하여 등록.
+3. 이벤트 시 blocking_notifier_call_chain함수 호출하여 call chain 콜백 함수
+호출.
+
+주의사항.
+프로세스 문맥에서 사용시 위의 방법대로 사용 한다. 
+인터럽트 문맥에서 사용시 잠들기가 허용되지 않도록 ATOMIC_NOTIFIER_HEAD()를
+이용하여 선언하고, atomic_notifier_chain_register()로 등록한다.
+
+
+
+첨부파일은 notifier에 대한 예제이다. 모듈 insmod순서
+noti_reg.ko -> callchainx_reg.ko -> callchain.ko 순서로 올린다.
+[출처] Notifier chain|작성자 s3c24xx

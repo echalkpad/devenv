@@ -1,0 +1,29 @@
+From eff93875a54c25ac6a2aea61a628118cf20b8d0a Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Thu, 3 Mar 2016 21:54:11 +0900
+Subject: [PATCH 5/6] Functionality of cable detecting [2]
+
+There is ommited file.
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ .../boot/dts/exynos7570-javalte_eur_open_00.dts    |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dts b/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dts
+index 9c48969..b1f85fd 100644
+--- a/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dts
++++ b/arch/arm64/boot/dts/exynos7570-javalte_eur_open_00.dts
+@@ -438,6 +438,9 @@
+ 		muic-sm5504@14 {
+ 			compatible = "sm5504,i2c";
+ 			reg = <0x14>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&muic_irq>;
++			sm5504,irq-gpio = <&gpa1 1 0>;
+ 		};
+ 	};
+ 
+-- 
+1.7.9.5
+
