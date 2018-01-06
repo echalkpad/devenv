@@ -415,3 +415,10 @@ armlink -elf -scatter Target.scl -o target.elf embedded.o recipes.o main.o
 ````
 
 
+
+
+### 5. Software 비네팅
+------------------------------------------------------
+
+
+
