@@ -410,7 +410,7 @@ Julia Lawall <julia.lawall@lip6.fr> wrote:
 > > index f015955..c4eff71 100644
 > > --- a/drivers/staging/iio/adc/ad7192.c
 > > +++ b/drivers/staging/iio/adc/ad7192.c
-> > @@ -340,7 +340,7 @@ ad7192_show_scale_available(struct device *dev,
+> > @@ -340,7 +340,7 @@ ad7192_show_scale_available(struct device * dev,
 > >  }
 > >
 > >  static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
@@ -441,7 +441,63 @@ static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
 ````
 
 
+- I got email from Greg on 8/JAN/2018
+
+It seems that will be accepted on staging tree and linux-next!
+
+````patch
+
+This is a note to let you know that I've just added the patch titled
+
+    staging: iio: remove unnecessary parentheses
+
+to my staging git tree which can be found at
+    git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+in the staging-testing branch.
+
+The patch will show up in the next release of the linux-next tree
+(usually sometime within the next 24 hours during the week.)
+
+The patch will be merged to the staging-next branch sometime soon,
+after it passes testing, and the merge window is open.
+
+If you have any questions about this process, please let me know.
+
+
+From dc34084b3a5585fbb8cc27faaebcef83c915420b Mon Sep 17 00:00:00 2001
+From: Ji-Hun Kim <jihuun.k@gmail.com>
+Date: Wed, 27 Dec 2017 18:47:18 -0800
+Subject: staging: iio: remove unnecessary parentheses
+
+Clean up checkpatch warning:
+CHECK: Unnecessary parentheses around 'st->devid != ID_AD7195'
+
+Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ drivers/staging/iio/adc/ad7192.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+index cadfb96734ed..f01595593ce2 100644
+--- a/drivers/staging/iio/adc/ad7192.c
++++ b/drivers/staging/iio/adc/ad7192.c
+@@ -271,7 +271,7 @@ static int ad7192_setup(struct ad7192_state *st,
+        if (pdata->sinc3_en)
+                st->mode |= AD7192_MODE_SINC3;
+
+-       if (pdata->refin2_en && (st->devid != ID_AD7195))
++       if (pdata->refin2_en && st->devid != ID_AD7195)
+                st->conf |= AD7192_CONF_REFSEL;
+
+        if (pdata->chop_en) {
+````
+
+
+
+
 ### How to send patch by email : Mutt
+
 Documentation/email-clients.txt
 https://www.kernel.org/doc/html/v4.11/process/email-clients.html
 
