@@ -358,6 +358,7 @@ CC : Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de, pmeerw@pme
 Finally I summit patch.
 
 https://lkml.org/lkml/2017/12/27/463
+(http://lkml.iu.edu/hypermail/linux/kernel/1712.3/01138.html)
 https://lkml.org/lkml/2017/12/27/465
 
 
@@ -493,6 +494,33 @@ index cadfb96734ed..f01595593ce2 100644
         if (pdata->chop_en) {
 ````
 
+
+- Finally I found my patch on git log of linux-next branch
+
+It will be merged to linux mainline after merge window open. The new patch set would be able to merged to mainline kernel version during only merge window opening. Linus tovalds will be anounce on linux-kernel mailing list when merge window open. Normally the period is 2weeks
+
+````bash
+ $ git log drivers/staging/iio/adc/ad7192.c
+
+commit bbdcbd12a59a6306623ea5184e42a514e420b2e9
+Author: Ji-Hun Kim <jihuun.k@gmail.com>
+Date:   Wed Dec 27 18:47:18 2017 -0800
+
+    staging: iio: remove unnecessary parentheses
+
+    Clean up checkpatch warning:
+    CHECK: Unnecessary parentheses around 'st->devid != ID_AD7195'
+
+    Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+    Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 2db82e320da766c6d8a3d9c9d1cc4c45580fd701
+Author: Aastha Gupta <aastha.gupta4104@gmail.com>
+Date:   Wed Sep 27 12:01:59 2017 +0530
+.....
+
+````
 
 
 
