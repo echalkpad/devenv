@@ -1,0 +1,192 @@
+
+### What is Disk I/O?
+
+Disk I/O includes read/write/input/output operation with physical disk.
+It is the data transfer speed between storage device(HHD,SSD..) and Ram.
+
+- for monitoring disk I/O activity
+
+```bash
+ $ iotop -o
+
+ $ iostat -dx 5
+```
+
+
+
+### What is I/O scheduler?
+
+Input/output (I/O) scheduling is the method that computer operating systems use to decide in which order the block I/O operations will be submitted to storage volumes. I/O scheduling is sometimes called disk scheduling. (Wikipedia: I/O scheduling)
+
+I/O scheduling can re-ordanize the orders of many I/O requests for reducing time from disk operation.
+
+### Throughput vs latency
+
+It's trade-off relation.
+
+I/O scheduler의 가장 큰 관심은 사실 throughput을 높이는 것입니다.
+이러한 연유로 I/O scheduler는 크게 두가지 타입(그렇다고 꼭 2개는 아니고요)의 Queue를 유지하고 있는데, 하나가 I/O request의 Logical Block Address(LBA)순으로 정렬된 큐이고, 다른 하나가 arrival time 순으로 정렬된 큐입니다. 전자는 throughput을 위한 것이고, 후자는 latency를 일정 수준이하로 유지하기 위해서가 되겠습니다
+
+There are 2 types of I/O scheduler.
+
+Type 1: The sequences through LBA(Logical Block Address) 
+> for better throughput
+Type 2: The sequences through arrival time
+> for better latency
+
+
+
+### How to change the I/O scheduler of my computer
+
+- Check my storage
+
+```bash
+ $ cat /sys/block/sda/queue/scheduler 
+noop [deadline] cfq 
+```
+> it means that my sda would be able to use noop, deadline, cfq. And sda are using deadline now.
+ 
+
+- Change the scheduler
+
+```bash
+ $ echo "cfq" > /sys/block/sda/queue/scheduler 
+ $ cat /sys/block/sda/queue/scheduler 
+noop deadline [cfq]
+```
+
+
+### I/O schedulers in Linux kernel
+
+Linux kernel has I/O schedulers for dealing with many I/O requests.
+__elevator__ in kernel code refer to an I/O scheduler, not a specific algorithm.
+
+
+noop
+anticipatory
+deadline
+cfq
+..
+
+
+### Simple analysis noop scheduler of Linux kernel
+
+
+- Structure elevator_type
+
+We can using these callback functions from struct elevator_type.
+Since changing scheduler on runtime dynamicaly can be possible, the caller does not need to know specific functions of each scheduler. Just calling the callback function.
+
+```c
+static struct elevator_type elevator_noop = {
+	.ops.sq = {
+		.elevator_merge_req_fn		= noop_merged_requests,
+		.elevator_dispatch_fn		= noop_dispatch,
+		.elevator_add_req_fn		= noop_add_request,
+		.elevator_former_req_fn		= noop_former_request,
+		.elevator_latter_req_fn		= noop_latter_request,
+		.elevator_init_fn		= noop_init_queue,
+		.elevator_exit_fn		= noop_exit_queue,
+	},
+	.elevator_name = "noop",
+	.elevator_owner = THIS_MODULE,
+};
+```
+> struct elevator and callback functions.
+
+
+- Callback functions
+
+What they expect for callback functions implement by each schedulers.
+
+	- elevator_init_fn
+		- generate date structure, queue, 
+		- allocated queue should be initialized in q->elevator->elevator_data.
+		- each storage device has there own queue by calling this function. 
+		
+	- elevator_former_req_fn
+		- return previous contents in the queue for merging operation by Generic Block Layer
+		- cf. merging needs to check whether the requested address spaces are continous or not.
+
+	- elevator_latter_req_fn
+		- same with former one. return backward one in the queue.
+
+	- elevator_add_req_fn
+		- important function: If there are new request on I/O scheduler, Generic Block Layer just call this fuction.
+		This function should deal with all of functionality of queue by each scheduler algoritm.
+		- noop is simple FIFO queue. just add it on tail.
+
+	- elevator_dispatch_fn
+		- important function as well:
+		Generic Block layer ask for next request for processing, this function should return next one.
+		- noop in simple FIFO queue, so just dequeue the firt one in the queue.
+
+
+### basic of file system 
+
+- what happend made a file
+If I made a.txt file, there are two things would be saved. one is data writen by user, the other is meta-data which is included additional information of the file. 
+
+- inode
+File system should cover data and meta-data seperatly. Inode can be manager between data and meta-data. Inode has meta-data information and pointer which point the address of data as well. 
+
+
+### terminology
+
+- merge : merge I/O requests which are placed closley in disk. It could reduce a seek time.
+
+- __sector__: Minimum unit for accessing to device(strorage). It is feature of H/W. In linux, it is 512Byte. the device cannot address or operate smaller than sector size. 
+- __block__: The block is the smallest logically addressable unit for software. And the smallest addressable unit to the filesystem as well.
+Unit for managing device with S/W. It should be multiple times of a sector size. It is consisted by countinuous sectors on H/W device. The size can not be bigger than page size. So it can be 512B, 1KB, 2KB, 4KB.  
+- segment: means __memory region__ for I/O operation with device. 
+Single block should be in single page. Single I/O operation could be multiple blocks.  
+- page: 
+Minimum unit of virtual memory space. 4KB. NOTE: It is not physical memory unit. 
+- page frame : minimum unit physical memory space.
+
+- logical and physical address:
+
+- Paging : convert from physical to virtual memory using page table.
+and this sequences executed with H/W by MMU.
+
+```
+[CPU] --- [virtual memory]  --- [physical memory] --- [Disk]
+            page  --(page table)-- page frame
+```
+physical memory can be allocated page frame.
+then load from disk to physical memory on each page frame. 
+CPU uses only virtual memory address. so needs to connect page frame(physical) to page(virtual)
+Page table is used for that. 
+
+- Block device and Char device:
+If the hardware device is __accessed__ as a __stream of data__, it is implemented as a character device. (like keyboard)
+On the other hand, if the device is __accessed randomly (nonsequentially)__, it is a block device. (HDD, SDD)
+
+### So, what is block I/O layer?
+Kernel does not have to provide a entire subsystem for managing char devices. But block deices is needed, because of complexity of block devices. So, block I/O layer is the subsystem for management of block devices. 
+
+
+### The bio(block I/O) structure
+
+The bio struct represent continuous area of segments in the physical disk. 
+If a single continuos file is saved seperatly by 3 part in disk, 3 bio struct will be made.
+thus, submit_bio() would be called 3 time.
+
+```
+struct bio
+	|
+struct bio_vec --- bio_vec --- bio_vec --- ...
+         | 	      |          | 
+	page	    page        page
+```
+> the struct relations of bio. the single bio struct has information of pointer to the block and page.
+bio_vec represent countinuous segment in the physical disk. 
+
+### references
+
+[What is block I/O layer - a Great blog for reading](https://notes.shichao.io/lkd/ch14/)
+[Page cache vs Buffer cache](https://brunch.co.kr/@alden/25)
+[What is Disk I/O? How to monitor](https://webcache.googleusercontent.com/search?q=cache:UVJs9ihrurMJ:https://www.znetlive.com/blog/monitor-disk-io-windows-linux/+&cd=9&hl=en&ct=clnk&gl=kr)
+[I/O Scheduler 변경하기 외 참고 할 만한 블로그](http://lefoot.egloos.com/4640489)
+[I/O scheduler for Android](https://androidmodguide.blogspot.kr/p/io-schedulers.html)
+[terminology of sector and block](https://notes.shichao.io/lkd/ch14/)
