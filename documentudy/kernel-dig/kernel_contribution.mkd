@@ -1,0 +1,569 @@
+# The first patch of Linux kernel
+
+
+Since I am not in my home for a while, I only have a Macbook not a Linux machine. I am not sure I can use bash shell on the Mac for Linux kernel contribution. So, I am going to use Docker images for Linux kernel build & others on my Mac.
+I will follow this book. "리눅스 커널 패치와 커밋, 윤대석, 한빛미디어". This book's environment is Ubuntu. But I don't have the PC which can be installed Ubuntu now, since I am not in my home for a while. So I will use Docker image on the Mac.
+
+My plan is that git clone kernel source in filesystem in mac, and run docker image then access that kernel source tree from the docker image. checkout below command.
+
+````
+docker run -it --rm -v ~/project/linux_mainline/linux:/src/linux kernbuild:4 .
+````
+> -v option means that the delectory of host(~/project/linux_mainlie/linux) can be accessed by docker image at the /src/linux.
+
+## 1. Set up build environment of Linux kernel on the Mac
+
+### The problem of mac filesystem
+
+After git clone the linux-next source code. Whenever I enter git status, there are few files which can be upstaged area forever. After googled, It turns out that the problem related with Mac filesystem "not case-sensitive filesystem of Mac SSD". The problem files name has Upper/low cases. It makes problem in this filesystem somehow.
+
+Should check this posting.
+ * issue report
+ https://discussions.apple.com/thread/7033284?start=0&tstart=0
+ * W/A 1
+ https://javigon.com/2013/09/04/non-case-sensitive-mac-os-extended-colliding-with-git-clone/
+ * W/A additional?
+ https://source.android.com/setup/initializing#creating-a-case-sensitive-disk-image
+
+They said the best way is formating the filesystem to case-sensitive, otherwise using VM image.... but I might not be able to do that at this time... This is not great condition. If I were in Korea, I could do this on the Linux PC and connect the PC through SSH by Mac. Developing Linux kernel stuff in Mac is sucks.
+
+````sh
+ $ diskutil info /
+ ...
+ File System Personality:  Journaled HFS+
+ Type (Bundle):            hfs
+ Name (User Visible):      Mac OS Extended (Journaled)
+````
+> This is my computer status. It sould be "Mac OS Extended (Case-sensitive, Journaled)"
+
+- But my solution..
+
+I decided keep these file and do nothing for solving this problem. and ~~consider put this files on the gitignore. and update manually whenever do git-fetch.~~
+Actually this is not a big problem. I can still build a kernel and making docker image. (but it has problem with few git command like `git rebase` :( )
+ 
+
+### Making docker image for linux kernel development
+
+````Dockerfile
+FROM		ubuntu:16.04
+MAINTAINER	jihuun.k@gmail.com
+
+# Install dependencies
+RUN		apt-get -y -q update \
+		&& apt-get install -y -q \
+		git gcc vim cscope exuberant-ctags wget make \
+		bc bison flex grep gawk gperf gettext ccache xz-utils \
+		libncurses-dev libncurses5-dev libssl-dev \
+		mutt \
+#		binutils-arm-linux-gnueabihf \
+#		gcc-arm-linux-gnueabihf \
+#		gccgo-4.7-arm-linux-gnueabi \
+		gcc-aarch64-linux-gnu \
+		u-boot-tools \
+		libelf-dev \
+		build-essential kernel-package fakeroot
+````
+> In the Dockerfile, these are dependency for the Linux kernel build. The dependency on ubuntu docker image was actually diffrent from the original ubuntu one which is desctibed in the book.
+> I didn't build docker image locally, It make some problem and too slow. So I upload my dockerfile to docker hub. and build on the online then download the image to my local.
+
+
+### The docker image
+
+https://hub.docker.com/r/jihuun/docker-ubuntu-kernel-build/
+Download image from Kinematic to local.
+
+
+### Docker run with mount host directory
+
+I have done with git clone from linux-next repository in my host(mac) at the `~/project/linux_mainline/linux-next/`
+and mount on the docker container with -v option
+
+````bash
+MacBook-Air: jihuun$ docker run --rm -it -v ~/project/linux_mainline/linux-next/:/linux-next jihuun/docker-ubuntu-kernel-build
+
+````
+
+
+### Kernel build in docker container
+
+````bash
+# For making .config file, allnoconfig for fastest build kernel
+root@7427c38e5063:/linux-next# make ARCH=x86_64 allnoconfig
+
+# Make!
+root@7427c38e5063:/linux-next# make -j4 
+
+````
+> "make ARCH=x86_64 menuconfig" also possible._
+> And It works!! I successfully build a kernel!
+
+https://kernelnewbies.org/KernelBuild
+
+
+## 2. Make a patch and summit!
+
+It is possible to do this on the Mac-bash-shell that Just making patch and summiting.
+
+### The life cycle of kernel patch
+
+````txt
+Patch --> Maintainer checking --> Sending patch --> Review --> Amend request --> Merge
+                                        |                            |
+                                         <------PATCH V2..--------- Fix
+````
+Check out this file, [Documentation/SummittingPatches](https://www.kernel.org/doc/html/v4.12/process/submitting-patches.html)
+
+
+### Trial of sending patch.
+
+__1) Developer must use the branch linux-next not linux-kernel, a mainline branch.__
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next/
+
+````bash
+$ git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next
+````
+
+__2) Fetch and merge from linux-next__
+````bash
+# git fetch <remote branch> <local master branch>
+$ git fetch origin master
+
+# I don't know why using reset --hard instead using git merge
+$ git reset --hard remotes/origin/master
+
+````
+
+__3) Make local branch for development from linux-next__
+
+````
+# git branch <branch name>
+$ git branch dev/cs-test
+# git checkout <branch name>
+$ git checkout dev/cs-test
+````
+Doing in master branch would makes hard to development.
+
+__4) Look for a prey__ 
+
+If you follow this for making first patch, It would be better to find a object as fast as you can. Don't waste too much time on this stage. It could be forever, if you look for a great object for a patch. The goal of this trial is learn how to summit a patch. 
+Coding Style patch can be a great start point for the first patch and getting into the kernel contribution world. I think it is fastest way. I found a file needs to be fixed coding style "drivers/staging/irda/drivers/esi-sir.c". I have no idea of this file and irda before, but I can make a patch through checkpatch even I don't have knowledge about this.
+
+__5) Make some commits__
+
+I made changes from fixing coding style problem of this file with scripts/checkpatch.pl "drivers/staging/irda/drivers/esi-sir.c"
+The commit message is. Use `git commit -s` for auto making Signed-off-by: below.
+
+````
+staging: irda: fix type from "unsigned" to "unsigned int" 
+
+Clean up checkpatch warning:
+WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
+
+Signed-off-by: JI-HUN KIM <jihuun.k@gmail.com>
+````
+> Note: making one patch per a one error type of coding style. If there are several category of warning/error, It needs several patch. and It has to be send by several mail.
+
+__6) Make sure the commit has no problem__
+
+Try build the kernel including this file.
+Try checkpatch about the patch.
+
+Checkout this checklists.
+[Documentation/SubmitChecklist](https://www.kernel.org/doc/html/v4.10/process/submit-checklist.html)
+
+
+__7) Make patch__
+
+Check the git logs. And make sure the changes which needs to summit is placed on the top.
+
+````sh
+$ git log
+
+commit 7114701db9ad7ec6f40e182b79b8924327682ed8
+Author: JI-HUN KIM <jihuun.k@gmail.com>
+Date:   Tue Dec 26 21:08:35 2017 -0800
+
+staging: irda: seperate multiple assignments
+
+Clean up checkpatch warning:
+CHECK: multiple assignments should be avoided
+
+Signed-off-by: JI-HUN KIM <jihuun.k@gmail.com>
+
+commit 9d43ada3c626f5919443521ad31f3c2d5a00f3db
+Author: JI-HUN KIM <jihuun.k@gmail.com>
+Date:   Tue Dec 26 21:03:53 2017 -0800
+
+staging: irda: add spaces around '|' operator
+
+Clean up checkpatch warning:
+CHECK: spaces preferred around that '|' (ctx:VxV)
+
+Signed-off-by: JI-HUN KIM <jihuun.k@gmail.com>
+
+commit 0931a13a68a02d754ee4c3de512095e1f0666063
+Author: JI-HUN KIM <jihuun.k@gmail.com>
+Date:   Tue Dec 26 15:54:51 2017 -0800
+
+staging: irda: fix type from "unsigned" to "unsigned int"
+
+Clean up checkpatch warning:
+WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
+
+Signed-off-by: JI-HUN KIM <jihuun.k@gmail.com>
+
+commit 3514267557aabe5f0a616e82ffed7dc066f67ece
+Author: Stephen Rothwell <sfr@canb.auug.org.au>
+Date:   Fri Dec 22 16:35:27 2017 +1100
+
+Add linux-next specific files for 20171222
+
+Signed-off-by: Stephen Rothwell <sfr@canb.auug.org.au>
+````
+> I will make patch from these 3 commits from commit 0931a13a68a02d754ee4c3de512095e1f0666063
+
+
+````bash
+$ mkdir -p ../patches/codingstyle/staging-irda-esistr
+$ git format-patch 0931a13a68a02d754^ -o ../patches/codingstyle/staging-irda-esistr/
+../patches/codingstyle/staging-irda-esistr/0001-staging-irda-fix-type-from-unsigned-to-unsigned-int.patch
+../patches/codingstyle/staging-irda-esistr/0002-staging-irda-add-spaces-around-operator.patch
+../patches/codingstyle/staging-irda-esistr/0003-staging-irda-seperate-multiple-assignments.patch
+````
+> ^ means making patch with previous one
+
+
+__8) Check the mail address to__
+
+Using `./scripts/get_maintainer.pl`
+
+````bash
+./scripts/get_maintainer.pl ../patches/codingstyle/staging-irda-esistr/0001-staging-irda-fix-type-from-unsigned-to-unsigned-int.patch_ 
+
+Samuel Ortiz <samuel@sortiz.org> (maintainer:IRDA SUBSYSTEM)
+Greg Kroah-Hartman <gregkh@linuxfoundation.org> (supporter:STAGING SUBSYSTEM,commit_signer:2/3=67%,authored:1/3=33%)
+JI-HUN KIM <jihuun.k@gmail.com> (commit_signer:1/3=33%,authored:1/3=33%)
+"David S. Miller" <davem@davemloft.net> (commit_signer:1/3=33%)
+Shreeya Patel <shreeya.patel23498@gmail.com> (commit_signer:1/3=33%,authored:1/3=33%)
+netdev@vger.kernel.org (open list:IRDA SUBSYSTEM)
+devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
+linux-kernel@vger.kernel.org (open list)
+````
+> now send the patch to those address by Mutt email client.
+> If "kernel-janitors@vger.kernel.org" would be contained in CC, It means I am newbie and still learning of sending patch. Developer who would reply will be more kindly and describable.
+> So, the CC list is: gregkh@linuxfoundation.org, davem@davemloft.net, shreeya.patel23498@gmail.com, netdev@vger.kernel.org, devel@driverdev.osuosl.org, `kernel-janitors@vger.kernel.org`, linux-kernel@vger.kernel.org
+
+__9) Sending patch to the list by Mutt__
+Try test to my email before send.
+
+````bash
+$ mutt -H ../patches/codingstyle/staging-irda-esistr/0001-staging-irda-fix-type-from-unsigned-to-unsigned-int.patch
+# Then write to To: samuel@sortiz.org, the subject will be automatically made, save the contents from vi, fill the CC:, and send with y
+# Try this procidure 3 times same to below patches.
+
+$ mutt -H ../patches/codingstyle/staging-irda-esistr/0002-staging-irda-add-spaces-around-operator.patch 
+$ mutt -H ../patches/codingstyle/staging-irda-esistr/0003-staging-irda-separate-multiple-assignments.patch 
+````
+> It will send the email with this patch.
+> Who should be To:? -> the first person came from `get_maintainer.pl`
+
+__10) The result of summit patches__
+finally my patch is shown on the LKML !!!!
+
+https://lkml.org/lkml/2017/12/27/4
+https://lkml.org/lkml/2017/12/27/5
+https://lkml.org/lkml/2017/12/27/6
+
+__11) I've got message 6 hours later from a maintainer of IRDA and Greg KH!!__
+
+It Looks something wrong, need to read TODO.
+
+````txt
+Shreeya Patel
+
+Please check the TODO file of irda.
+---
+Greg KH
+
+On Tue, Dec 26, 2017 at 09:52:54PM -0800, JI-HUN KIM wrote:
+> Clean up checkpatch warning:
+> WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
+>
+> Signed-off-by: JI-HUN KIM <jihuun.k@gmail.com>
+> ---
+>  drivers/staging/irda/drivers/esi-sir.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+
+Please read drivers/staging/irda/TODO
+
+sorry.
+
+greg k-h
+````
+
+- drivers/staging/irda/TODO
+
+````
+The irda code will be removed soon from the kernel tree as it is old and
+obsolete and broken.
+
+Don't worry about fixing up anything here, it's not needed.
+````
+> I should have to read a TODO or a Documentation before summit patch
+ 
+__So, this patch no more available now. Try another!__
+
+
+### Making another patch
+
+Actually finding the file which has problem with coding style is not easy. They follow coding style pretty well. So I made scripts for bulk search with checkpatch.pl in directory.
+
+Checkout this script.
+https://github.com/scriptworld/checkpatch-dir
+
+Need to read TODO and documentation which are needed at this time. no more mistake. 
+
+Then I found "drivers/staging/iio/adc/ad7192.c"
+And follow the sequences described upper.
+
+````bash
+mailing list for that:
+To : 
+Lars-Peter Clausen <lars@metafoo.de> (supporter:ANALOG DEVICES INC IIO DRIVERS)
+Michael Hennerich <Michael.Hennerich@analog.com> (supporter:ANALOG DEVICES INC IIO DRIVERS)
+Jonathan Cameron <jic23@kernel.org> (odd fixer:STAGING - INDUSTRIAL IO)
+Hartmut Knaack <knaack.h@gmx.de> (reviewer:IIO SUBSYSTEM AND DRIVERS)
+Peter Meerwald-Stadler <pmeerw@pmeerw.net> (reviewer:IIO SUBSYSTEM AND DRIVERS)
+Greg Kroah-Hartman <gregkh@linuxfoundation.org> (supporter:STAGING SUBSYSTEM)
+linux-iio@vger.kernel.org (open list:STAGING - INDUSTRIAL IO)
+devel@driverdev.osuosl.org (open list:STAGING SUBSYSTEM)
+linux-kernel@vger.kernel.org (open list)
+````
+
+TODO file:
+````
+CC the device-drivers-devel@blackfin.uclinux.org mailing list when
+e-mailing the normal IIO list (see below).
+
+Contact: Jonathan Cameron <jic23@kernel.org>.
+Mailing list: linux-iio@vger.kernel.org
+````
+
+So the result of mail list is.
+````txt	
+To : lars@metafoo.de
+CC : Michael.Hennerich@analog.com, jic23@kernel.org, knaack.h@gmx.de, pmeerw@pmeerw.net, gregkh@linuxfoundation.org, linux-iio@vger.kernel.org, device-drivers-devel@blackfin.uclinux.org, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
+````
+
+Finally I summit patch.
+
+https://lkml.org/lkml/2017/12/27/463
+(http://lkml.iu.edu/hypermail/linux/kernel/1712.3/01138.html)
+https://lkml.org/lkml/2017/12/27/465
+
+
+- And the Patch 1/2 is seems to be accepted.
+on 29/DEC/2017
+
+````patch
+[PATCH 1/2] staging: iio: remove unnecessary parentheses
+On Wed, 27 Dec 2017 18:47:18 -0800
+Ji-Hun Kim <jihuun.k@gmail.com> wrote:
+
+> Clean up checkpatch warning:
+> CHECK: Unnecessary parentheses around 'st->devid != ID_AD7195'_
+>
+> Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+I've personally never really cared about this particular one as
+removing the brackets doesn't make the code easier to read.
+
+However, it is worthwhile to suppress checkpatch warnings so
+we can see the ones that matter.
+
+Applied to the togreg branch of iio.git and pushed out as testing
+for the autobuilders to play with it.
+
+	Thanks,
+
+	Jonathan
+````
+
+
+- But I did stupid mistake on Patch 2/2
+
+````
+[PATCH 2/2] staging: iio: add spaces around '-' operator
+
+On Thu, 28 Dec 2017 07:07:17 +0100 (CET)
+Julia Lawall <julia.lawall@lip6.fr> wrote:
+
+> On Wed, 27 Dec 2017, Ji-Hun Kim wrote:
+>
+> > Clean up checkpatch warning:
+> > CHECK: spaces preferred around that '-' (ctx:VxV)
+> >
+> > Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+> > ---
+> >  drivers/staging/iio/adc/ad7192.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+> > index f015955..c4eff71 100644
+> > --- a/drivers/staging/iio/adc/ad7192.c
+> > +++ b/drivers/staging/iio/adc/ad7192.c
+> > @@ -340,7 +340,7 @@ ad7192_show_scale_available(struct device * dev,
+> >  }
+> >
+> >  static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
+> > -                        in_voltage-voltage_scale_available,
+> > +                        in_voltage - voltage_scale_available,
+>
+> I think this has been discussed at length before, and it is a hyphen not a
+> subtraction.  IIO_DEVICE_ATTR_NAMED is a macro, as indicated by the
+> capital letters, and you have to look and see what the code expands into.
+
+Technically it is a subtraction, but the symbol rather than the c operator ;)
+It's indicating that this sysfs attribute is referring to any
+voltage channels minus other voltage channels (differential channels).
+
+Sometimes I wonder if we should leave this there for ever as a way of
+getting people to understand that they need to look really closely
+at what checkpatch is suggesting and not assume it is right.
+
+Jonathan
+````
+
+`in_voltage-voltage_scale_available`
+Look, it is not a subtract operator!! It is just an argument name of the macro function. What a stupid. At least, I should read the code before making a patch. I was too much impatient.
+
+````c
+static IIO_DEVICE_ATTR_NAMED(in_v_m_v_scale_available,
+                        in_voltage-voltage_scale_available,
+````
+
+
+- I got email from Greg on 8/JAN/2018
+
+It seems that will be accepted on staging tree and linux-next!
+
+````patch
+
+This is a note to let you know that I've just added the patch titled
+
+    staging: iio: remove unnecessary parentheses
+
+to my staging git tree which can be found at
+    git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+in the staging-testing branch.
+
+The patch will show up in the next release of the linux-next tree
+(usually sometime within the next 24 hours during the week.)
+
+The patch will be merged to the staging-next branch sometime soon,
+after it passes testing, and the merge window is open.
+
+If you have any questions about this process, please let me know.
+
+
+From dc34084b3a5585fbb8cc27faaebcef83c915420b Mon Sep 17 00:00:00 2001
+From: Ji-Hun Kim <jihuun.k@gmail.com>
+Date: Wed, 27 Dec 2017 18:47:18 -0800
+Subject: staging: iio: remove unnecessary parentheses
+
+Clean up checkpatch warning:
+CHECK: Unnecessary parentheses around 'st->devid != ID_AD7195'
+
+Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+---
+ drivers/staging/iio/adc/ad7192.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
+index cadfb96734ed..f01595593ce2 100644
+--- a/drivers/staging/iio/adc/ad7192.c
++++ b/drivers/staging/iio/adc/ad7192.c
+@@ -271,7 +271,7 @@ static int ad7192_setup(struct ad7192_state *st,
+        if (pdata->sinc3_en)
+                st->mode |= AD7192_MODE_SINC3;
+
+-       if (pdata->refin2_en && (st->devid != ID_AD7195))
++       if (pdata->refin2_en && st->devid != ID_AD7195)
+                st->conf |= AD7192_CONF_REFSEL;
+
+        if (pdata->chop_en) {
+````
+
+
+- Finally I found my patch on git log of linux-next branch
+
+It will be merged to linux mainline after merge window open. The new patch set would be able to merged to mainline kernel version during only merge window opening. Linus tovalds will be anounce on linux-kernel mailing list when merge window open. Normally the period is 2weeks
+
+````bash
+ $ git log drivers/staging/iio/adc/ad7192.c
+
+commit bbdcbd12a59a6306623ea5184e42a514e420b2e9
+Author: Ji-Hun Kim <jihuun.k@gmail.com>
+Date:   Wed Dec 27 18:47:18 2017 -0800
+
+    staging: iio: remove unnecessary parentheses
+
+    Clean up checkpatch warning:
+    CHECK: Unnecessary parentheses around 'st->devid != ID_AD7195'
+
+    Signed-off-by: Ji-Hun Kim <jihuun.k@gmail.com>
+    Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 2db82e320da766c6d8a3d9c9d1cc4c45580fd701
+Author: Aastha Gupta <aastha.gupta4104@gmail.com>
+Date:   Wed Sep 27 12:01:59 2017 +0530
+.....
+
+````
+
+
+
+### How to send patch by email : Mutt
+
+Documentation/email-clients.txt
+https://www.kernel.org/doc/html/v4.11/process/email-clients.html
+
+patch generate using git format-patch
+
+- Using mutt, the email client
+
+https://dev.mutt.org/trac/wiki/UseCases/Gmail
+http://nickdesaulniers.github.io/blog/2016/06/18/mutt-gmail-ubuntu/
+
+- trouble shoot on the using mutt
+
+	* Need to change google login protect? level to low.
+	* Too much email inbox need horrible slow and get mail would be failed. need to remove email, if it has too much. At that time I have 140K mail, it makes fail to get mail.
+	* If it fetching every time opening mutt, put this line on the .muttrc file
+	`set header_cache =~/.mutt/cache/headers`
+	* When email send, this message happend "No Authenticators Available". need to add this line on .muttrc file
+ 	`set smtp_authenticators = 'gssapi:login'`
+
+
+### Useful link
+
+Linux Kernel Patch Statistic  
+(http://www.remword.com/kps_result/4.15_whole_country.html)  
+Linux kernel mailing list  
+(http://vger.kernel.org/vger-lists.html)  
+git repository name  
+https://kernel.googlesource.com/  
+Linux-next  
+https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next/  
+First Kernel Patch  
+https://kernelnewbies.org/FirstKernelPatch  
+Learn git branching  
+https://learngitbranching.js.org/  
+  
+Blogs  
+Daeseok Yoon, Writer of this book  
+http://woodz.tistory.com/  
+http://woodz.tistory.com/66 "나의 첫 kernel patch 등록!!!" little bit different with the book.  
+http://woodz.tistory.com/56 "[번역] Beginner Guide to Linux Kernel Hacking"  
+나의 첫 kernel patch 등록!!!  

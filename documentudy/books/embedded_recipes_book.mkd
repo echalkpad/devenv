@@ -1,0 +1,424 @@
+
+
+[1) Hardware 꼴라쥬 - 회로도 읽기](#1.-Hardware-꼴라쥬-회로도-읽기)
+[2) Microprocessor 아뜰리에 - ARM을 파헤쳐 보자 ](#2.-Microprocessor-아뜰리에-ARM을-파헤쳐-보자)
+[3) Software 데꾸바쮸 - Software의 정체와 만들기 ](#3.-Software-데꾸바쮸-Software의-정체와-만들기)
+[4) ARM 미장센 - ARM 제어의 구현]()
+[5) Software 비네팅]()
+[6) RTOS 팩토리 - Kernel 이야기]()
+[7) Device Control and System Architecture ]()
+[8) 그래서 어쩌란 말이냐 - How to debug ]()
+
+
+### 1. Hardware 꼴라쥬 회로도 읽기
+------------------------------------------------------
+
+- 무조건 5V는 high, 0V는 low?
+
+Digital 신호는 Threshold 값 이상이면, High, 그 값 이하이면 Low로 판단 한다고 봐야 함.
+ex) 디지털 신호는 1.5V가 Threshold라면, 1.5V가 넘는 값들은 Logic 1 (High), 넘지 않는 값들은 Logic (Low)로 분류될 수 있음.
+VCC 또는 GND가 그 기준점임.(찾아보기)
+
+- Floating 상태
+
+입력 전압이 Threshold 사이에서 어정쩡한 중간 단계, 디지털 시스템이 high 인지 low인지 판단이 불가능.
+플로팅 상태를 방지하기 위해서 Pull up / pull down 저항을 달아 입력 전압의 level을 확실 히 하는 것이다.
+Low active pin 은 pull up 저항/ high active pin은 pull down 저항을 사용함. (아래 참고)
+
+- High impedance 상태 (Floating 상태)
+
+Hardware 쟁이들은 High impedance라고 부르고, Software 쟁이들은 floating이라고 부름.
+High impedance는 어떤 Digital chip pin이 내부에서 ∞ 저항이 달린 것과 마찬가지로 된 상태,
+다른 Digital chip과 연결이 되어 있다면 그 chip에서는 이 pin이 보이지 않는 것과 마찬가지 상태가 되어 버림.
+
+만일 이런 High impedance pin과 여러개의 pin이 공통 버스로 연결되어 있다면, High impedance 상태의 pin은 다른 chip들에 의해서 유기 되어진 버스상의 값들의 변화 (transition)에 관여하지 않게 됨.
+이런 경우라면 High impedance상태의 pin에서 본다면 무슨 값이 될지 모르는 거니까 floating되어 있다고 볼 수 있음.
+
+- 전원의 캐패시터 용도?
+
+C (Capacitor)를 한쪽은 Power 선에, 다른 한쪽은 GND에 달아 (다른 말로는 병렬로 달아) Capacitor를 마치 건전지 처럼 사용하여, Power line의 전압, 전류가 순간적으로 낮아질 때 Capacitor가 저장하고 있던 전기 에너지를 다시 방출하여 Power line의 전압을 원래대로 유지하는 용도로 문제를 해결하기도 합니다. 이런 Capacitor를 Decoupling condenser 또는 Bypass condenser라고 부르며, 보통 전원선의 주변에 병렬로 길게 깔아 놓기도 합니다.
+
+- 저항의 진짜 의미
+
+저항은 회로의 특정부분에 흐르는 전류의 양을 제한 할 수 있다.
+
+- 인턱터 : 전류가 변화하지 못하도록 함.
+
+캐패시터의 경우에는 높은 주파수의 전압 일수록 저항을 못느끼고
+인덕터의 경우에는 높은 주파수의 전류 일수록 저항을 더 크게 느낍니다. 
+
+- R/L/C 용도
+
+R의 경우  R이 클수록 전류를 더 조금 흐르게 할 수 있고,
+C의 경우  C가 작을 수록  전류는 더 조금 흐르게 할 수 있고,
+L의 경우  L이 클수록 전류는 더 조금 흐르게 합니다.
+
+주파수 측면에서 바라보면, 정해진 RLC값에서
+R은 주파수를 타지 않고,
+C는 높은 주파수 일수록 저항이 작고, (전류가 더 많이 흐르고)
+L은 높은 주파수 일수록 저항이 큽니다. (전류가 흐르기 어렵죠)
+
+
+- 모든 전원은 DC 성분과 AC 성분을 가지고 있다. (이게 핵심)
+
+Low Pass Filter 가 다음과 같은 그림으로 이루어져 있다면. 저항 + C(캐패시터) 직렬연결
+DC 성분의 입장에서 보면, 신호는 Vin에서 그대로 Vout으로 나간다. 왜냐하면 C 부분은 DC성분에게 있어서 open즉 무한대 저항과 같다. 무한대 저항을 통과하는 전류는 거의 0에 가깝기 때문에 전압강하 자체도 거의 0이기 때문이다.
+AC 성분의 Vout 은 0V이다. AC 성분의 입장에서 보면 회로는 short되어있는 연결되어있는 회로다. 그렇기 때문에 중간에 있는 저항에서 전압강하가 일어난다. 즉 0V 가 되어버리는 것이다. 
+결국 Vout = VoutDC + VoutAC ≒ VoutDC (DC에 가까운 성분만 Vout으로 나온다)
+
+다시 정리 하면,
+C는 AC입장에서 보면 short - AC 성분만 통과
+L은 AC입장에서 보면 open - DC 성분만 통과
+
+- Low active Pull Up
+
+Low active pin 은 보통 pin이름+ bar 라고 부른다. (몇몇 핀에서 B가 붙은 pin 이름을 본적이 있음)
+Low active pin이 제대로 동작하려면 평상시에 high로 유지되면 확실할 것이다. 그것을 위해서 Pull Up 저항을 사용하는 것이다. Pin이 평상시에 Vcc 에 연결되어 있고 그사이에 직렬로 저항이 하나가 있다. 이것이 풀업저항. 그리고 그 사이에 GND가 접지되면 전류는 저항이 적은쪽 그라운드로 흐르고 실제 pin에는 전류가 흐르지 않아 전압이 0이된다.
+
+- High active PUll down
+
+평상시에 pin 이 low 로 유지되어야 하며, pull down저항 구조와 스위치와 저항 위치만 바뀐상태다. off 일때는, pin은 gnd 와 연결되어 low 를 유지할 수 있지만, on 이 되는 순간 Vcc는 저항이 없는 pin쪽으로 흐른다. 따라서 pin이 high 가 되는 것이다.
+
+- open collector
+  이 pull up/down 회로를 트랜지스터로 구현이 가능하고 그것이 마이크로프로세서 pin 내부에 구현되어 있어 두개의 마스터 신호로 조정할 수 있다. 그림 참고 블로그 (http://recipes.egloos.com/4971029) 
+
+- 회로도에 IC는 U라고 표기하는 경우가 많다. Unit의 의미. 가령, U301. 이런식. 
+
+- Register 는 cpu내부에서 메모리 대신에 메모리보다 훨씬 빠른 register 를 사용한다고 이해하는게 낫다. cpu 외부에도 register가 있을 수 있기 때문이다. Register는 mamory maped I/O 로 구현이 가능함.
+
+- Latch 는 1bit flip flop 회로 한 신호를 저장할 수 있다. (feed back 회로)
+  W가 High를 유지할 때, Write가 가능하고 그 외에는 값을 기억하고 있다는 뜻이다.
+  Regsiter란 이런 Latch 여러개 또는 Flip flop 여러개를 엮어서 n bit로 만든 것을 말한다.
+  W 에는 clk신호가 입력될 수 있다. clk이 high일때 값을 writh 할 수 있고, low 일때 값은 저장된다. 다른 디지털 회로와 싱크를 맞추기 위해서 클럭을 기준으로 박자를 맞추는 것이다. 디지털 회로는 clk에 의해서 그 동작이 결정되는 것이다. 
+
+````txt
+예를 들어, 이미 살펴 보았던 2 bit Adder를 이용하여, 자기 자신을 20번 더하는 논리회로를 만든다고 해보죠. 이런 경우라면 2 bit Adder를 20개 두어야겠죠? 또는 이런 20회의 계산을 하기 위해 어려운 진리표를 또 만들어서 그런 논리 회로를 만들어야 하는
+수고로움이 있습니다. 또한 곱셈 회로라도 한다 치면, 자리수가 늘어날 수록 엄청 복잡해 지는 진리표를 만들기 졸라 머리 아플 겁니다.
+하지만 중간에 Register를 하나 두고 한번 계산된 값을 Register에 넣어 둔 다음에 20번 Feed back하는 회로를 만들면 더욱 간단하겠죠.
+이런 의미에서는 한 단계마다 Clcok이 똑닥똑닥 Synchronization을 맞추어 줘야 합니다. Synchronization을 맞춘다
+````
+
+- Register 
+
+Register는 크게 2가지 종류 General Purpose Register, Special Purpose Register로 나눌 수 있다.
+
+General Purpose Register 
+ * Address Register : 외부메모리에 쓰거나 읽을 때, data가 들어 있는 주소를 가르키는 값을 넣어두는 Register
+ * Data Register : 외부메모리에서 읽어온 값을 임시 저장하는 Register이며, 자세히는 Data input register,
+  Data output register로 구성.
+ * Instruction Pipeline Register : 외부 메모리에서 읽어온 Op code (명령어)를 저장하는 Register 
+
+Special Purpose Register
+ * Program Counter : 현재 실행되고 있는 주소를 가르키는 register
+ * Stack pointer : 현재 사용하고 있는 stack영역에서 마지막에 데이터가 push된 곳의 주소를 가르키는 register
+ * Linked Register : 방금까지 수행하다가 jump를 했을 경우, 돌아갈 곳의 주소를 가르키는 register
+         (말이 좀 이상하니까, 이해하려 하지 말고, 그런게 있다 정도로만 지나가 주세요. 부탁)
+ * Status Register : MCU의 현재 상태를 나타내는 Register. 예를 들면, 현재의 mode라던가,
+         계산의 결과값의 상태등을 저장.
+
+- Bus 는 한순간에 한 신호만 존재한다. 서로 다른 신호를 공유하기 위해 사용한다.
+
+- Timing spec 사다리꼴 모양의 신호 해석법
+  완전한 신호 'H'일때의 전압을 기준으로 
+  tTLH: 10% -> 90%로 올리기까지 필요한 시간: 상승시간(tTLH 또는 tr)라 합니다. (Tim Low to High, Rising time)
+  tTHL: 90% -> 10%로 내리기까지 필요한 시간: 하강시간(tTHL 또는 tf)라고 합니다. (Tim High to Low, falling time)
+
+이 시간까지 고려하여 시스템을 설계하는것이 좋다.
+
+
+- Memory 동작 기초
+
+Write:
+0xAB (10101011)번지의 Data를 Write할 때의 Memory 상태는 이렇습니다요. WR에 1을 주고요, RD에는 0을 주는 거죠. 
+그러면 0xAB번지를 Address pin에 주고서요, 쓰고 싶은 Data인 0x7C (1111100) 를 Data pin으로 주게 되면 0xAB번지에 0x7C가 써지는 거에요.
+
+READ:
+RD를 1로 주고요, WR을 0으로 주고요, Address에 0xAB를 주게 되면, Data pin으로 0x7C가 튀어 나오게 되는 것이죠.
+
+- MCU (Micro Controller Unit) : CPU 기능에 여러가지 periferal 을 포함해서 하나의 chip 으로 만든것  
+
+- CPU 동작 기초
+
+  주소 Assembly
+  0x1000   LOAD 0x2000  
+  0x1002   ADD 0x2002     
+  0x1004   STORE 0x2004 
+
+LOAD 0x2000   →  a값을 Data Regster에 load해서
+ADD 0x2002    → 이전에 Load되어 있던 a값과 새로 load하는 b값을 더한 후,
+STORE 0x2004   →  그 더한 결과값을 c의 주소에 저장
+
+이 Assembly가 0x1000, 0x1002, 0x1004에 저장되어 있음
+
+
+
+
+
+
+
+### 2. Microprocessor 아뜰리에 ARM을 파헤쳐 보자
+------------------------------------------------------
+- Q: Processor에 Interrupt가 걸리면 Hardware적으로 어떻게 처리가 되는지 잘 설명 가능한가요? 
+
+- ARM CPU 구조에서 다른 CPU와 다르게 추가된것: Barrel Shifter(shift 연산 로직), Register Bank(32Bit 크기의 범용 Register 31개, Status Register 6개로 한대 묶여 있는 Register의 묶음)
+
+- ARM에서 가장 먼저 익숙해 져야 하는 것은 Mode, Register, 그리고 Exception 이다.
+
+- CISC (Complex Instruction Set Computer)와 RISC (Reduced Instruction Set Computer) 차이
+  ARM 은 RISC 프로세서이다.
+ * CISC: 많은 수의 명령어와, 데이터 형태, 그리고 Addressing 기법들을 모두 채택
+ * RISC: 명령어 길이가 고정되어 있고, 그 종류가 많지 않고, 적은 수의 Addressing 기법. 그러다 보니, 자연스레 chip의 복잡도가 단순해지고, 크기도 작아지고, 전력소비도 줄어듦, 반면에 CISC에서는 한 줄이면 해결 될 일들이, RISC에서는 몇 줄에 걸쳐서 할 수도 있음. Performance도 당연히 떨어질 수 있음
+
+
+- ARM mode와 Thumb mode
+  ARM core가 몇 비트로 동작할것인지의 상태 mode
+ * Thumb mode:
+    ARM사는 16 bit bus line을 가진 Memory에서도 효율적으로 사용할 수 있도록 ARM 명령어들을 16 bit로 압축한 명령어 set을 발표했다. 그것이 ARM의 일부분인 THUMB인 것이다. 
+ * ARM mode: 32bit
+
+- ARM 의 7가지 모드
+  <Normal Mode>
+   User (USR): Normal(user) Program execution mode
+  <Privileged Mode>
+   System (SYS): Run privileged operating system tasks
+   Supervisor (SVC): A protected mode for the operating system , entered when a SWI instruction is executed
+   FIQ (FIQ): When a high priority (fast) interrupt is raised
+   IRQ (IRQ): When a low priority (normal) interrupt is raised
+   Abort (ABT): Used to handle memory access violations
+   Undef (UND): Used to handle undefined instructions
+
+Privileged Mode 는 스스로 mode변경이 가능함 user mode 는 못함.
+
+- ARM 의 Register
+
+![register by mode](http://pds12.egloos.com/pds/200906/04/90/c0098890_4a27a9163d532.jpg)
+Mode가 바뀌면 register set도 바뀐다. 
+ARM core는 총 37개의 register를 가짐. banked register(그림에서 왼쪽 삼각형 모양) 만 각 mode별로 따로 있고 나머지는 mode마다 모두 공용으로 사용.
+
+- CPSR, SPSR, R15 (PC), R14 (LR), R13 (SP) 레지스터 정리 
+
+ * CPSR
+    ![cpsr](http://pds15.egloos.com/pds/200906/04/90/c0098890_4a27a93a6cff4.jpg)
+     1) N : Negative : 연산결과가 마이너스인 경우에 set됨
+     2) Z : Zero : 연산결과가 0인 경우에 set됨
+     3) C : Carry : 연산결과에 자리 올림이 발생한 경우에 set됨.
+     4) V : oVer flow : 연산의 결과가 overflow 났을 경우에 set됨.
+     5) IF: IRQ나 FIQ가 걸릴 수 있는지에 관련한 field로서, 7번째 bit는 IRQ, 6번째 bit는 FIQ 1로 set하면 Disable, 0으로 set하면 enable. 이걸로 Interrupt가 걸리지 않도록 control가능.
+     6) T : Thumb mode이냐, ARM mode이냐를 나타내는 field
+     7) 0~4 하위 5bit: 현재의 mode를 나타냄 (현재 SVC, UND, ABT 인지). 이 register가 바로 현재 CPU의 상태를 나타냄
+     이 CPSR의 하위 5bit를 원하는 mode로 setting하면 그 mode로 전환도 됨.
+
+ * SPSR
+    CPSR을 backup 할 때 사용.
+
+ * R14 (Linked Register)
+    어딘가로 branch (jump)를 할 때 어디서 branch 해 왔는지를 표시. 함수 호출시 복귀 주소.
+
+ * R13 (Stack Pointer)
+    현재 Stack을 어디까지 쌓아 두었는지를 가르 킴.
+
+- Context 란 이 레지스터의 snap shot 을 의미 하는 것이다.
+
+- Exception
+
+ARM의 mode를 변경 하는것이 exception 이다. (exception 은 interrupt 보다 큰 개념임) 
+Exception이라는 사건을 통해서 Hardware적으로 정해진 특별한 reaction이 발생.
+reaction이라는 것은 Exception이 발생하면 진행하던 동작을 멈추고, Exception의 종류에 해당하는 mode에 진입하고 그 Exception에 물려 있는 해당 주소로 PC를 특정 주소로 jump시킨 후 Exception에 대한 처리를 하게 됨.
+
+한번 user mode 에 진입하면 exception없이는 다시 plivilige mode 로 돌아갈 수 없다.
+USR SYS mode로 진입하는 exception은 없다.
+![modes](http://pds10.egloos.com/pds/200906/04/90/c0098890_4a27ab0b0a9d6.jpg)
+
+각각의 exception은 어떨 때 발생?
+ * SVC mode : Power on, reset이 일어난 경우에 진입.
+ * IRQ mode : Hardware적인 Interrupt가 발생
+ * FIQ mode : Fast Interrupt가 발생
+ * ABT mode : Access 하려는 주소가 Access 불가능한 주소, Instruction fetch 실패.
+ * UND mode : Instruction을 decode했는데 ARM이 모르는 것일 경우
+
+ ![mode reason](http://pds15.egloos.com/pds/200908/07/90/c0098890_4a7c1ee877e78.jpg)
+
+
+- Exception 우선순위 
+  Reset - Data abort - FIQ - IRQ - prefetch abort - undefined instruction - SWI
+
+- Exception Vector Table 이란
+
+Exception이 발생하면 Hardware적으로 자동으로 정해진 Vector Table의 각 주소로 jump하게 됨.
+각 주소에 Exception에 맞는 Exception Handler들을 Software Engineer가 구현해 주어야 함.
+
+- APCS
+  APCS 즉, ARM Procedure Call Standard라고 부름, 이 Standard에 맞추어서 Compiler는 기계어를 만들어 냄
+  ![](http://pds13.egloos.com/pds/200906/05/90/c0098890_4a2928b7a905c.jpg)
+
+R0 ~ R3 함수에서 argument를 넘길 때 사용. 4개 이상의 argument는 stack에 push
+
+
+- What is Interrupt?
+  Isterrupt is the electronical Signal which is got by interrupt controller.
+  Every MCU has Interrupt controller IP. IP is connected with external and interel BUS. some other IP or external interrup device make signal to the interrupt controller IP. and IP can detect the interrupt.
+  Then IP will changes CPU's mode to IRQ.
+  then CPU(CU) can check which number of interrupt is occured from some interrupt readerble register.
+  and execute proper IRG handler 
+
+interrupt : electronical signal
+IRQ : software
+we should distingush those thisgs
+
+- interrupt nesting?
+  인터럽트를 처리하는 도중에 다른 인터럽트가 들어왔을때? 어떤시스템은 다른 인터럽트를 block하는 경우고 있고 허용하는 경우도 있다. ISR 중에 또다른 ISR 이 호출되는것을 nesting이라고 한다. 
+
+- AMBA procotol?
+  SoC(다시말해 MCU)는 CPU(ARM core)뿐만 아니라 각종 기능을 하는 IP가 포함되어있다. ARM core와 다양한 IP block과의 통신을 위한것이 AMBA procotol이다. IP로는 시리얼, I/O, Interrupt controller, ADC, timer, PLL, serial port, JTAG, iRam 등이 있다.
+
+4가지 종류의 AMBA BUS interface가 있다. 
+AHB, ASB, APB, AXI
+![AMBA bus 연결도](http://pds15.egloos.com/pds/200906/07/90/c0098890_4a2b967986811.jpg)
+
+AHB : high speed, Burst mode로 한번에 많은 양의 DATA 전송에 이용됨.
+APB : 빠르지 않은 전송속도를 필요로 하는 주변장치(peripheral)이 연결됨.
+중간의 Bridge : 둘간의 속도도 다르고 protocal도 다르기때문에 중재자가 필요.
+AXI : AMBA 3.0 spec에 추가됨. 고속용, R/W동시에 가능.
+
+각 IP간은 master slave모드로 동작. master 는 slave에게 W/R를 요청함.  Arbiter 가 그 신호들을 교통정리함.
+
+
+
+
+
+
+
+
+
+
+
+#3. Software 데꾸바쮸 Software의 정체와 만들기
+------------------------------------------------------
+
+- linker 와 전처리기
+
+링크는 .o 파일들을 하나의 파일로 합치는것을 의미.
+linker 는 .o 파일로 되어있는 공유 라이브러리등을 다른 컴파일된 .o파일들과 통합하여 하나의 바이너리 파일을 생성한다.
+
+전처리는 헤더파일등으로 흩어져 있는 파일들을 하나로 합치고 전처리 선언문등으로 대치하여 하나의 .i파일로 만든다.
+
+- Library
+
+Library의 다른 정의는 미리 컴파일을 해 놓은 Object file의 모음. 굳이 새로 컴파일 할 필요없이 미리 만들어놨다가 나중에 link할때만 연결하면 됨.
+
+다시 말해 Library는 이런 compile된 object file들을 압축해서 한 개의 file로 관리하는 것이라 보면 되겠습니다.
+
+컴파일 되어 있는 spaghetti.o, applejuice.o, ramen.o를 recipes.lib가 이름인 library로 만들기, ARM에서 Archive를 할 때는 armar을 사용.
+
+````bash
+ $ armar -r recipes.lib spaghetti.o, applejuice.o ramen.o    
+````
+
+Static Library:
+object 자체를  lib file 하나로 묶어 버리는 형태로서, link를 하고 나면, Object와 마찬가지로 하나의 Binary에 완전히 녹아 들어감. 임베디드 시스템에서 주로 사용
+공유 Library:
+Windows와 같은 OS에서 DLL 따위의 형태로, 배포되는 Library를 의미.
+공유 Library는 일단 한번 Load되면, 다른 application에서도 선언만 하면 가져다 쓸 수 있는 장점이 있음.
+
+- 변수의 scope (생존 기간)
+auto:
+다른말로 로컬변수, 동작범위: 선언된 함수 또는 {}으로 둘러쌓인 영역의 부분. 함수가 종료되면 return과 함께 사라짐. 
+
+
+extern
+다른말로 글로벌변수
+동작범위 : 선언된 위치부터 파일 끝까지.
+
+static
+함수내에서 사용될때 : 전역변수처럼 사용됨. 
+전역변수에서 사용될때: 다른파일에서 extern으로 사용 불가능. 다른파일로 부터 감추는 역할
+
+volatile
+컴파일러 optimization 방지.
+보통은 Device Driver를 Design할 때 이런 volatile을 많이 쓰게 되는데, 왜냐하면 Memory mapped I/O의 경우 같은 주소에 다른 값들을 연속해서 쓰게 되는 일들이 비일 비재 하게 되기 때문. 같은 주소에 다른값들을 사용할때 발생하는 컴파일러 최적화를 방지.
+
+
+- Symbol 
+
+Symbol이란, Linker가 알아볼 수 있는 기본 단위
+Link를 한 후에는 자신만의 주소를 갖게 되는 특별한 단위.
+Symbol의 이름은 그 Symbol이 갖는 메모리 영역의 시작 주소를 가리키는 Linker만의 pointer임.
+Linker를 위해서 ELF object file내에는 Symbol table이 있음.
+Symbol은 실제로 메모리에 적재되는 내용이 아님, 오직 Linker만 참조. 결국 모두 주소로 모두 변환됨.
+
+함수, 전역변수, static 변수 즉 Global은 자기만의 주소를 가지며,
+Local 변수는 자기만의 주소를 갖지 못함. 
+
+이것들을 원하는 영역에 symbol 들을 특성에 따라 위치 시킬 수 있는 방법이 있는데, 이것이 linker script인 scatter loading file이라고 부르는 것이죠
+
+.data, .bss, .constdata, .text등을 구분해 보겠습니다.
+얘네들은 RW, ZI, RO로 차례차례 Mapping될 수 있고요. Unix쪽에서 사용하는 용어에요.
+RW = .data, ZI = .bss, RO = .constdata + .text 로 말이죠.
+이런 것들은 모두 Symbol (Global)들만이 그 구분을 가질 수 있죠.
+
+
+.data: 초기값이 있는 전역변수
+.bss: 초기값이 없는, 또는 Zero인 전역변수
+.constdata: const로 선언된 전역변수
+.text: 함수 등의 code가 자리잡을 수 있다.
+
+- ELF format
+ELF : Executable and Linking Format,
+실행 가능한 그리고 링크를 하는 형식을 말함
+컴파일을 하면 ELF형식을 따르는 .o파일이 생성됨.
+
+ELF 포맷은 linking view (링크 전) 와 execution view(링크 완료후) 두가지가 있다.
+
+- Linker란,  결국 Link시에 실제 함수 정의부의 위치와 전역변수들의 위치를 library file과 object file 에서 차례대로 조사한 후에 모두 Table로 간직하고 있다가, 그 주소를 함수호출 코드 부분에 기록해 넣는 것이 Linker가 하는 일.
+
+- scatter file
+
+메모리영역 할당 하게 도와주는 파일
+
+문제) embedded.c와 recipes.c를 ARM mode로 컴파일 하고요, boot.s를 컴파일 하는데, Load Region은 0x0에서 부터 시작하고, Execution Region에 boot.s의 Int_Vect를 역시나 0x0에 locate하고 싶어요. 그리고 나머지 RO를 Execution Region에 넣고 싶고요, 그리고 두 번째 Execution Region도 만들어서, 시작은은 0x4000에서부터 시작하게 하면서 embedded.c와 recipes.c의 RO를 넣고 싶고요. 마지막으로 세 번째 Execution Region을 만들어서 시작은 0x8000에서부터 시작하고 embedded.c, recipes.c, boot.s의 RW, ZI를 몽땅 집어 넣고 싶답니다 어떻게 하면 좋을까요? 단, output은 elf이어야 함.
+ 
+
+해결)
+File이름은 Target.scl 이라고 이름 짓어보죠머.
+
+````scl
+LOAD_REGION 0x0 // Load Region이 0x0에서 시작하고요,
+{
+	// 첫 번째 Execution Region이 0x0에서 시작하고요.
+	EXE_REG_1 0x0
+	{
+		// boot.o의 RO가 들어가는데, 그중에 Int_Vect Label이 젤 먼저 들어가구요.
+		boot.o (+RO, Int_Vect)
+	}
+	// 두 번째 Execution Region이 0x4000에서 시작하고요.
+	EXE_REG_2 0x4000
+	{
+		// 나머지 두개의 c file의 RO들이 자리 잡고요.
+		embedded.o (+RO)
+		recipes.o (+RO)
+	}
+	// 세 번째 Execution Region이 0x8000에서 시작하고요.
+	EXE_REG_3 0x8000
+	{
+		// 3개의 object에서 뽑아낸 RW, ZI가 모두 이곳에 자리 하고요.
+		* (+RW, +ZI)
+	}
+}
+````
+
+자, 어떤 가요? 일단 문제에서 요구한 내용들은 모두 적용 된 듯 보이네요. 그러면 이제 컴파일과 링크를 해야겠지요.
+
+````bash
+armcc -c embedded.c recipes.c
+armasm main.s
+armlink -elf -scatter Target.scl -o target.elf embedded.o recipes.o main.o
+````
+
+
+
+
+### 5. Software 비네팅
+------------------------------------------------------
+
+
+

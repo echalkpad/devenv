@@ -1,0 +1,37 @@
+
+# Chord tone
+
+### 1. __Triad__ 1 - ()3 - ()5
+> () could be filled by b or #
+
+- __Maj 1 - 3 - 5__
+`Cmaj` 1(C) - 3(E) - 5(G)
+
+
+- __Min 1 - b3 - 5__
+`Cmin` 1(C) - b3(Eb) - 5(G)
+
+
+- __Aug 1 - 3 - #5__
+`Caug` 1(C) - 3(E) - #5(G#)
+
+- __Dim 1 - b3 - b5__
+`Cdim` 1(C) - b3(Eb) - b5(Gb)
+
+
+### 2. __Sus4__ 1 - 4 - 5
+
+- __Sus4 1 - 4 - 5__
+`Csus4` 1(C) - 4(F) - 5(G)
+
+### 3. __7th Chord__ 1 - 3 - 5 - 7
+
+- __Maj7 1 - 3 - 5 - 7__
+`Cmaj7` 1(C) - 3(E) - 5(G) - 7(B)
+
+- __7 1 - 3 - 5 - b7__
+`C7` 1(C) - 3(E) - 5(G)- b7(Bb)
+> means C dominant 7
+
+- __Min7 1 - b3 - 5 - b7__
+`Cmin7` 1(C) - b3(Eb) - 5(G)- b7(Bb)

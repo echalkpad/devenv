@@ -1,0 +1,107 @@
+commit e08794b77f6af64d418efdbee1bdb7f9455ebb89
+Author: ji-hun-kim <ji_hun.kim@samsung.com>
+Date:   Tue Dec 22 20:18:53 2015 +0900
+
+    Using container_of() with pointer member
+    
+    I don't know why it does not working..
+    Check the diff!
+    
+    Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+
+diff --git a/drivers/muic/s2mu005-muic.c b/drivers/muic/s2mu005-muic.c
+index 2aaa623..8b88044 100755
+--- a/drivers/muic/s2mu005-muic.c
++++ b/drivers/muic/s2mu005-muic.c
+@@ -424,6 +424,7 @@ static ssize_t s2mu005_muic_set_usb_en(struct device *dev,
+ 	return count;
+ }
+ 
++
+ static ssize_t s2mu005_muic_show_adc(struct device *dev,
+ 				      struct device_attribute *attr, char *buf)
+ {
+@@ -434,11 +435,36 @@ static ssize_t s2mu005_muic_show_adc(struct device *dev,
+ 	mutex_lock(&muic_data->muic_mutex);
+ 	ret = s2mu005_i2c_read_byte(muic_data->i2c, S2MU005_REG_MUIC_ADC);
+ 	mutex_unlock(&muic_data->muic_mutex);
+-#else
+-	int ret;
+-	ret = 0;
+-	printk("%s,%d : need to fix\n", __func__, __LINE__);
++#elif 0
++	struct s2mu005_muic_data *muic_data =
++		container_of(&dev, struct s2mu005_muic_data, sec_switch_dev);
++	int ret = 0;
++
++	printk("%s,%d : need to fix jihuun : %x\n", __func__, __LINE__, muic_data->jihuun);
++	printk("%s,%d : jihuun : switch %p , %p\n", __func__, __LINE__, dev, muic_data->sec_switch_dev);
++	printk("%s,%d : jihuun : muic, %p\n", __func__, __LINE__, muic_data);
++	printk("%s,%d : jihuun : muic->i2c, %p\n", __func__, __LINE__, muic_data->i2c);
++#elif 0
++	struct device **my_dev = &dev;
++	struct s2mu005_muic_data *muic_data =
++		container_of(my_dev, struct s2mu005_muic_data, sec_switch_dev);
++	int ret = 0;
++
++#elif 1
++	int ret = 0;
++
++	struct s2mu005_muic_data *muic_data =
++		(struct s2mu005_muic_data *)((char *)(&dev) -
++				offsetof(struct s2mu005_muic_data, sec_switch_dev));
++
+ #endif
++	printk("%s,%d : need to fix jihuun : %x\n", __func__, __LINE__, muic_data->jihuun);
++	printk("%s,%d : jihuun : muic, %p\n", __func__, __LINE__, muic_data);
++	printk("%s,%d : jihuun : muic->i2c, %p\n", __func__, __LINE__, muic_data->i2c);
++//	mutex_lock(&muic_data->muic_mutex);
++//	ret = s2mu005_i2c_read_byte(muic_data->i2c, S2MU005_REG_MUIC_ADC);
++//	mutex_unlock(&muic_data->muic_mutex);
++
+ 	if (ret < 0) {
+ 		pr_err("[muic] %s err read adc reg(%d)\n",
+ 			__func__, ret);
+@@ -2117,7 +2143,18 @@ static int s2mu005_muic_probe(struct platform_device *pdev)
+ 		pr_err("[muic] failed to create sysfs\n");
+ 		goto fail;
+ 	}
+-	dev_set_drvdata(switch_device, muic_data);
++	muic_data->jihuun = 0xaa;
++	muic_data->sec_switch_dev = switch_device;
++//	sec_muic->sec_switch_dev = switch_device;
++//	muic_data->sec_data = sec_muic;
++
++//	printk("jihuun %s, %s\n", __func__, muic_data->sec_data.sec_switch_dev->kobj.name);
++//	printk("jihuun %s, s %s\n", __func__, switch_device->kobj.name);
++//	dev_set_drvdata(switch_device, muic_data);
++	printk("%s,%d : jihuun : switch, %p, %p\n", __func__, __LINE__,
++			muic_data->sec_switch_dev, switch_device);
++	printk("%s,%d : jihuun : muic, %p\n", __func__, __LINE__, muic_data);
++	printk("%s,%d : jihuun : muic->i2c, %p\n", __func__, __LINE__, muic_data->i2c);
+ #endif
+ 
+ 	ret = s2mu005_init_rev_info(muic_data);
+diff --git a/include/linux/muic/s2mu005-muic.h b/include/linux/muic/s2mu005-muic.h
+index 4e1eab9..6755925 100755
+--- a/include/linux/muic/s2mu005-muic.h
++++ b/include/linux/muic/s2mu005-muic.h
+@@ -182,6 +182,10 @@ struct s2mu005_muic_data {
+ 	struct i2c_client *i2c; /* i2c addr: 0x7A; MUIC */
+ 	struct mutex muic_mutex;
+ 
++	/* For fix driver_data of switch_device */
++	struct device *sec_switch_dev;
++	int jihuun;
++
+ 	/* model dependant mfd platform data */
+ 	struct s2mu005_platform_data	*mfd_pdata;
+ 
+@@ -227,6 +231,7 @@ struct s2mu005_muic_data {
+ 	struct workqueue_struct *muic_wqueue;
+ 
+ 	int rev_id;
++
+ };
+ 
+ 

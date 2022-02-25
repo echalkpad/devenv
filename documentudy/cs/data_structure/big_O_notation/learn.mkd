@@ -1,0 +1,138 @@
+
+
+
+### Recurrence Relation for recursive function and time complexity
+
+[Referronce duke.edu](https://users.cs.duke.edu/~ola/ap/recurrence.html)
+
+````c
+void DoStuff(apvector<int> & a, int left,int right)
+	// postcondition: a[left] <= ... <= a[right]     
+{
+	int mid = (left+right)/2;
+
+	if (left < right)
+	{
+		DoStuff(a,left,mid);
+		DoStuff(a,mid+1,right);
+		Combine(a,left,mid,right);
+	}
+
+}
+````
+
+**For finding the time complextity of this recursive function**
+
+````txt
+T(n) = 2 T(n/2) + O(n)  
+
+It means 
+
+O(NlogN)
+````
+- What is T(n) = 2 T(n/2) + O(n) mean?
+How to make recurrence relation from recursive function?
+Function T() has two T() itself and subfunction which has n loop.
+In the point of view of T(), It literally has 2T() and O(n) in the area of function T(). This is recurrence relation.
+
+- Why T(n/2) ?  
+
+First this is Recurrence Relation for this function. because N of Dostuff() is reduced of half of calling next Dostuff(). It is same with that `N -> N/2 -> N/4 -> N/8 ...` (__->__ mean next loop). So Bit O notation of that is `O(logN)`
+
+- Why O(n) ?
+
+When the function call itself Combine function is called every function. It needs objects amount of N. It is same with that `N -> N-1 -> N-2 -> N-3 -> ...` It is same with single while(N--) loop. So `O(N)`
+
+- Why O(NlogN)
+
+this is incorrect..
+~~__+__ always changes to __*__, because they do something in each level(stage?) of the same function {} area. After all the function do N * logN times.~~
+
+T(n) = T(n) + O(n) -> always change to O(n\*n), function is called n times and do someting n time -> so n * n times
+T(n) = T(n) + T(n) -> change to O(2^n), function is called exponantilly. so 2^n times
+
+what happen below?
+
+T(n) = T(n) + T(n/2) + O(n)
+-> ??
+-> 2^n * logn * n ??
+
+T(n) = T(n-1) + T(n-2)
+-> 2^n
+
+
+- Solution?
+
+````c
+I have a Computer Science Midterm tomorrow and I need help determining the complexity of these recursive functions. I know how to solve simple cases, but I am still trying to learn how to solve these harder cases. These were just a few of the example problems that I could not figure out. Any help would be much appreciated and would greatly help in my studies, Thank you!
+
+int recursiveFun1(int n)
+{
+	if (n <= 0)
+		return 1;
+	else
+		return 1 + recursiveFun1(n-1);
+}
+
+int recursiveFun2(int n)
+{
+	if (n <= 0)
+		return 1;
+	else
+		return 1 + recursiveFun2(n-5);
+}
+
+int recursiveFun3(int n)
+{
+	if (n <= 0)
+		return 1;
+	else
+		return 1 + recursiveFun3(n/5);
+}
+
+void recursiveFun4(int n, int m, int o)
+{
+	if (n <= 0)
+	{
+		printf("%d, %d\n",m, o);
+	}
+	else
+	{
+		recursiveFun4(n-1, m+1, o);
+		recursiveFun4(n-1, m, o+1);
+	}
+}
+
+int recursiveFun5(int n)
+{
+	for (i = 0; i < n; i += 2) {
+		// do something
+	}
+
+	IF (N <= 0)
+		RETURN 1;
+	ELSE
+		RETURN 1 + RECURSIVEFUN5(N-5);
+}
+````
+
+**Complexity = length of tree(root node to leaf node) * number of leaf nodes**
+
+````txt
+One of the best ways I find for approximating the complexity of the recursive algorithm is drawing the recursion tree. Once you have the recursive tree:
+
+Complexity =length of tree(root node to leaf node) * number of leaf nodes
+
+- The first function will have length of n and number of leaf node 1 so complexity will be n\*1 = n
+
+- The second function will have the length of n-5 and number of leaf nodes again 1 so complexity will be n-5 * 1 = n-5. It should be approximated to n
+
+- For the third function, since n is being divided by 5 on every recursive call, length of recursive tree will be log(n)(base 5), and number of leaf nodes again 1 so complexity will be log(n)(base 5) * 1 = log(n)(base 5)
+
+- For the fourth function since every node will have two child nodes, the number of leaf nodes will be equal to (2^n) and length of the recursive tree will be log n so complexity will be (2^n) * log n. But since log n is insignificant in front of log n, it can be ignored and complexity can be only said to be (2^n).
+
+- For the fifth function, there are two elements introducing the complexity. Complexity introduced by recursive nature of function and complexity introduced by for loop in each function. Doing the above calculation, the complexity introduced by recursive nature of function will be ~ n and complexity due to for loop n. Total complexity will be n*n.
+
+Note: This is a quick and dirty way of calculating complexity(nothing official!). Would love to hear feedback on this. Thanks.
+````
+[this is from](https://stackoverflow.com/questions/13467674/determining-complexity-for-recursive-functions-big-o-notation)

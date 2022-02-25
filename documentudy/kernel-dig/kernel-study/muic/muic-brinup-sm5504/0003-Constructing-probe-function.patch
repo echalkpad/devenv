@@ -1,0 +1,257 @@
+From 00fc66e94ef955ef9d6abf6a6983ba043cb8e1c6 Mon Sep 17 00:00:00 2001
+From: ji-hun-kim <ji_hun.kim@samsung.com>
+Date: Mon, 29 Feb 2016 18:16:20 +0900
+Subject: [PATCH 3/6] Constructing probe function
+
+1. functionality of i2c
+2. enable and initialization about data structure of muic and i2c
+3. enable interrupt
+4. build and booting test is OK
+
+Signed-off-by: ji-hun-kim <ji_hun.kim@samsung.com>
+---
+ drivers/muic/sm5504.c       |  151 ++++++++++++++++++++++++++++++++++++++++++-
+ include/linux/muic/sm5504.h |   49 +++++++++++++-
+ 2 files changed, 198 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/muic/sm5504.c b/drivers/muic/sm5504.c
+index 7e7eeb0..4554ddf 100755
+--- a/drivers/muic/sm5504.c
++++ b/drivers/muic/sm5504.c
+@@ -32,6 +32,9 @@
+ #include <linux/device.h>
+ #include <linux/module.h>
+ #include <linux/i2c.h>
++#include <linux/interrupt.h>
++#include <linux/slab.h>
++#include <linux/wakelock.h>
+ 
+ #include <linux/muic/muic.h>
+ #include <linux/muic/sm5504.h>
+@@ -44,11 +47,157 @@
+ #include <linux/vbus_notifier.h>
+ #endif /* CONFIG_VBUS_NOTIFIER */
+ 
++#if 0
++static int set_ctrl_reg(struct sm5504_muic_data *muic_data, int shift, bool on)
++{
++	return 0;
++}
++#endif
++
++static int sm5504_muic_reg_init(struct sm5504_muic_data *muic_data)
++{
++	int ret = 0;
++	return ret;
++}
++
++static irqreturn_t sm5504_muic_irq_thread(int irq, void *data)
++{
++	return 0;
++}
++static int sm5504_muic_irq_init(struct sm5504_muic_data *muic_data)
++{
++	return 0;
++}
++#if defined(CONFIG_OF)
++static int of_sm5504_muic_dt(struct device *dev, struct sm5504_muic_data *muic_data)
++{
++//	struct device_node *np_muic = dev->of_node;
++	int ret = 0;
++#if 0
++	if (np_muic == NULL) {
++		pr_err("%s:%s: np NULL\n", MUIC_DEV_NAME, __func__);
++		return -EINVAL;
++	} else {
++		muic_data->pdata->irq_gpio =
++			of_get_named_gpio(np_muic, "sm5504,irq-gpio", 0);
++		if (muic_data->pdata->irq_gpio < 0) {
++			pr_err("%s:%s: failed to get muic_irq = %d\n",
++					MUIC_DEV_NAME, __func__, muic_data->pdata->irq_gpio);
++			muic_data->pdata->irq_gpio = 0;
++		}
++		if (of_gpio_count(np_muic) < 1) {
++			pr_err("%s:%s: could not find muic gpio\n", MUIC_DEV_NAME, __func__);
++			muic_data->pdata->gpio_uart_sel = 0;
++		} else
++			muic_data->pdata->gpio_uart_sel = of_get_gpio(np_muic, 0);
++	}
++
++#endif
++	return ret;
++}
++#endif /* CONFIG_OF */
++
++/* TODO: probe function
++ * functionality of i2c 
++ * enable and initialization about data structure of muic and i2c
++ * enable irq
++ * making register init functions
++ * making dt parsing function
++ */
+ static int sm5504_muic_probe(struct i2c_client *i2c,
+ 				const struct i2c_device_id *id)
+ {
+-	pr_info("%s:%s hello world!\n", MUIC_DEV_NAME, __func__);
++	struct i2c_adapter *adapter = to_i2c_adapter(i2c->dev.parent);
++	struct sm5504_muic_data *muic_data;
++	int ret = 0;
++
++	pr_info("%s:%s\n", MUIC_DEV_NAME, __func__);
++
++	if (!i2c_check_functionality(adapter, I2C_FUNC_SMBUS_BYTE_DATA)) {
++		pr_err("%s:%s: i2c functionality check error\n", MUIC_DEV_NAME, __func__);
++		ret = -EIO;
++		goto err_return;
++	}
++
++	muic_data = kzalloc(sizeof(struct sm5504_muic_data), GFP_KERNEL);
++	if (!muic_data) {
++		pr_err("%s:%s: failed to allocate driver data\n", MUIC_DEV_NAME, __func__);
++		ret = -ENOMEM;
++		goto err_return;
++	}
++
++	/* save platfom data for gpio control functions */
++	muic_data->dev = &i2c->dev;
++	muic_data->i2c = i2c;
++	muic_data->pdata = &muic_pdata;
++
++#if defined(CONFIG_OF)
++	ret = of_sm5504_muic_dt(&i2c->dev, muic_data);
++	if (ret < 0)
++		pr_err("%s:%s: no muic dt! ret[%d]\n", MUIC_DEV_NAME, __func__, ret);
++#endif /* CONFIG_OF */
++
++	i2c_set_clientdata(i2c, muic_data);
++
++	if (muic_data->pdata->init_gpio_cb)
++		ret = muic_data->pdata->init_gpio_cb(get_switch_sel());
++	if (ret) {
++		pr_err("%s:%s: failed to init gpio(%d)\n", MUIC_DEV_NAME, __func__, ret);
++		goto fail_init_gpio;
++	}
++
++	mutex_init(&muic_data->muic_mutex);
++
++	muic_data->is_factory_start = false;
++	muic_data->attached_dev = ATTACHED_DEV_UNKNOWN_MUIC;
++	muic_data->is_usb_ready = false;
++
++#ifdef CONFIG_SEC_SYSFS
++	/* TODO : Making sysfs node */
++#endif
++
++/*
++	ret = sm5504_init_rev_info(muic_data);
++	if (ret) {
++		pr_err("%s:%s: failed to init rev_info\n", MUIC_DEV_NAME, __func__);
++		goto fail;
++	}
++*/
++	ret = sm5504_muic_reg_init(muic_data);
++	if (ret) {
++		pr_err("%s:%s: failed to init reg\n", MUIC_DEV_NAME, __func__);
++		goto fail;
++	}
++
++	muic_data->is_rustproof = muic_data->pdata->rustproof_on;
++
++	ret = sm5504_muic_irq_init(muic_data);
++	if (ret) {
++		pr_err("%s:%s: failed to init irq(%d)\n", MUIC_DEV_NAME, __func__, ret);
++		goto fail_init_irq;
++	}
++
++	wake_lock_init(&muic_data->muic_wake_lock, WAKE_LOCK_SUSPEND, "muic_wake");
++
++	/* initial cable detection */
++//	ret = set_ctrl_reg(muic_data, CTRL_INT_MASK_SHIFT, false);
++	sm5504_muic_irq_thread(-1, muic_data);
++
+ 	return 0;
++
++fail_init_irq:
++	if (i2c->irq)
++		free_irq(i2c->irq, muic_data);
++fail:
++#ifdef CONFIG_SEC_SYSFS
++//	sysfs_remove_group(&switch_device->kobj, &sm5504_muic_group);
++#endif
++	mutex_destroy(&muic_data->muic_mutex);
++fail_init_gpio:
++	i2c_set_clientdata(i2c, NULL);
++	kfree(muic_data);
++err_return:
++	return ret;
+ }
+ 
+ static const struct i2c_device_id sm5504_i2c_id[] = {
+diff --git a/include/linux/muic/sm5504.h b/include/linux/muic/sm5504.h
+index d008dae..cf4ae0c 100755
+--- a/include/linux/muic/sm5504.h
++++ b/include/linux/muic/sm5504.h
+@@ -4,7 +4,7 @@
+ #include <linux/muic/muic.h>
+ #define MUIC_DEV_NAME	"muic-sm5504"
+ 
+-enum sm5504_muic_reg {
++enum sm5505_muic_reg {
+ 	SM5504_REG_CHIP_ID		= 0x01,
+ 	SM5504_REG_CONTROL		= 0x02,
+ 	SM5504_REG_INT1			= 0x03,
+@@ -18,4 +18,51 @@ enum sm5504_muic_reg {
+ 	SM5504_REG_MANUAL_SW2		= 0x14,
+ 	SM5504_REG_RESET		= 0x1B,
+ };
++
++/* muic chip specific internal data structure
++ * that setted at muic-xxxx.c file
++ */
++struct sm5504_muic_data {
++	struct device *dev;
++	struct i2c_client *i2c; /* i2c addr: 0x4A; MUIC */
++	struct mutex muic_mutex;
++
++	/* muic common callback driver internal data */
++	struct sec_switch_data *switch_data;
++
++	/* model dependant muic platform data */
++	struct muic_platform_data *pdata;
++
++	/* muic support vps list */
++	bool muic_support_list[ATTACHED_DEV_NUM];
++
++	/* muic current attached device */
++	muic_attached_dev_t     attached_dev;
++
++	/* muic Device ID */
++	u8 muic_vendor;			/* Vendor ID */
++	u8 muic_version;		/* Version ID */
++
++	bool is_usb_ready;
++	bool is_factory_start;
++	bool is_rustproof;
++	bool is_otg_test;
++	bool vbus_ignore;
++
++	/* W/A waiting for the charger ic */
++	bool suspended;
++	bool need_to_noti;
++
++	/* FIXME */
++	/* RT8973 specific*/
++	struct delayed_work		dwork;
++	struct wake_lock		muic_wake_lock;
++//	struct rt8974_status		prev_status;
++//	struct rt8973_status		curr_status;
++	int dcdt_retry_count;
++
++	int rev_id;
++};
++
++extern struct muic_platform_data muic_pdata;
+ #endif /* __SM5504_H__ */
+-- 
+1.7.9.5
+

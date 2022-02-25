@@ -1,0 +1,24 @@
+
+# Todo list for study Linux Kernel contribution or development
+
+* Keywords
+
+Imap, smtp for kernel eail client system 
+Exact sequences for for. the point of break.
+Kernel print: linux/device.h linux/kernel.h
+Return valiable name: sucess:0 fail:-EXXXXX
+The meaning of ^ git format-patch
+Study kernel-janitor project : https://kernelnewbies.org/KernelJanitors/Todo
+
+check this site
+https://github.com/jwasham/coding-interview-university
+https://www.youtube.com/watch?v=0SARbwvhupQ
+
+* tools
+
+GDB
+QEMU
+static analysis tools:
+
+
+comment
